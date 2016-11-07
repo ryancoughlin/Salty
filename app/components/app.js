@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   View,
   StatusBar,
@@ -18,9 +17,7 @@ export default class extends Component {
           backgroundColor={BaseStyle.baseBackgroundColor}
           barStyle='light-content'
         />
-      <Navigation
-        initialRoute={stationDetailRoute}
-      />
+        <Navigation initialRoute={stationDetailRoute} />
       </View>
     );
   }

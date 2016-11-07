@@ -47,7 +47,7 @@ export default class extends Component {
         dataSource={this.state.dataSource}
         renderRow={this.renderRow.bind(this)}
         renderSectionHeader={this.renderSectionHeader.bind(this)}
-        />
+      />
     )
   }
 }

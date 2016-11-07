@@ -31,8 +31,10 @@ export default class extends Component {
 
 const styles = StyleSheet.create({
   imageContainer: {
-    width: 120,
+    width: 16,
     height: 16,
     alignItems: 'center',
+    marginLeft: 20,
+    marginRight: 20,
   },
 })
