@@ -14,6 +14,9 @@ import Geocoder from 'react-native-geocoder'
 import TideListNavigator from './tide-list/index'
 import BaseStyle from '../base-styles'
 import SaltyModal from './modal'
+import TidePhrase from './station-detail/tide-phrase'
+import WeatherRow from './station-detail/weather-row'
+import Tides from './station-detail/tides'
 
 export default class StationDetail extends Component {
   constructor(props) {
@@ -71,18 +74,8 @@ export default class StationDetail extends Component {
    );
  }
 
- get getTideDirection() {
-   const { currentTide } = this.state;
-
-   if (currentTide.tide === 'high') {
-     return 'Incoming tide at';
-   } else {
-     return 'Outgoing tide at'
-   }
-  }
-
   render() {
-    const { allTides, weather, city } = this.state;
+    const { allTides, weather, city, currentTide } = this.state;
 
     if (!weather) {
       return null;
@@ -91,9 +84,16 @@ export default class StationDetail extends Component {
     return (
       <ScrollView contentContainerStyle={{marginTop: 54}}>
         <View style={styles.container}>
-          <Text style={styles.tidePhrase}>{this.getTideDirection} {city}</Text>
-          <Text style={styles.weatherRow}>{weather.currentWeather}</Text>
-          <Text style={styles.weatherRow}>{weather.currentWind}</Text>
+          <TidePhrase
+            style={styles.tidePhrase}
+            tideDirection={currentTide.tide}
+            city={city}
+          />
+
+          <WeatherRow weather={weather.currentWeather} icon='wind' />
+          <WeatherRow weather={weather.currentWind} icon='wind' />
+
+          <Tides />
 
           <TouchableOpacity onPress={this.viewTideList.bind(this)}>
             <Text>View Tides</Text>
@@ -116,28 +116,6 @@ export default class StationDetail extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: BaseStyle.baseBackgroundColor,
-  },
-  tidePhrase: {
-    fontSize: BaseStyle.phraseFontSize,
-    color: BaseStyle.baseTextColor,
-    marginTop: 20,
-    marginBottom: 20,
-  },
-  weatherRow: {
-    fontSize: BaseStyle.baseFontSize,
-    color: BaseStyle.baseTextColor,
-    marginBottom: 20,
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
 });

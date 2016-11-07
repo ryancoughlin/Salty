@@ -24,7 +24,7 @@ export default class extends Component {
         <View style={styles.timeContainer}>
           <Text style={styles.time}>{this.prettyTideTime}</Text>
         </View>
-        <TideDirectionArrow direction={tide.tide} />
+        <TideDirectionArrow direction={tide.tide} style={styles.tideArrow} />
         <View style={styles.directionContainer}>
           <Text style={styles.direction}>{tide.tide}</Text>
         </View>
@@ -49,6 +49,9 @@ const styles = StyleSheet.create({
   time: {
     color: BaseStyle.baseTextColor,
     fontSize: BaseStyle.baseFontSize,
+  },
+  tideArrow: {
+    width: 120,
   },
   directionContainer: {
     width: 100,
