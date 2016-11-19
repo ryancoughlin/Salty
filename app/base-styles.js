@@ -11,6 +11,15 @@ const BaseStyle = {
   baseFontSize: 18,
 
   baseSpacing: 16,
+
+  navigationBarStyles: {
+    navBarBackgroundColor: this.baseBackgroundColor,
+    statusBarTextColorScheme: 'light',
+    navBarNoBorder: true,
+    navBarTransparent: false,
+    navBarTranslucent: false,
+    navBarBlur: false,
+  },
 }
 
 export default BaseStyle

@@ -1,24 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
   ListView,
-  Modal,
-} from 'react-native';
+} from 'react-native'
 
 import TideCell from './tide-list/tide-cell'
 import TideSectionHeader from './tide-list/tide-section-header'
 
 export default class extends Component {
+  static navigatorButtons = {
+    leftButtons: [{
+      icon: require('../assets/images/white-x.png'),
+      id: 'close',
+      disableIconTint: true,
+    }],
+  }
+
   constructor(props) {
-    super(props);
+    super(props)
+
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this))
 
     const dataSource = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
       sectionHeaderHasChanged: (r1, r2) => r1 !== r2,
-    });
+    })
 
     this.state = {
       dataSource: dataSource.cloneWithRowsAndSections(props.tides),
@@ -27,17 +32,13 @@ export default class extends Component {
 
   renderRow(row) {
     return (
-      <TideCell
-        tide={row}
-      />
+      <TideCell tide={row} />
     )
   }
 
   renderSectionHeader(_section, dateString) {
     return (
-      <TideSectionHeader
-        date={dateString}
-      />
+      <TideSectionHeader date={dateString} />
     )
   }
 
@@ -49,5 +50,11 @@ export default class extends Component {
         renderSectionHeader={this.renderSectionHeader.bind(this)}
       />
     )
+  }
+
+  onNavigatorEvent(event) {
+    if (event.id == 'close') {
+      this.props.navigator.dismissModal()
+    }
   }
 }

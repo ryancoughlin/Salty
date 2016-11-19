@@ -1,16 +1,20 @@
 import React from 'react';
-import {
-  AppRegistry,
-} from 'react-native';
 
-import App from './app/components/app';
+import { Navigation } from 'react-native-navigation';
 
-export default class SaltyReact extends React.Component {
-  render() {
-    return (
-      <App/>
-    );
-  }
-}
+import Map from './app/components/map'
+import StationDetail from './app/components/station-detail'
+import TideList from './app/components/tide-list'
+import BaseStyle from './app/base-styles'
 
-AppRegistry.registerComponent('SaltyReact', () => SaltyReact);
+Navigation.registerComponent('Salty.StationDetail', () => StationDetail)
+Navigation.registerComponent('Salty.Map', () => Map)
+Navigation.registerComponent('Salty.TideList', () => TideList)
+
+Navigation.startSingleScreenApp({
+  screen: {
+    screen: 'Salty.StationDetail',
+    navigatorStyle: BaseStyle.navigationBarStyles,
+  },
+  animationType: 'slide-up',
+})

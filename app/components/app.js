@@ -5,10 +5,6 @@ import {
   StatusBar,
 } from 'react-native'
 
-import Navigation from '../components/navigation'
-import stationDetailRoute from '../routes/station-detail'
-import BaseStyle from '../base-styles'
-
 export default class extends Component {
   render() {
     return (
@@ -17,7 +13,6 @@ export default class extends Component {
           backgroundColor={BaseStyle.baseBackgroundColor}
           barStyle='light-content'
         />
-        <Navigation initialRoute={stationDetailRoute} />
       </View>
     );
   }
