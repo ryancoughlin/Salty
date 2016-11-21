@@ -2,20 +2,24 @@ import React, { Component } from 'react'
 import {
   View,
   Text,
-  Image,
   StyleSheet,
 } from 'react-native'
 
 import BaseStyle from '../base-styles'
 import SmallIcon from './small-icon'
-import moment from 'moment'
+import ViewTideListButton from './station-detail/view-tide-list-button'
 
 export default class extends Component {
   render() {
+    const { rightLabel } = this.props
+
     return (
       <View style={styles.container}>
-        <SmallIcon source={this.props.icon}/>
-        <Text style={styles.header}>{this.props.text}</Text>
+        <View style={styles.leftLabel}>
+          <SmallIcon source={this.props.icon}/>
+          <Text style={styles.header}>{this.props.text}</Text>
+        </View>
+        {rightLabel}
       </View>
     )
   }
@@ -24,12 +28,19 @@ export default class extends Component {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    flex: 1,
-    height: 30,
+    height: 34,
+    alignItems: 'flex-end',
+    justifyContent: 'space-between',
+    marginBottom: BaseStyle.baseSpacing,
+    marginRight: BaseStyle.baseSpacing,
+  },
+  leftLabel: {
+    flexDirection: 'row',
     alignItems: 'center',
   },
   header: {
-    fontSize: 22,
+    fontSize: 26,
     color: BaseStyle.baseTextColor,
+    fontFamily: BaseStyle.headlineFontFamily,
   },
 })

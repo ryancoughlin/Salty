@@ -8,6 +8,7 @@ import {
 import BaseStyle from '../../base-styles'
 import downArrow from '../../assets/images/low-tide-arrow.png'
 import upArrow from '../../assets/images/high-tide-arrow.png'
+import SmallIcon from '../small-icon'
 
 export default class extends Component {
   get tideDirectionArrow() {
@@ -22,9 +23,7 @@ export default class extends Component {
 
   render() {
     return (
-      <View style={styles.imageContainer}>
-        <Image source={this.tideDirectionArrow} />
-      </View>
+      <SmallIcon source={this.tideDirectionArrow} />
     )
   }
 }
@@ -34,7 +33,5 @@ const styles = StyleSheet.create({
     width: 16,
     height: 16,
     alignItems: 'center',
-    marginLeft: 20,
-    marginRight: 20,
   },
 })

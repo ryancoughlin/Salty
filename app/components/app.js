@@ -5,6 +5,8 @@ import {
   StatusBar,
 } from 'react-native'
 
+import BaseStyle from '../base-styles'
+
 export default class extends Component {
   render() {
     return (
@@ -21,5 +23,6 @@ export default class extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: BaseStyle.baseBackgroundColor
   },
 });

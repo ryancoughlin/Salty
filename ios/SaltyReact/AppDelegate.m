@@ -9,8 +9,8 @@
 
 #import "AppDelegate.h"
 
-#import "RCTBundleURLProvider.h"
 #import "RCCManager.h"
+#import "RCTBundleURLProvider.h"
 #import "RCTRootView.h"
 
 @implementation AppDelegate
@@ -19,12 +19,12 @@
 {
   NSURL *jsCodeLocation;
 
-  jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
-  
+  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
+
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   self.window.backgroundColor = [UIColor whiteColor];
   [[RCCManager sharedInstance] initBridgeWithBundleURL:jsCodeLocation];
-  
+
   return YES;
 }
 

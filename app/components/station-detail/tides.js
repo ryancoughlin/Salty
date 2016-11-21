@@ -1,24 +1,28 @@
 import React, { Component } from 'react'
 import {
   View,
-  Text,
-  Image,
   StyleSheet,
 } from 'react-native'
 
 import BaseStyle from '../../base-styles'
 import IconHeader from '../icon-header'
-import moment from 'moment'
+import TideChart from '../tide-chart'
+import ViewTideListButton from './view-tide-list-button'
 
 import tideIcon from '../../assets/images/tide.png'
 
 export default class extends Component {
   render() {
-    const { tide } = this.props
+    const { tideChart, tideTable } = this.props
 
     return (
       <View style={styles.container}>
-        <IconHeader text="Tides" icon={tideIcon}/>
+        <IconHeader
+          text="Tides"
+          icon={tideIcon}
+          rightLabel={<ViewTideListButton tideTable={tideTable}/>}
+        />
+        <TideChart tides={tideChart} />
       </View>
     )
   }
@@ -26,8 +30,6 @@ export default class extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginTop: BaseStyle.largeSpacing,
   },
 })

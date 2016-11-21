@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: BaseStyle.baseBackgroundColor,
     flexDirection: 'row',
-    flex: 1,
     height: 90,
     justifyContent: 'center',
     alignItems: 'flex-end',
@@ -37,5 +36,6 @@ const styles = StyleSheet.create({
     color: BaseStyle.baseTextColor,
     fontSize: 26,
     marginBottom: 8,
+    fontFamily: BaseStyle.headlineFontFamily,
   }
 })

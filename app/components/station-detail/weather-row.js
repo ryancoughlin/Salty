@@ -11,7 +11,6 @@ import SmallIcon from '../small-icon'
 import windIcon from '../../assets/images/wind.png'
 
 export default class TidePhrase extends Component {
-
   get prepareIcon() {
     if (this.props.wind === "wind") {
       return windIcon
@@ -21,7 +20,7 @@ export default class TidePhrase extends Component {
   }
 
   render() {
-    const { weather, icon } = this.props;
+    const { weather, icon } = this.props
 
     return (
       <View style={styles.container}>
@@ -35,13 +34,14 @@ export default class TidePhrase extends Component {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    marginBottom: 14,
+    marginBottom: BaseStyle.baseSpacing,
   },
   arrowContainer: {
-    marginTop: 11
+    marginTop: 13,
   },
   weather: {
     fontSize: BaseStyle.baseFontSize,
     color: BaseStyle.baseTextColor,
+    fontFamily: BaseStyle.bodyFontFamily,
   },
 });

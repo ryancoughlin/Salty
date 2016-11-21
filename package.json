@@ -11,9 +11,12 @@
     "moment": "^2.15.2",
     "react": "15.3.2",
     "react-native": "^0.37.0",
+    "react-native-config": "^0.1.2",
     "react-native-geocoder": "^0.4.5",
     "react-native-maps": "^0.11.0",
-    "react-native-navigation": "^2.0.0-experimental.141"
+    "react-native-navigation": "^2.0.0-experimental.141",
+    "react-native-svg": "^4.3.3",
+    "victory-native": "^0.4.0"
   },
   "jest": {
     "preset": "jest-react-native"

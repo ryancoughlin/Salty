@@ -4,7 +4,9 @@ import android.app.Application;
 import android.util.Log;
 
 import com.facebook.react.ReactApplication;
-import com.reactnativenavigation.RnnPackage;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
+import com.horcrux.svg.RNSvgPackage;
+import com.reactnativenavigation.NavigationReactPackage;
 import com.airbnb.android.react.maps.MapsPackage;
 import com.devfd.RNGeocoder.RNGeocoderPackage;
 import com.facebook.react.ReactInstanceManager;
@@ -27,7 +29,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RnnPackage(),
+            new ReactNativeConfigPackage(),
+            new RNSvgPackage(),
+            new NavigationReactPackage(),
             new MapsPackage(),
             new RNGeocoderPackage()
       );
