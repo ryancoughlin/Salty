@@ -39,26 +39,27 @@ export default class StationDetail extends Component {
           return now.diff(tideTime) <= 0
         })
 
-        // IF NEXT TIDE IS 0, GET PREVIOUS DAY
-        // _.last(json.tides[yesterdayKey].tides)
+        console.log(nextTideIndex)
 
+        // const yesterdayKey = moment().add(-1, 'days').format('MM/DD/YYYY');
+        // const yesterdaysTide =  _.last(json.tides[yesterdayKey].tides)
+        // const currentTide = todaysTides[nextTideIndex - 1]
         const nextTide = todaysTides[nextTideIndex]
         const currentTide = todaysTides[nextTideIndex - 1]
-
-        console.log(nextTide, currentTide, nextTideIndex)
 
         this.setState({
           nextTide,
           currentTide,
           weather: json.weather,
-          tides: json.tides
+          tides: json.tides,
+          rawTides: json.rawTides,
         })
       })
     })
   }
 
   render() {
-    const { weather, city, currentTide } = this.state
+    const { weather, city, currentTide, rawTides } = this.state
 
     if (!weather) {
       return null
@@ -76,7 +77,7 @@ export default class StationDetail extends Component {
           <WeatherRow weather={weather.currentWeather} icon='wind' />
           <WeatherRow weather={weather.currentWind} icon='wind' />
 
-          <Tides />
+          <Tides rawTides={rawTides} />
 
           <TouchableOpacity onPress={this.openTideList.bind(this)}>
             <Text>View Tides</Text>

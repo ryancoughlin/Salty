@@ -1,5 +1,4 @@
 export default function makeRequest(location) {
-  console.log(location)
   const { latitude, longitude } = location
   const baseURL = 'http://localhost:8000/api/get-data'
 

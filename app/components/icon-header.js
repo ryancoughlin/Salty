@@ -24,7 +24,6 @@ export default class extends Component {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    flex: 1,
     height: 30,
     alignItems: 'center',
   },

@@ -3,7 +3,6 @@ import {
   StyleSheet,
   View,
   Text,
-  Image,
 } from 'react-native'
 
 import BaseStyle from '../../base-styles'
@@ -11,7 +10,7 @@ import TideDirectionArrow from '../tide-list/tide-direction-arrow'
 
 export default class TidePhrase extends Component {
   get buildTidePhrase() {
-    const { tideDirection } = this.props;
+    const { tideDirection } = this.props
 
     if (tideDirection === 'high') {
       return 'Incoming tide at'
@@ -21,7 +20,7 @@ export default class TidePhrase extends Component {
   }
 
   render() {
-    const { city, tideDirection } = this.props;
+    const { city, tideDirection } = this.props
 
     return (
       <View style={styles.container}>
@@ -33,7 +32,7 @@ export default class TidePhrase extends Component {
         </View>
         <Text style={styles.tidePhrase}>{this.buildTidePhrase} {city}</Text>
       </View>
-    );
+    )
   }
 }
 
@@ -49,4 +48,4 @@ const styles = StyleSheet.create({
     fontSize: BaseStyle.phraseFontSize,
     color: BaseStyle.baseTextColor,
   },
-});
+})
