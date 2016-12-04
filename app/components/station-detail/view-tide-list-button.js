@@ -10,17 +10,6 @@ import { Navigation } from 'react-native-navigation'
 import BaseStyle from '../../base-styles'
 
 export default class extends Component {
-  render() {
-    return (
-      <TouchableOpacity
-        onPress={this.openTideList.bind(this)}
-        style={styles.container}
-      >
-        <Text style={styles.viewTidesText}>view all</Text>
-      </TouchableOpacity>
-    )
-  }
-
   openTideList() {
     const { tideTable } = this.props
 
@@ -30,6 +19,16 @@ export default class extends Component {
       passProps: { tides: tideTable },
       navigatorStyle: BaseStyle.navigationBarStyles,
     })
+  }
+  render() {
+    return (
+      <TouchableOpacity
+        onPress={this.openTideList.bind(this)}
+        style={styles.container}
+      >
+        <Text style={styles.viewTidesText}>view all</Text>
+      </TouchableOpacity>
+    )
   }
 }
 

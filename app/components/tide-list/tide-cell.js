@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import {
   View,
   Text,
-  Image,
   StyleSheet,
 } from 'react-native'
 
-import BaseStyle from '../../base-styles'
 import moment from 'moment'
+
+import BaseStyle from '../../base-styles'
 import TideDirectionArrow from './tide-direction-arrow'
 
 export default class extends Component {

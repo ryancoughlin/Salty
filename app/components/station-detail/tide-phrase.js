@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   arrowContainer: {
-    marginTop: 9
+    marginTop: 9,
   },
   tidePhrase: {
     fontSize: BaseStyle.phraseFontSize,

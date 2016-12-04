@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   StyleSheet,
-} from 'react-native';
+} from 'react-native'
 
-import MapView from 'react-native-maps';
+import MapView from 'react-native-maps'
 
 export default class Map extends Component {
   constructor(props) {
@@ -14,14 +14,14 @@ export default class Map extends Component {
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude, longitude } = position.coords;
+      const { latitude, longitude } = position.coords
 
       this.setState({
-        userLocation: {latitude, longitude}
+        userLocation: { latitude, longitude },
       })
     })
 
-    fetch('http://localhost:8000/api/get-stations').then(res => res.json()).then(json => {
+    fetch('http://localhost:8000/api/get-stations').then(res => res.json()).then((json) => {
       this.setState({ stations: json.formattedStations })
     })
   }
@@ -29,7 +29,7 @@ export default class Map extends Component {
   render() {
     const { stations, userLocation } = this.state
 
-    if(!stations) {
+    if (!stations) {
       return null
     }
 
@@ -44,7 +44,7 @@ export default class Map extends Component {
           showPointsOfInterest: false,
           showBuildings: false,
         }}
-        >
+      >
         {stations.map(station => (
           <MapView.Marker
             coordinate={{
@@ -61,5 +61,5 @@ export default class Map extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  }
+  },
 })

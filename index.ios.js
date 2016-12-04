@@ -1,6 +1,4 @@
-import React from 'react';
-
-import { Navigation } from 'react-native-navigation';
+import { Navigation } from 'react-native-navigation'
 
 import Map from './app/components/map'
 import StationDetail from './app/components/station-detail'

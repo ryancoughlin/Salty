@@ -7,13 +7,13 @@ import {
 
 export default class SmallIcon extends Component {
   render() {
-    const { source } = this.props;
+    const { source } = this.props
 
     return (
       <View style={styles.container}>
-        <Image source={source}/>
+        <Image source={source} />
       </View>
-    );
+    )
   }
 }
 
@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     marginRight: 12,
   },
-});
+})
