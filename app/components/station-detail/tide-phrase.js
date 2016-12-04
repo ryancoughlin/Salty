@@ -13,9 +13,9 @@ export default class TidePhrase extends Component {
     const { tideDirection } = this.props
 
     if (tideDirection === 'high') {
-      return 'Incoming tide at'
+      return 'Incoming tide in'
     } else {
-      return 'Outgoing tide at'
+      return 'Outgoing tide in'
     }
   }
 
