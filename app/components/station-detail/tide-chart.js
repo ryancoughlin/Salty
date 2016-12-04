@@ -9,8 +9,8 @@ import {
 import moment from 'moment'
 import _ from 'lodash'
 
-import BaseStyle from '../base-styles'
-import chartEdges from '../assets/images/chart/chart-edges.png'
+import BaseStyle from '../../base-styles'
+import chartEdges from '../../assets/images/chart/chart-edges.png'
 
 import {
   VictoryLine,

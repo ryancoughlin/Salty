@@ -6,7 +6,7 @@ import {
 
 import BaseStyle from '../../base-styles'
 import IconHeader from '../icon-header'
-import TideChart from '../tide-chart'
+import TideChart from './tide-chart'
 import ViewTideListButton from './view-tide-list-button'
 
 import tideIcon from '../../assets/images/tide.png'

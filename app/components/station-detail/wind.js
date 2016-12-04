@@ -6,7 +6,7 @@ import {
 
 import BaseStyle from '../../base-styles'
 import IconHeader from '../icon-header'
-import WindChart from '../wind-chart'
+import WindChart from './wind-chart'
 
 import windIcon from '../../assets/images/wind.png'
 

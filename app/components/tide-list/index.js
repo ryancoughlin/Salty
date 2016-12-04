@@ -3,13 +3,13 @@ import {
   ListView,
 } from 'react-native'
 
-import TideCell from './tide-list/tide-cell'
-import TideSectionHeader from './tide-list/tide-section-header'
+import TideCell from './tide-cell'
+import TideSectionHeader from './tide-section-header'
 
 export default class extends Component {
   static navigatorButtons = {
     leftButtons: [{
-      icon: require('../assets/images/white-x.png'),
+      icon: require('../../assets/images/white-x.png'),
       id: 'close',
       disableIconTint: true,
     }],

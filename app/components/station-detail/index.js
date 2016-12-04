@@ -9,13 +9,14 @@ import {
 
 import _ from 'lodash'
 import moment from 'moment'
-import BaseStyle from '../base-styles'
-import TidePhrase from './station-detail/tide-phrase'
-import WeatherRow from './station-detail/weather-row'
-import Tides from './station-detail/tides'
-import Wind from './station-detail/wind'
-import makeRequest from '../lib/request'
-import { fetchLocation, fetchCityName } from '../lib/location'
+
+import BaseStyle from '../../base-styles'
+import TidePhrase from './tide-phrase'
+import WeatherRow from './weather-row'
+import Tides from './tides'
+import Wind from './wind'
+import makeRequest from '../../lib/request'
+import { fetchLocation, fetchCityName } from '../../lib/location'
 
 export default class StationDetail extends Component {
   constructor(props) {

@@ -6,10 +6,8 @@ import {
   Text,
 } from 'react-native'
 
-import moment from 'moment'
-
-import BaseStyle from '../base-styles'
-import windArrow from '../assets/images/chart/windArrow.png'
+import BaseStyle from '../../base-styles'
+import windArrow from '../../assets/images/chart/windArrow.png'
 
 export default class WindBar extends Component {
   render() {
