@@ -36,6 +36,5 @@ const styles = StyleSheet.create({
     color: BaseStyle.baseTextColor,
     fontSize: 26,
     marginBottom: 8,
-    fontFamily: BaseStyle.headlineFontFamily,
   },
 })

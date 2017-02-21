@@ -13,9 +13,9 @@ export default class TidePhrase extends Component {
     const { tideDirection } = this.props
 
     if (tideDirection === 'high') {
-      return 'Incoming tide in'
+      return 'Incoming'
     } else {
-      return 'Outgoing tide in'
+      return 'Outgoing'
     }
   }
 
@@ -30,7 +30,17 @@ export default class TidePhrase extends Component {
             style={styles.arrow}
           />
         </View>
-        <Text style={styles.tidePhrase}>{this.buildTidePhrase} {city}</Text>
+        <View style={styles.tidePhrase}>
+          <View style={styles.tidePhraseRow}>
+            <Text style={[styles.loudHeader, styles.tideDirectionText]}>
+              {this.buildTidePhrase}
+            </Text>
+            <Text style={[styles.loudHeader, styles.fadedPhraseText]}>Tide</Text>
+          </View>
+          <Text style={[styles.loudHeader, styles.fadedPhraseText]}>
+            in {city}
+          </Text>
+        </View>
       </View>
     )
   }
@@ -40,15 +50,25 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     marginBottom: 20,
+    marginTop: 100,
   },
   arrowContainer: {
     marginTop: 9,
   },
   tidePhrase: {
-    fontSize: BaseStyle.phraseFontSize,
+    width: 600,
+  },
+  tidePhraseRow: {
+    flexDirection: 'row',
+  },
+  tideDirectionText: {
     color: BaseStyle.baseTextColor,
-    fontFamily: BaseStyle.headlineFontFamily,
-    letterSpacing: -0.35,
-    marginRight: BaseStyle.baseSpacing,
+  },
+  loudHeader: {
+    fontSize: 60,
+    fontWeight: 'bold',
+    color: '#E5E7E9',
+    marginRight: 8,
+    lineHeight: 60,
   },
 })

@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import {
   StyleSheet,
   View,
-  Text,
-  TouchableOpacity,
   ScrollView,
 } from 'react-native'
 
@@ -26,17 +24,17 @@ export default class StationDetail extends Component {
   }
 
   componentDidMount() {
-    fetchLocation().then(location => {
-      fetchCityName(location).then(city => {
+    fetchLocation().then((location) => {
+      fetchCityName(location).then((city) => {
         this.setState({ city: city })
       })
 
-      makeRequest(location).then(json => {
+      makeRequest(location).then((json) => {
         const now = moment()
         const todayKey = now.format('MM/DD/YYYY')
         const todaysTides = json.tides.formatted[todayKey]
 
-        const nextTideIndex = _.findIndex(todaysTides, function(tide) {
+        const nextTideIndex = _.findIndex(todaysTides, (tide) =>  {
           const tideTime = moment(tide.time, 'YYYY-MM-DD HH:mm')
           return now.diff(tideTime) <= 0
         })
@@ -95,7 +93,8 @@ export default class StationDetail extends Component {
           <Tides
             tideChart={tideChart}
             tideTable={tideTable}
-            />
+          />
+
           <Wind wind={weather.wind} />
         </View>
       </ScrollView>
@@ -107,5 +106,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: BaseStyle.baseBackgroundColor,
-  }
+  },
 })

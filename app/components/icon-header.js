@@ -41,6 +41,5 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 26,
     color: BaseStyle.baseTextColor,
-    fontFamily: BaseStyle.headlineFontFamily,
   },
 })

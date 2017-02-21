@@ -33,7 +33,7 @@ export default class TidePhrase extends Component {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    marginBottom: BaseStyle.baseSpacing,
+    marginBottom: BaseStyle.smallSpacing,
   },
   arrowContainer: {
     marginTop: 13,
