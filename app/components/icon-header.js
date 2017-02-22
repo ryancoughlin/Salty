@@ -39,6 +39,6 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 18,
     color: BaseStyle.baseTextColor,
-    fontWeight: '500',
+    fontWeight: '600',
   },
 })
