@@ -20,7 +20,9 @@ export default class SmallIcon extends Component {
 const styles = StyleSheet.create({
   container: {
     width: 20,
-    height: 16,
-    marginHorizontal: 26,
+    height: 20,
+    marginHorizontal: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 })

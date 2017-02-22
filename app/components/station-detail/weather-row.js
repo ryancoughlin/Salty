@@ -7,15 +7,11 @@ import {
 
 import BaseStyle from '../../base-styles'
 import SmallIcon from '../small-icon'
-import windIcon from '../../assets/images/wind.png'
+import weatherIcons from '../../utils/weather-icons'
 
 export default class TidePhrase extends Component {
   get prepareIcon() {
-    if (this.props.wind === 'wind') {
-      return windIcon
-    } else {
-      return windIcon
-    }
+    return weatherIcons(this.props.icon)
   }
 
   render() {

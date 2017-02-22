@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     marginTop: 34,
   },
   futureTideRow: {
-    marginLeft: 73,
+    marginLeft: 61,
     flexDirection: 'row',
     marginBottom: 5,
   },

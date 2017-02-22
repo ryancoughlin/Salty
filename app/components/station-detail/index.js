@@ -92,7 +92,7 @@ export default class StationDetail extends Component {
         />
 
         <WeatherRow weather={weather.currentWind} icon="wind" />
-        <WeatherRow weather={weather.currentWeather} icon="wind" />
+        <WeatherRow weather={weather.currentWeather} icon={weather.icon} />
 
         <FutureTides
           tideTable={tideTable}
