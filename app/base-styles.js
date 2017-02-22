@@ -17,11 +17,11 @@ const BaseStyle = {
   warningColor: pastelOrange,
   chartLabelColor: marinerBlue,
 
-  phraseFontSize: 32,
+  phraseFontSize: 60,
   baseFontSize: 18,
 
-  baseSpacing: 16,
-  smallSpacing: 8,
+  baseSpacing: 14,
+  smallSpacing: 6,
   largeSpacing: 26,
 
   navigationBarStyles: {

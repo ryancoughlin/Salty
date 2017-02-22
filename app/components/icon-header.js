@@ -7,7 +7,6 @@ import {
 
 import BaseStyle from '../base-styles'
 import SmallIcon from './small-icon'
-import ViewTideListButton from './station-detail/view-tide-list-button'
 
 export default class extends Component {
   render() {
@@ -16,7 +15,7 @@ export default class extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.leftLabel}>
-          <SmallIcon source={this.props.icon}/>
+          <SmallIcon source={this.props.icon} />
           <Text style={styles.header}>{this.props.text}</Text>
         </View>
         {rightLabel}
@@ -28,10 +27,9 @@ export default class extends Component {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    height: 34,
     alignItems: 'flex-end',
     justifyContent: 'space-between',
-    marginBottom: BaseStyle.baseSpacing,
+    marginBottom: BaseStyle.smallSpacing,
     marginRight: BaseStyle.baseSpacing,
   },
   leftLabel: {
@@ -39,7 +37,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   header: {
-    fontSize: 26,
+    fontSize: 18,
     color: BaseStyle.baseTextColor,
+    fontWeight: '500',
   },
 })

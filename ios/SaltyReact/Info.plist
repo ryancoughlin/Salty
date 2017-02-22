@@ -4,9 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>apercu_medium_pro.otf</string>
-		<string>Type-36-SemiBold.otf</string>
-		<string>apercu_regular_pro.otf</string>
+		<string>Input-Regular_(InputMono-Light).ttf</string>
 	</array>
 	<key>CFBundleDisplayName</key>
 	<string></string>

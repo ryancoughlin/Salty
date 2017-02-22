@@ -25,9 +25,7 @@
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		5CEE62F6E5C541C283C4967C /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1C276FA63A4D1887C40080 /* libReactNativeConfig.a */; };
-		5D1F90751DE8FF93004659CB /* apercu_medium_pro.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5D1F906F1DE8FEE2004659CB /* apercu_medium_pro.otf */; };
-		5D1F90761DE8FF93004659CB /* Type-36-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5D1F90701DE8FEE2004659CB /* Type-36-SemiBold.otf */; };
-		5D3F1B9A1DE903DC00201975 /* apercu_regular_pro.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5D3F1B991DE903DC00201975 /* apercu_regular_pro.otf */; };
+		5D0542801E5D316E00ABED8B /* Input-Regular_(InputMono-Light).ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D05427F1E5D316A00ABED8B /* Input-Regular_(InputMono-Light).ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		A93F19895F664DD4B9F33D5B /* libRNGeocoder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DE23EBC626B47AB9554C90E /* libRNGeocoder.a */; };
 		B96723652015464C92CD4B5A /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D6BA0ABD334EE19EDF708F /* libAirMaps.a */; };
@@ -219,9 +217,7 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		249EBD002C0442A5ABA26321 /* libRNSVG.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSVG.a; sourceTree = "<group>"; };
 		3397F02B80354F7C96A38F39 /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeNavigation.xcodeproj; path = "../node_modules/react-native-navigation/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; };
-		5D1F906F1DE8FEE2004659CB /* apercu_medium_pro.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = apercu_medium_pro.otf; sourceTree = "<group>"; };
-		5D1F90701DE8FEE2004659CB /* Type-36-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Type-36-SemiBold.otf"; sourceTree = "<group>"; };
-		5D3F1B991DE903DC00201975 /* apercu_regular_pro.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = apercu_regular_pro.otf; sourceTree = "<group>"; };
+		5D05427F1E5D316A00ABED8B /* Input-Regular_(InputMono-Light).ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Input-Regular_(InputMono-Light).ttf"; sourceTree = "<group>"; };
 		64063B8F49674CE0888EA44B /* libReactNativeNavigation.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeNavigation.a; sourceTree = "<group>"; };
 		6A1C276FA63A4D1887C40080 /* libReactNativeConfig.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeConfig.a; sourceTree = "<group>"; };
 		700B6A1749264FF0BEAA85A8 /* RNGeocoder.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGeocoder.xcodeproj; path = "../node_modules/react-native-geocoder/ios/RNGeocoder.xcodeproj"; sourceTree = "<group>"; };
@@ -404,9 +400,7 @@
 		5D1F906E1DE8FEE2004659CB /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				5D3F1B991DE903DC00201975 /* apercu_regular_pro.otf */,
-				5D1F906F1DE8FEE2004659CB /* apercu_medium_pro.otf */,
-				5D1F90701DE8FEE2004659CB /* Type-36-SemiBold.otf */,
+				5D05427F1E5D316A00ABED8B /* Input-Regular_(InputMono-Light).ttf */,
 			);
 			name = Fonts;
 			path = SaltyReact/Fonts;
@@ -789,10 +783,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D1F90751DE8FF93004659CB /* apercu_medium_pro.otf in Resources */,
-				5D1F90761DE8FF93004659CB /* Type-36-SemiBold.otf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				5D3F1B9A1DE903DC00201975 /* apercu_regular_pro.otf in Resources */,
+				5D0542801E5D316E00ABED8B /* Input-Regular_(InputMono-Light).ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

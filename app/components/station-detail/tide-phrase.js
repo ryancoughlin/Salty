@@ -49,7 +49,7 @@ export default class TidePhrase extends Component {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    marginBottom: 20,
+    marginBottom: 40,
     marginTop: 100,
   },
   arrowContainer: {
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     color: BaseStyle.baseTextColor,
   },
   loudHeader: {
-    fontSize: 60,
+    fontSize: BaseStyle.phraseFontSize,
     fontWeight: 'bold',
     color: '#E5E7E9',
     marginRight: 8,

@@ -26,7 +26,7 @@ export default class extends Component {
         onPress={this.openTideList.bind(this)}
         style={styles.container}
       >
-        <Text style={styles.viewTidesText}>view all</Text>
+        <Text style={styles.viewTidesText}>View All</Text>
       </TouchableOpacity>
     )
   }
@@ -35,7 +35,6 @@ export default class extends Component {
 const styles = StyleSheet.create({
   viewTidesText: {
     fontSize: 14,
-    color: BaseStyle.subtleColor,
-    fontFamily: BaseStyle.bodyFontFamily,
+    color: BaseStyle.baseTextColor,
   },
 })

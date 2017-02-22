@@ -24,6 +24,18 @@
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   self.window.backgroundColor = [UIColor whiteColor];
   [[RCCManager sharedInstance] initBridgeWithBundleURL:jsCodeLocation];
+  
+  // Logs fonts ordered by name
+  for (NSString* family in [[UIFont familyNames] sortedArrayUsingSelector:@selector(compare:)])
+  {
+    NSLog(@"%@", family);
+    
+    for (NSString* name in [[UIFont fontNamesForFamilyName:family] sortedArrayUsingSelector:@selector(compare:)])
+    {
+      NSLog(@"  %@", name);
+    }
+  }
+
 
   return YES;
 }
