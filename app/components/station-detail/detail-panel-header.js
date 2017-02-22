@@ -1,19 +1,17 @@
 import React, { Component } from 'react'
 import {
-  View,
   StyleSheet,
+  View,
+  Text,
 } from 'react-native'
 
 import BaseStyle from '../../base-styles'
-import TideChart from './tide-chart'
 
-export default class extends Component {
+export default class DetailPanelHeader extends Component {
+
   render() {
-    const { tideChart } = this.props
-
     return (
       <View style={styles.container}>
-        <TideChart tides={tideChart} />
       </View>
     )
   }
@@ -21,7 +19,13 @@ export default class extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: 'teal',
+    height: 80,
+    shadowColor: BaseStyle.darkBackgroundColor,
+    shadowOffset: {
+      width: 0,
+      height: -40,
+    },
+    shadowOpacity: 0.07,
+    shadowRadius: 30,
   },
 })

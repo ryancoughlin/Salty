@@ -3,17 +3,18 @@ import {
 } from './fonts'
 
 const blackPearl = 'rgba(1, 13, 36, 1)'
-const pictonBlue = 'rgba(82, 187, 255, 1.00)'
+const fadedBlackPearl = 'rgba(1, 13, 36, 0.5)'
+const pictonBlue = 'rgba(82, 187, 255, 1)'
+const pastelOrange = 'rgba(255, 186, 73, 1)'
+const marinerBlue = 'rgba(57, 103, 153, 1)'
 const transparent = 'rgba(0, 0, 0, 0)'
-const blueWhale = 'rgba(63, 102, 142, 1.00)'
-const pastelOrange = 'rgba(255, 186, 73, 1.00)'
-const marinerBlue = 'rgba(57, 103, 153, 1.00)'
 
 const BaseStyle = {
   baseBackgroundColor: 'white',
+  darkBackgroundColor: blackPearl,
   baseTextColor: blackPearl,
   actionColor: pictonBlue,
-  subtleColor: blueWhale,
+  subtleColor: fadedBlackPearl,
   warningColor: pastelOrange,
   chartLabelColor: marinerBlue,
 

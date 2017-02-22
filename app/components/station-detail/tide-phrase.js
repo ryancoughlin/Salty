@@ -7,6 +7,7 @@ import {
 
 import BaseStyle from '../../base-styles'
 import TideDirectionArrow from '../tide-list/tide-direction-arrow'
+import RemainingTideTime from './remaining-tide-time'
 
 export default class TidePhrase extends Component {
   get buildTidePhrase() {
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
     marginTop: 100,
   },
   arrowContainer: {
-    marginTop: 9,
+    marginTop: 12,
   },
   tidePhrase: {
     width: 600,
