@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {
   StyleSheet,
   View,
+  ActivityIndicator,
 } from 'react-native'
 
 import _ from 'lodash'
@@ -20,7 +21,10 @@ export default class StationDetail extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { weather: null }
+    this.state = {
+      weather: null,
+      loading: true,
+    }
   }
 
   componentDidMount() {
@@ -79,7 +83,13 @@ export default class StationDetail extends Component {
     console.log(this.state)
 
     if (!weather) {
-      return null
+      return (
+        <ActivityIndicator
+          animating={this.state.loading}
+          style={styles.loadingIndicator}
+          size="large"
+        />
+      )
     }
 
     return (
@@ -110,5 +120,11 @@ export default class StationDetail extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  loadingIndicator: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: -62,
   },
 })
