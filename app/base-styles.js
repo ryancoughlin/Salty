@@ -21,7 +21,7 @@ const BaseStyle = {
   phraseFontSize: 60,
   baseFontSize: 18,
 
-  baseSpacing: 14,
+  baseSpacing: 20,
   smallSpacing: 6,
   largeSpacing: 26,
 
