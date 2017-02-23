@@ -31,7 +31,7 @@ export default class FutureTides extends Component {
         <IconHeader
           text="Future Tides"
           icon={tideIcon}
-          rightLabel={<ViewTideListButton tideTable={tideTable}/>}
+          rightLabel={<ViewTideListButton tideTable={tideTable} />}
         />
 
         <View style={styles.futureTideRow}>
