@@ -41,6 +41,8 @@ export default class TidePhrase extends Component {
           <Text style={[styles.loudHeader, styles.fadedPhraseText]}>
             in {city}
           </Text>
+          <RemainingTideTime nextTide={this.props.currentTide} />
+
         </View>
       </View>
     )
@@ -50,7 +52,7 @@ export default class TidePhrase extends Component {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    marginBottom: 40,
+    marginBottom: 50,
     marginTop: 120,
   },
   arrowContainer: {

@@ -5,32 +5,42 @@ import {
   Text,
 } from 'react-native'
 
-import CountdownTimer from 'react-deadline'
+import _ from 'lodash'
 import moment from 'moment'
 import BaseStyle from '../../base-styles'
 
 export default class RemainingTideTime extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      timer: {
-        hours: '3',
-        minutes: '12',
-        seconds: '32',
-      },
-    }
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      this.forceUpdate()
+    }, 1000)
   }
-  formatTideTime(time) {
-    return moment(time, 'YYYY-MM-DD HH:mm').format('hh:mma')
+
+  componentWillUnmount() {
+    clearInterval(this.timer)
+  }
+
+  get formattedTime() {
+    const time = moment(this.props.nextTide.time, 'YYYY-MM-DD HH:mm')
+    const diff = moment.duration(time.diff(moment()))
+    return `${this.padNumbers(diff.hours())}:${diff.minutes()}:${diff.seconds()} `
+  }
+
+  get formattedTideDirection() {
+    return `UNTIL ${this.props.nextTide.tide.toUpperCase()}`
+  }
+
+  padNumbers(number) {
+    return _.padStart(number, 2, 0)
   }
 
   render() {
-    const { futureTides, currentTide } = this.props
-
     return (
       <View style={styles.container}>
-
+        <Text style={styles.futureTideInfo}>
+          {this.formattedTime}
+          {this.formattedTideDirection}
+        </Text>
       </View>
     )
   }
@@ -38,10 +48,10 @@ export default class RemainingTideTime extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 34,
+    marginLeft: 2,
   },
   futureTideInfo: {
     fontFamily: BaseStyle.numericFontFamily,
-    fontSize: 14,
+    fontSize: 12,
   },
 })
