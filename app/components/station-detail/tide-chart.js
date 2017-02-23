@@ -71,7 +71,11 @@ export default class TideChart extends Component {
               y="height"
               data={tides}
               labels={(datum) => datum.y}
-              labelComponent={<VictoryLabel dy={-0.3 } text={(datum) =>  Math.round( datum.y * 10 ) / 10}/>}
+              labelComponent={
+                <VictoryLabel
+                  dy={-0.3 }
+                  text={(datum) => `${Math.round(datum.y * 10) / 10}'`} />
+              }
               size={7}
               style={{
                 labels: {
