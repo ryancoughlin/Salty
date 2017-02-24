@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {
   StyleSheet,
   View,
@@ -9,34 +9,28 @@ import BaseStyle from '../../base-styles'
 import TideDirectionArrow from '../tide-list/tide-direction-arrow'
 import RemainingTideTime from './remaining-tide-time'
 
-export default class TidePhrase extends Component {
-  render() {
-    const { city, tideDirection, nextTide } = this.props
-
-    return (
-      <View style={styles.container}>
-        <View style={styles.arrowContainer}>
-          <TideDirectionArrow
-            direction={tideDirection}
-            style={styles.arrow}
-          />
-        </View>
-        <View style={styles.tidePhrase}>
-          <View style={styles.tidePhraseRow}>
-            <Text style={[styles.loudHeader, styles.tideDirectionText]}>
-              {tideDirection}
-            </Text>
-            <Text style={[styles.loudHeader, styles.fadedPhraseText]}>Tide</Text>
-          </View>
-          <Text style={[styles.loudHeader, styles.fadedPhraseText]}>
-            in {city}
-          </Text>
-          <RemainingTideTime nextTide={nextTide} />
-        </View>
+const TidePhrase = ({ city, tideDirection, nextTide }) => (
+  <View style={styles.container}>
+    <View style={styles.arrowContainer}>
+      <TideDirectionArrow
+        direction={tideDirection}
+        style={styles.arrow}
+      />
+    </View>
+    <View style={styles.tidePhrase}>
+      <View style={styles.tidePhraseRow}>
+        <Text style={[styles.loudHeader, styles.tideDirectionText]}>
+          {tideDirection}
+        </Text>
+        <Text style={[styles.loudHeader, styles.fadedPhraseText]}>Tide</Text>
       </View>
-    )
-  }
-}
+      <Text style={[styles.loudHeader, styles.fadedPhraseText]}>
+        in {city}
+      </Text>
+      <RemainingTideTime nextTide={nextTide} />
+    </View>
+  </View>
+)
 
 const styles = StyleSheet.create({
   container: {
@@ -64,3 +58,5 @@ const styles = StyleSheet.create({
     lineHeight: 60,
   },
 })
+
+export default TidePhrase

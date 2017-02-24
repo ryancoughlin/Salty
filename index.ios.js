@@ -14,5 +14,4 @@ Navigation.startSingleScreenApp({
     screen: 'Salty.StationDetail',
     navigatorStyle: BaseStyle.navigationBarStyles,
   },
-  animationType: 'slide-up',
 })

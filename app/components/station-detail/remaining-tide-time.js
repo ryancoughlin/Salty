@@ -23,6 +23,7 @@ export default class RemainingTideTime extends Component {
   get formattedTime() {
     const time = moment(this.props.nextTide.time)
     const diff = moment.duration(time.diff(moment()))
+
     return `${this.padNumbers(diff.hours())}:${this.padNumbers(diff.minutes())}:${this.padNumbers(diff.seconds())} `
   }
 

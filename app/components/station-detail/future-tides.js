@@ -9,6 +9,7 @@ import moment from 'moment'
 import BaseStyle from '../../base-styles'
 import IconHeader from '../icon-header'
 import ViewTideListButton from './view-tide-list-button'
+import NextTideRow from './next-tide-row'
 
 import tideIcon from '../../assets/images/tide.png'
 
@@ -32,17 +33,14 @@ export default class FutureTides extends Component {
           icon={tideIcon}
           rightLabel={<ViewTideListButton tideTable={tideTable} />}
         />
-
-        <View style={styles.futureTideRow}>
-          <Text style={styles.futureTideType}>High</Text>
-          <Text style={styles.futureTideInfo}>
-            {this.formatTideTime(nextTides.high.time)} / {this.formatTideHeight(nextTides.high.height)}
-          </Text>
-        </View>
-        <View style={styles.futureTideRow}>
-          <Text style={styles.futureTideType}>Low</Text>
-          <Text style={styles.futureTideInfo}>{this.formatTideTime(nextTides.low.time)} / {this.formatTideHeight(nextTides.low.height)}</Text>
-        </View>
+        <NextTideRow
+          tide={nextTides.high}
+          type="High"
+        />
+        <NextTideRow
+          tide={nextTides.low}
+          type="Low"
+        />
       </View>
     )
   }
