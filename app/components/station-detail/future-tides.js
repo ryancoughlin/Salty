@@ -15,7 +15,6 @@ import tideIcon from '../../assets/images/tide.png'
 export default class FutureTides extends Component {
   formatTideTime(time) {
     const foo = moment(time, 'YYYY-MM-DD HH:mm').format('hh:mma')
-    console.log(foo)
     return foo
   }
 
@@ -24,7 +23,7 @@ export default class FutureTides extends Component {
   }
 
   render() {
-    const { tideTable, futureTides } = this.props
+    const { tideTable, nextTides } = this.props
 
     return (
       <View style={styles.container}>
@@ -37,12 +36,12 @@ export default class FutureTides extends Component {
         <View style={styles.futureTideRow}>
           <Text style={styles.futureTideType}>High</Text>
           <Text style={styles.futureTideInfo}>
-            {this.formatTideTime(futureTides.high.time)} / {this.formatTideHeight(futureTides.high.height)}
+            {this.formatTideTime(nextTides.high.time)} / {this.formatTideHeight(nextTides.high.height)}
           </Text>
         </View>
         <View style={styles.futureTideRow}>
           <Text style={styles.futureTideType}>Low</Text>
-          <Text style={styles.futureTideInfo}>{this.formatTideTime(futureTides.low.time)} / {this.formatTideHeight(futureTides.low.height)}</Text>
+          <Text style={styles.futureTideInfo}>{this.formatTideTime(nextTides.low.time)} / {this.formatTideHeight(nextTides.low.height)}</Text>
         </View>
       </View>
     )

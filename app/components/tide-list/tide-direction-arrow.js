@@ -10,7 +10,7 @@ export default class extends Component {
   get tideDirectionArrow() {
     const { direction } = this.props
 
-    if (direction === 'high') {
+    if (direction === 'Incoming') {
       return upArrow
     } else {
       return downArrow

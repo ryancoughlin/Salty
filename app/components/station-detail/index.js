@@ -5,10 +5,6 @@ import {
   ActivityIndicator,
 } from 'react-native'
 
-import _ from 'lodash'
-import moment from 'moment'
-
-import BaseStyle from '../../base-styles'
 import TidePhrase from './tide-phrase'
 import WeatherRow from './weather-row'
 import FutureTides from './future-tides'
@@ -23,69 +19,35 @@ export default class StationDetail extends Component {
 
     this.state = {
       weather: null,
-      loading: true,
     }
   }
 
   componentDidMount() {
+    console.log("mounted")
     fetchLocation().then((location) => {
       fetchCityName(location).then((city) => {
         this.setState({ city })
       })
 
       makeRequest(location).then((json) => {
-        const now = moment()
-        const todayKey = now.format('MM/DD/YYYY')
-        const todaysTides = json.tides.formatted[todayKey]
-
-        const nextTideIndex = _.findIndex(todaysTides, (tide) => {
-          const tideTime = moment(tide.time, 'YYYY-MM-DD HH:mm')
-          return now.diff(tideTime) <= 0
-        })
-
-        if (nextTideIndex === -1) {
-          console.log('no tides for current day')
-
-          const currentTide = todaysTides[nextTideIndex - 1]
-          const tomorrowKey = moment().add(1, 'days').format('MM/DD/YYYY')
-          const followingNextDayTide = _.first(json.tides.formatted[tomorrowKey])
-
-          console.log('tomorrowKey', tomorrowKey)
-          console.log('first tide of tomorrow', followingNextDayTide)
-
-          this.setState({
-            nextTide: followingNextDayTide,
-            currentTide,
-          })
-        } else {
-          const nextTide = todaysTides[nextTideIndex]
-          const currentTide = todaysTides[nextTideIndex - 1]
-          this.setState({
-            nextTide,
-            currentTide,
-          })
-        }
-
         this.setState({
           weather: json.weather,
-          wind: json.weather.wind,
           tideChart: json.tides.hourly,
           tideTable: json.tides.formatted,
-          futureTides: json.nextTides,
+          nextTides: json.tides.nextTides,
+          nextTide: json.tides.nextTide,
+          currentTideDirection: json.tides.currentTideDirection,
         })
       })
     })
   }
 
   render() {
-    const { tideChart, weather, city, currentTide, tideTable, futureTides } = this.state
-
-    console.log(this.state)
+    const { tideChart, weather, city, tideTable, nextTides, nextTide, currentTideDirection } = this.state
 
     if (!weather) {
       return (
         <ActivityIndicator
-          animating={this.state.loading}
           style={styles.loadingIndicator}
           size="large"
         />
@@ -96,9 +58,9 @@ export default class StationDetail extends Component {
       <View style={styles.container}>
         <TidePhrase
           style={styles.tidePhrase}
-          tideDirection={currentTide}
+          tideDirection={currentTideDirection}
           city={city}
-          currentTide={futureTides.high}
+          nextTide={nextTide}
         />
 
         <WeatherRow weather={weather.currentWind} icon="wind" />
@@ -106,7 +68,7 @@ export default class StationDetail extends Component {
 
         <FutureTides
           tideTable={tideTable}
-          futureTides={futureTides}
+          nextTides={nextTides}
         />
 
         <DetailPanel

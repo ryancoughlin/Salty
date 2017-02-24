@@ -10,18 +10,8 @@ import TideDirectionArrow from '../tide-list/tide-direction-arrow'
 import RemainingTideTime from './remaining-tide-time'
 
 export default class TidePhrase extends Component {
-  get buildTidePhrase() {
-    const { tideDirection } = this.props
-
-    if (tideDirection === 'high') {
-      return 'Incoming'
-    } else {
-      return 'Outgoing'
-    }
-  }
-
   render() {
-    const { city, tideDirection } = this.props
+    const { city, tideDirection, nextTide } = this.props
 
     return (
       <View style={styles.container}>
@@ -34,15 +24,14 @@ export default class TidePhrase extends Component {
         <View style={styles.tidePhrase}>
           <View style={styles.tidePhraseRow}>
             <Text style={[styles.loudHeader, styles.tideDirectionText]}>
-              {this.buildTidePhrase}
+              {tideDirection}
             </Text>
             <Text style={[styles.loudHeader, styles.fadedPhraseText]}>Tide</Text>
           </View>
           <Text style={[styles.loudHeader, styles.fadedPhraseText]}>
             in {city}
           </Text>
-          <RemainingTideTime nextTide={this.props.currentTide} />
-
+          <RemainingTideTime nextTide={nextTide} />
         </View>
       </View>
     )
