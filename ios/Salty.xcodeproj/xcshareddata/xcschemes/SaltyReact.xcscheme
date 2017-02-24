@@ -30,8 +30,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
                BuildableName = "SaltyReact.app"
-               BlueprintName = "SaltyReact"
-               ReferencedContainer = "container:SaltyReact.xcodeproj">
+               BlueprintName = "Salty"
+               ReferencedContainer = "container:Salty.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
                BuildableName = "SaltyReactTests.xctest"
                BlueprintName = "SaltyReactTests"
-               ReferencedContainer = "container:SaltyReact.xcodeproj">
+               ReferencedContainer = "container:Salty.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -63,7 +63,7 @@
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
                BuildableName = "SaltyReactTests.xctest"
                BlueprintName = "SaltyReactTests"
-               ReferencedContainer = "container:SaltyReact.xcodeproj">
+               ReferencedContainer = "container:Salty.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -72,8 +72,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "SaltyReact.app"
-            BlueprintName = "SaltyReact"
-            ReferencedContainer = "container:SaltyReact.xcodeproj">
+            BlueprintName = "Salty"
+            ReferencedContainer = "container:Salty.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -95,8 +95,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "SaltyReact.app"
-            BlueprintName = "SaltyReact"
-            ReferencedContainer = "container:SaltyReact.xcodeproj">
+            BlueprintName = "Salty"
+            ReferencedContainer = "container:Salty.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -118,8 +118,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "SaltyReact.app"
-            BlueprintName = "SaltyReact"
-            ReferencedContainer = "container:SaltyReact.xcodeproj">
+            BlueprintName = "Salty"
+            ReferencedContainer = "container:Salty.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
