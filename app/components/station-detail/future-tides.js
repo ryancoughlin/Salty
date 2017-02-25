@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import {
   StyleSheet,
   View,
-  Text,
 } from 'react-native'
 
-import moment from 'moment'
+import _ from 'lodash'
 import BaseStyle from '../../base-styles'
 import IconHeader from '../icon-header'
 import ViewTideListButton from './view-tide-list-button'
@@ -14,33 +13,23 @@ import NextTideRow from './next-tide-row'
 import tideIcon from '../../assets/images/tide.png'
 
 export default class FutureTides extends Component {
-  formatTideTime(time) {
-    const foo = moment(time, 'YYYY-MM-DD HH:mm').format('hh:mma')
-    return foo
-  }
-
-  formatTideHeight(height) {
-    return `${height.toFixed(1)}'`
+  renderTideRow() {
+    return _.map(this.props.todaysTides, (tide, i) => {
+      return <NextTideRow tide={tide} key={i} />
+    })
   }
 
   render() {
-    const { tideTable, nextTides } = this.props
+    const { tideTable } = this.props
 
     return (
       <View style={styles.container}>
         <IconHeader
-          text="Future Tides"
+          text="Today's Tides"
           icon={tideIcon}
           rightLabel={<ViewTideListButton tideTable={tideTable} />}
         />
-        <NextTideRow
-          tide={nextTides.high}
-          type="High"
-        />
-        <NextTideRow
-          tide={nextTides.low}
-          type="Low"
-        />
+        {this.renderTideRow()}
       </View>
     )
   }

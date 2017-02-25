@@ -9,7 +9,7 @@ import BaseStyle from '../../base-styles'
 import TideDirectionArrow from '../tide-list/tide-direction-arrow'
 import RemainingTideTime from './remaining-tide-time'
 
-const TidePhrase = ({ city, tideDirection, nextTide }) => (
+const TidePhrase = ({ city, tideDirection, todaysTides }) => (
   <View style={styles.container}>
     <TideDirectionArrow
       direction={tideDirection}
@@ -26,6 +26,7 @@ const TidePhrase = ({ city, tideDirection, nextTide }) => (
       <Text style={[styles.loudHeader, styles.fadedPhraseText]}>
         in {city}
       </Text>
+      <RemainingTideTime tides={todaysTides} />
     </View>
   </View>
 )
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     marginBottom: 50,
-    marginTop: 120,
+    marginTop: 90,
   },
   arrow: {
     marginTop: 12,

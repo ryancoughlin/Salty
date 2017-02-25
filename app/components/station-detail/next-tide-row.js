@@ -5,12 +5,13 @@ import {
   Text,
 } from 'react-native'
 
+import _ from 'lodash'
 import moment from 'moment'
 import BaseStyle from '../../base-styles'
 
 export default class NextTideRow extends Component {
   formatTideTime(time) {
-    return moment(time, 'YYYY-MM-DD HH:mm').format('hh:mma')
+    return moment(time).format('hh:mma')
   }
 
   formatTideHeight(height) {
@@ -18,11 +19,11 @@ export default class NextTideRow extends Component {
   }
 
   render() {
-    const { tide, type } = this.props
+    const { tide } = this.props
 
     return (
       <View style={styles.futureTideRow}>
-        <Text style={styles.futureTideType}>{type}</Text>
+        <Text style={styles.futureTideType}>{_.upperFirst(tide.tide)}</Text>
         <Text style={styles.futureTideInfo}>
           {this.formatTideTime(tide.time)} / {this.formatTideHeight(tide.height)}
         </Text>

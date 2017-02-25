@@ -35,8 +35,7 @@ export default class StationDetail extends Component {
           weather: json.weather,
           tideChart: json.tides.hourly,
           tideTable: json.tides.formatted,
-          nextTides: json.tides.nextTides,
-          nextTide: json.tides.nextTide,
+          todaysTides: json.tides.todaysTides,
           currentTideDirection: json.tides.currentTideDirection,
         })
       })
@@ -44,7 +43,7 @@ export default class StationDetail extends Component {
   }
 
   render() {
-    const { tideChart, weather, city, tideTable, nextTides, nextTide, currentTideDirection } = this.state
+    const { tideChart, weather, city, tideTable, todaysTides, currentTideDirection } = this.state
 
     if (!weather) {
       return (
@@ -61,7 +60,7 @@ export default class StationDetail extends Component {
           style={styles.tidePhrase}
           tideDirection={currentTideDirection}
           city={city}
-          nextTide={nextTide}
+          todaysTides={todaysTides}
         />
 
         <WeatherRow weather={weather.currentWind} icon="wind" />
@@ -69,7 +68,7 @@ export default class StationDetail extends Component {
 
         <FutureTides
           tideTable={tideTable}
-          nextTides={nextTides}
+          todaysTides={todaysTides}
         />
 
         <DetailPanel
