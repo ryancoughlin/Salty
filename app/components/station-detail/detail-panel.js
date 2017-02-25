@@ -2,37 +2,43 @@ import React, { Component } from 'react'
 import {
   StyleSheet,
   View,
-  ScrollView,
 } from 'react-native'
 
-import ScrollableTabView from 'react-native-scrollable-tab-view'
 import SlidingUpPanel from 'react-native-sliding-up-panel'
 import DetailPanelHeader from './detail-panel-header'
 import TideChart from './tide-chart'
 import WindChart from './wind-chart'
 
 export default class DetailPanel extends Component {
-  render() {
-    const { wind, tideChart } = this.props
+  constructor(props) {
+    super(props)
 
-  tabBar() {
-    return <DetailPanelHeader tabData={this.tabs} />
+    this.state = {
+      tideChartVisible: true,
+    }
   }
 
   render() {
-    console.log(this.tabs)
+    const { wind, tideChart } = this.props
+    const { tideChartVisible } = this.state
+
     return (
       <View style={styles.container}>
         <SlidingUpPanel
-          handlerHeight={80}
-          handlerDefaultView={<DetailPanelHeader tabData={this.tabs} />}
-          containerMaximumHeight={500}
+          handlerHeight={70}
+          handlerDefaultView={(
+            <DetailPanelHeader
+              showTideChart={() => this.setState({ tideChartVisible })}
+              showWindChart={() => this.setState({ tideChartVisible: !tideChartVisible })}
+            />
+          )}
           allowStayMiddle={false}
+          containerMaximumHeight={280}
         >
-          <ScrollView horizontal pagingEnabled>
-            <TideChart tides={tideChart} />
-            <WindChart wind={wind} />
-          </ScrollView>
+          { tideChartVisible
+            ? <TideChart tides={tideChart} />
+            : <WindChart wind={wind} />
+          }
         </SlidingUpPanel>
       </View>
     )

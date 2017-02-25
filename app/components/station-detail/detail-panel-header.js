@@ -9,17 +9,25 @@ import {
 import BaseStyle from '../../base-styles'
 
 export default class extends Component {
+
+  get activeStyle() {
+    return styles.activeTitle
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.navigation}>
-          <TouchableOpacity>
-            <Text>Tides</Text>
+          <TouchableOpacity
+            onPress={this.props.showTideChart}
+          >
+            <Text style={[styles.navigationTitle, this.activeStyle]}>Tides</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
-            <Text>Wind</Text>
+          <TouchableOpacity onPress={this.props.showWindChart}>
+            <Text style={[styles.navigationTitle, this.activeStyle]}>Wind</Text>
           </TouchableOpacity>
         </View>
+        <Text style={styles.overviewText}>Yesterday to Monday</Text>
       </View>
     )
   }
@@ -27,8 +35,7 @@ export default class extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'teal',
-    height: 80,
+    height: 70,
     shadowColor: BaseStyle.darkBackgroundColor,
     shadowOffset: {
       width: 0,
@@ -42,10 +49,19 @@ const styles = StyleSheet.create({
   navigation: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: 100,
+    width: 130,
+  },
+  navigationTitle: {
+    fontSize: 18,
+    fontWeight: '500',
+  },
+  overviewText: {
+    fontSize: 12,
+    fontFamily: BaseStyle.numericFontFamily,
+    marginTop: 4,
   },
   activeTitle: {
-    color: 'teal',
+    color: BaseStyle.actionColor,
   },
   tab: {
     flex: 1,

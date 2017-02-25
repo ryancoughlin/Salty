@@ -8,7 +8,6 @@ import {
 import TidePhrase from './tide-phrase'
 import WeatherRow from './weather-row'
 import FutureTides from './future-tides'
-import Wind from './wind'
 import DetailPanel from './detail-panel'
 import makeRequest from '../../lib/request'
 import { fetchLocation, fetchCityName } from '../../lib/location'
@@ -72,6 +71,7 @@ export default class StationDetail extends Component {
         />
 
         <DetailPanel
+          wind={weather.wind}
           tideChart={tideChart}
         />
       </View>

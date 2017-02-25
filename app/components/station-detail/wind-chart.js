@@ -11,21 +11,18 @@ import {
   VictoryLabel,
   VictoryAxis,
 } from 'victory-native'
-import moment from 'moment'
+
 import _ from 'lodash'
 import BaseStyle from '../../base-styles'
 
 export default class TideChart extends Component {
+  get formattedWind() {
+    return this.props.wind.map((w, i) => {
+      return Object.assign({}, this.props.wind[i], {time: new Date(w.time)})
+    })
+  }
+
   render() {
-    const { wind } = this.props
-
-    const newWind = wind.map((w, i) => {
-        return Object.assign({}, wind[i], {time: new Date(w.time)});
-    });
-
-
-    console.log(newWind)
-
     return (
       <View style={styles.container}>
         <ScrollView style={{ flex: 1 }} horizontal>
@@ -37,7 +34,7 @@ export default class TideChart extends Component {
             <VictoryBar
               y="windSpeed"
               x="time"
-              data={newWind}
+              data={this.formattedWind}
               labelComponent={
                 <VictoryLabel
                   dy={-0.25}
@@ -55,7 +52,6 @@ export default class TideChart extends Component {
                 },
                 labels: {
                   fontSize: 12,
-                  padding: 5,
                   fontFamily: BaseStyle.numericFontFamily,
                   fill: BaseStyle.baseTextColor,
                 }
@@ -63,15 +59,14 @@ export default class TideChart extends Component {
             />
             <VictoryAxis
               tickValues={
-                _.map(newWind, (wind) => {
+                _.map(this.formattedWind, (wind) => {
                   return wind.time
                 })
               }
               style={{
-                axis: { stroke: 'red' },
+                axis: { stroke: 'white' },
                 tickLabels: {
                   fontSize: 10,
-                  padding: 5,
                   fontFamily: BaseStyle.numericFontFamily,
                   fill: BaseStyle.subtleColor,
                 },
