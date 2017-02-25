@@ -3,6 +3,7 @@ import partlySunny from '../assets/images/weather/partly-sunny.png'
 import cloudy from '../assets/images/weather/cloudy.png'
 import rain from '../assets/images/weather/rainy.png'
 import wind from '../assets/images/weather/wind.png'
+import fog from '../assets/images/weather/fog.png'
 
 const weatherTypes = {
   'clear-day': sun,
@@ -11,6 +12,7 @@ const weatherTypes = {
   'cloudy': cloudy,
   'partly-cloudy-day': partlySunny,
   'partly-cloudy-night': partlySunny,
+  'fog': fog,
 }
 
 export default function weatherIcon(weather) {
