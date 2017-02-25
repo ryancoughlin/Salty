@@ -2,65 +2,91 @@ import React, { Component } from 'react'
 import {
   ScrollView,
   StyleSheet,
-  Image,
   View,
 } from 'react-native'
 
+import {
+  VictoryBar,
+  VictoryChart,
+  VictoryLabel,
+  VictoryAxis,
+} from 'victory-native'
 import moment from 'moment'
 import _ from 'lodash'
-
 import BaseStyle from '../../base-styles'
-import chartEdges from '../../assets/images/chart/chart-edges.png'
-import WindBar from './wind-bar'
 
-export default class WindChart extends Component {
-  renderWindBars() {
-    const { wind } = this.props
-    const modulate = this.modulate
-
-    return _.map(wind, function(hourlyWind) {
-      const barHeight = modulate(hourlyWind.windSpeed, [0, 17], [0, 100])
-
-      return (
-        <WindBar
-          barHeight={parseInt(barHeight)}
-          wind={hourlyWind}
-        />
-      )
-    })
-  }
-
+export default class TideChart extends Component {
   render() {
+    const { wind } = this.props
+
+    const newWind = wind.map((w, i) => {
+        return Object.assign({}, wind[i], {time: new Date(w.time)});
+    });
+
+
+    console.log(newWind)
+
     return (
       <View style={styles.container}>
-        <View style={styles.edgesContainer} pointerEvents='none'>
-          <Image source={chartEdges}/>
-        </View>
-        <ScrollView horizontal={true} contentContainerStyle={{alignItems: 'flex-end'}}>
-          { this.renderWindBars() }
+        <ScrollView style={{ flex: 1 }} horizontal>
+          <VictoryChart
+            height={230}
+            width={2500}
+            scale={{x: "time"}}
+          >
+            <VictoryBar
+              y="windSpeed"
+              x="time"
+              data={newWind}
+              labelComponent={
+                <VictoryLabel
+                  dy={-0.25}
+                  dx={-20}
+                  textAnchor="middle"
+                />
+              }
+              labels={
+                (datum) => `${datum.y}mph`
+              }
+              style={{
+                data: {
+                  fill: BaseStyle.actionColor,
+                  width: 34,
+                },
+                labels: {
+                  fontSize: 12,
+                  padding: 5,
+                  fontFamily: BaseStyle.numericFontFamily,
+                  fill: BaseStyle.baseTextColor,
+                }
+              }}
+            />
+            <VictoryAxis
+              tickValues={
+                _.map(newWind, (wind) => {
+                  return wind.time
+                })
+              }
+              style={{
+                axis: { stroke: 'red' },
+                tickLabels: {
+                  fontSize: 10,
+                  padding: 5,
+                  fontFamily: BaseStyle.numericFontFamily,
+                  fill: BaseStyle.subtleColor,
+                },
+              }}
+            />
+          </VictoryChart>
         </ScrollView>
       </View>
     )
   }
-
-  modulate(value, rangeA, rangeB, limit) {
-    var fromHigh, fromLow, result, toHigh, toLow
-
-    if (limit == null) {
-      limit = false
-    }
-
-    fromLow = rangeA[0], fromHigh = rangeA[1]
-    toLow = rangeB[0], toHigh = rangeB[1]
-    return toLow + (((value - fromLow) / (fromHigh - fromLow)) * (toHigh - toLow))
-  }
 }
-
 
 const styles = StyleSheet.create({
   container: {
-    position: 'relative',
-    height: 160,
+    flex: 1,
   },
   edgesContainer: {
     zIndex: 1,
