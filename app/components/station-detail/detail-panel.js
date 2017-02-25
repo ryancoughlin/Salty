@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {
   StyleSheet,
   View,
+  ScrollView,
 } from 'react-native'
 
 import ScrollableTabView from 'react-native-scrollable-tab-view'
@@ -11,21 +12,8 @@ import TideChart from './tide-chart'
 import WindChart from './wind-chart'
 
 export default class DetailPanel extends Component {
-  get tabs() {
+  render() {
     const { wind, tideChart } = this.props
-    return [
-      {
-        title: 'Available Sessions',
-        component: <WindChart wind={wind} />,
-        key: 'foo',
-      },
-      {
-        title: 'Booked Sessions',
-        component: <TideChart tides={tideChart} />,
-        key: 'bar',
-      },
-    ]
-  }
 
   tabBar() {
     return <DetailPanelHeader tabData={this.tabs} />
@@ -41,9 +29,10 @@ export default class DetailPanel extends Component {
           containerMaximumHeight={500}
           allowStayMiddle={false}
         >
-          <ScrollableTabView renderTabBar={this.tabBar.bind(this)}>
-            {this.tabs.map(tab => tab.component)}
-          </ScrollableTabView>
+          <ScrollView horizontal pagingEnabled>
+            <TideChart tides={tideChart} />
+            <WindChart wind={wind} />
+          </ScrollView>
         </SlidingUpPanel>
       </View>
     )

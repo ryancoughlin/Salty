@@ -1,43 +1,25 @@
 import React, { Component } from 'react'
 import {
   StyleSheet,
-  TouchableOpacity,
   Text,
   View,
+  TouchableOpacity,
 } from 'react-native'
 
 import BaseStyle from '../../base-styles'
 
 export default class extends Component {
-  titleAt = index => (
-    this.props.tabData[index].title
-  )
-
-  titleStyle = index => (
-    index === this.props.activeTab ? [styles.title, styles.activeTitle] : styles.title
-  )
-
-  renderTab(_tab, index) {
-    return (
-      <TouchableOpacity
-        key={index}
-        onPress={() => this.props.goToPage(index)}
-        style={styles.tab}
-      >
-        <Text
-          style={this.titleStyle(index)}
-          allowFontScaling={false}
-        >
-          {this.titleAt(index)}
-        </Text>
-      </TouchableOpacity>
-    )
-  }
-
   render() {
     return (
       <View style={styles.container}>
-        {this.props.tabs.map(this.renderTab.bind(this))}
+        <View style={styles.navigation}>
+          <TouchableOpacity>
+            <Text>Tides</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text>Wind</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
@@ -45,6 +27,7 @@ export default class extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: 'teal',
     height: 80,
     shadowColor: BaseStyle.darkBackgroundColor,
     shadowOffset: {
@@ -53,6 +36,16 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.07,
     shadowRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  navigation: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: 100,
+  },
+  activeTitle: {
+    color: 'teal',
   },
   tab: {
     flex: 1,
