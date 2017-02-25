@@ -3,6 +3,7 @@ import {
   StyleSheet,
   View,
   ActivityIndicator,
+  AppState,
 } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
 
@@ -17,14 +18,34 @@ export default class StationDetail extends Component {
   constructor(props) {
     super(props)
 
+    this.handleAppStateChange = this.handleAppStateChange.bind(this)
+
     this.state = {
       weather: null,
+      previousAppState: null,
+      loading: true,
     }
   }
 
   componentDidMount() {
     SplashScreen.hide()
+    AppState.addEventListener('change', this.handleAppStateChange)
+    this.fetchTideData()
+  }
 
+  componentWillUnmount() {
+    AppState.removeEventListener('change', this.handleAppStateChange)
+  }
+
+  handleAppStateChange = (appState) => {
+    this.setState({ previousAppState: appState })
+    if (appState === 'active' && this.state.previousState !== 'active') {
+      this.fetchTideData()
+    }
+  }
+
+  fetchTideData() {
+    this.setState({ loading: true })
     fetchLocation().then((location) => {
       fetchCityName(location).then((city) => {
         this.setState({ city })
@@ -36,6 +57,7 @@ export default class StationDetail extends Component {
           tideChart: json.tides.hourly,
           tideTable: json.tides.formatted,
           todaysTides: json.tides.todaysTides,
+          loading: false,
           currentTideDirection: json.tides.currentTideDirection,
         })
       })
@@ -43,9 +65,9 @@ export default class StationDetail extends Component {
   }
 
   render() {
-    const { tideChart, weather, city, tideTable, todaysTides, currentTideDirection } = this.state
+    const { tideChart, weather, city, tideTable, todaysTides, currentTideDirection, loading } = this.state
 
-    if (!weather) {
+    if (loading) {
       return (
         <ActivityIndicator
           style={styles.loadingIndicator}
