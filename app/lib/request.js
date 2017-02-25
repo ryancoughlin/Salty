@@ -1,3 +1,4 @@
+import { Alert } from 'react-native'
 import Config from './config'
 
 export default function makeRequest(location) {
@@ -11,7 +12,11 @@ export default function makeRequest(location) {
       resolve(json)
     })
     .catch((error) => {
-      alert(error)
+      Alert.alert(
+         'No Internet Connection',
+         'That\'s not good. Salty could not fetch tide information.',
+        [{ text: 'OK' }]
+      )
     })
   })
 }
