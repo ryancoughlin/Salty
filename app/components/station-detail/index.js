@@ -56,25 +56,28 @@ export default class StationDetail extends Component {
 
     return (
       <View style={styles.container}>
-        <TidePhrase
-          style={styles.tidePhrase}
-          tideDirection={currentTideDirection}
-          city={city}
-          todaysTides={todaysTides}
-        />
+        <View style={styles.innerContainer}>
+          <View style={styles.bottomAlign}>
+            <TidePhrase
+              style={styles.tidePhrase}
+              tideDirection={currentTideDirection}
+              city={city}
+              todaysTides={todaysTides}
+            />
 
-        <WeatherRow weather={weather.currentWind} icon="wind" />
-        <WeatherRow weather={weather.currentWeather} icon={weather.icon} />
+            <WeatherRow weather={weather.currentWind} icon="wind" />
+            <WeatherRow weather={weather.currentWeather} icon={weather.icon} />
 
-        <TodaysTides
-          tideTable={tideTable}
-          todaysTides={todaysTides}
-        />
-
-        <DetailPanel
-          wind={weather.wind}
-          tideChart={tideChart}
-        />
+            <TodaysTides
+              tideTable={tideTable}
+              todaysTides={todaysTides}
+            />
+          </View>
+          <DetailPanel
+            wind={weather.wind}
+            tideChart={tideChart}
+          />
+        </View>
       </View>
     )
   }
@@ -83,6 +86,11 @@ export default class StationDetail extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+  },
+  bottomAlign: {
+    marginBottom: 90,
   },
   loadingIndicator: {
     flex: 1,
