@@ -30,6 +30,7 @@ export default class TideChart extends Component {
             height={230}
             width={2100}
             scale={{ x: 'time', y: 'linear' }}
+            padding={{ top: 30, right: 20, bottom: 50, left: 20 }}
           >
             <VictoryAxis
               scale="time"
