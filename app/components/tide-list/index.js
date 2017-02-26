@@ -9,7 +9,7 @@ import TideSectionHeader from './tide-section-header'
 export default class extends Component {
   static navigatorButtons = {
     leftButtons: [{
-      icon: require('../../assets/images/white-x.png'),
+      icon: require('../../assets/images/modal-close.png'),
       id: 'close',
       disableIconTint: true,
     }],
@@ -27,6 +27,12 @@ export default class extends Component {
 
     this.state = {
       dataSource: dataSource.cloneWithRowsAndSections(props.tides),
+    }
+  }
+
+  onNavigatorEvent(event) {
+    if (event.id === 'close') {
+      this.props.navigator.dismissModal()
     }
   }
 
@@ -50,11 +56,5 @@ export default class extends Component {
         renderSectionHeader={this.renderSectionHeader.bind(this)}
       />
     )
-  }
-
-  onNavigatorEvent(event) {
-    if (event.id == 'close') {
-      this.props.navigator.dismissModal()
-    }
   }
 }

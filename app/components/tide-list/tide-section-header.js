@@ -28,13 +28,14 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: BaseStyle.baseBackgroundColor,
     flexDirection: 'row',
-    height: 90,
-    justifyContent: 'center',
+    height: 70,
+    paddingHorizontal: 20,
     alignItems: 'flex-end',
   },
   date: {
     color: BaseStyle.baseTextColor,
-    fontSize: 26,
+    fontSize: 18,
+    fontWeight: '600',
     marginBottom: 8,
   },
 })
