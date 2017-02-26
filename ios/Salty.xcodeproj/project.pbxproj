@@ -980,7 +980,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.catonthecouch.Salty;
+				PRODUCT_BUNDLE_IDENTIFIER = com.catonthecouch.Tide;
 				PRODUCT_NAME = Salty;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1015,7 +1015,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.catonthecouch.Salty;
+				PRODUCT_BUNDLE_IDENTIFIER = com.catonthecouch.Tide;
 				PRODUCT_NAME = Salty;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
