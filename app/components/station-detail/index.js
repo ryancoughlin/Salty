@@ -4,6 +4,7 @@ import {
   View,
   ActivityIndicator,
 } from 'react-native'
+import SplashScreen from 'react-native-splash-screen'
 
 import TidePhrase from './tide-phrase'
 import WeatherRow from './weather-row'
@@ -22,7 +23,8 @@ export default class StationDetail extends Component {
   }
 
   componentDidMount() {
-    console.log("mounted")
+    SplashScreen.hide()
+
     fetchLocation().then((location) => {
       fetchCityName(location).then((city) => {
         this.setState({ city })
