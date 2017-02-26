@@ -11,12 +11,11 @@ import RemainingTideTime from './remaining-tide-time'
 
 const TidePhrase = ({ city, tideDirection, nextTide }) => (
   <View style={styles.container}>
-    <View style={styles.arrowContainer}>
-      <TideDirectionArrow
-        direction={tideDirection}
-        style={styles.arrow}
-      />
-    </View>
+    <TideDirectionArrow
+      direction={tideDirection}
+      style={styles.arrow}
+      largeTideArrow
+    />
     <View style={styles.tidePhrase}>
       <View style={styles.tidePhraseRow}>
         <Text style={[styles.loudHeader, styles.tideDirectionText]}>
@@ -27,7 +26,6 @@ const TidePhrase = ({ city, tideDirection, nextTide }) => (
       <Text style={[styles.loudHeader, styles.fadedPhraseText]}>
         in {city}
       </Text>
-      <RemainingTideTime nextTide={nextTide} />
     </View>
   </View>
 )
@@ -38,8 +36,11 @@ const styles = StyleSheet.create({
     marginBottom: 50,
     marginTop: 120,
   },
-  arrowContainer: {
+  arrow: {
     marginTop: 12,
+    width: 20,
+    height: 20,
+    marginHorizontal: 20,
   },
   tidePhrase: {
     width: 600,

@@ -12,7 +12,7 @@ import TideDirectionArrow from './tide-direction-arrow'
 
 export default class extends Component {
   get prettyTideTime() {
-    return moment(this.props.tide.time).format('hh:mm a')
+    return moment(this.props.tide.time).format('hh:mma')
   }
 
   render() {
@@ -21,7 +21,10 @@ export default class extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.leftContainer}>
-          <TideDirectionArrow direction={tide.tide} style={styles.tideArrow} />
+          <TideDirectionArrow
+            direction={tide.tide}
+            style={styles.tideArrow}
+          />
           <Text style={styles.tideType}>{_.upperFirst(tide.tide)}</Text>
           <Text style={styles.digitText}>{this.prettyTideTime}</Text>
         </View>
@@ -59,5 +62,8 @@ const styles = StyleSheet.create({
     color: BaseStyle.baseTextColor,
     fontSize: 14,
     fontFamily: BaseStyle.numericFontFamily,
+  },
+  tideArrow: {
+    marginRight: 20,
   },
 })
