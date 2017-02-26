@@ -8,7 +8,7 @@ import SplashScreen from 'react-native-splash-screen'
 
 import TidePhrase from './tide-phrase'
 import WeatherRow from './weather-row'
-import FutureTides from './future-tides'
+import TodaysTides from './todays-tides'
 import DetailPanel from './detail-panel'
 import makeRequest from '../../lib/request'
 import { fetchLocation, fetchCityName } from '../../lib/location'
@@ -66,7 +66,7 @@ export default class StationDetail extends Component {
         <WeatherRow weather={weather.currentWind} icon="wind" />
         <WeatherRow weather={weather.currentWeather} icon={weather.icon} />
 
-        <FutureTides
+        <TodaysTides
           tideTable={tideTable}
           todaysTides={todaysTides}
         />

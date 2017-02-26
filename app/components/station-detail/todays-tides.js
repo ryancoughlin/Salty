@@ -8,17 +8,10 @@ import _ from 'lodash'
 import BaseStyle from '../../base-styles'
 import IconHeader from '../icon-header'
 import ViewTideListButton from './view-tide-list-button'
-import NextTideRow from './next-tide-row'
-
+import TodayTideRow from './today-tide-row'
 import tideIcon from '../../assets/images/tide.png'
 
 export default class FutureTides extends Component {
-  renderTideRow() {
-    return _.map(this.props.todaysTides, (tide, i) => {
-      return <NextTideRow tide={tide} key={i} />
-    })
-  }
-
   render() {
     const { tideTable } = this.props
 
@@ -29,7 +22,11 @@ export default class FutureTides extends Component {
           icon={tideIcon}
           rightLabel={<ViewTideListButton tideTable={tideTable} />}
         />
-        {this.renderTideRow()}
+        {
+          _.map(this.props.todaysTides, (tide, i) => {
+            return <TodayTideRow tide={tide} key={i} />
+          })
+        }
       </View>
     )
   }

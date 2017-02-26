@@ -11,8 +11,7 @@ import BaseStyle from '../../base-styles'
 
 export default class extends Component {
   get formattedDate() {
-    const { date } = this.props
-    return moment(date).format('dddd, MMM D')
+    return moment(this.date).format('dddd, MMM D')
   }
 
   render() {
