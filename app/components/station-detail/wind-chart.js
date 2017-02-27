@@ -49,6 +49,9 @@ export default class TideChart extends Component {
                 data: {
                   fill: BaseStyle.actionColor,
                   width: 34,
+                  strokeLinejoin: 'round',
+                  strokeWidth: 6,
+                  stroke: BaseStyle.actionColor,
                 },
                 labels: {
                   fontSize: 12,
@@ -64,7 +67,7 @@ export default class TideChart extends Component {
                 })
               }
               style={{
-                axis: { stroke: 'white' },
+                axis: { stroke: 'transparent' },
                 tickLabels: {
                   fontSize: 10,
                   fontFamily: BaseStyle.numericFontFamily,
