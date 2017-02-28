@@ -1,33 +1,21 @@
 import React, { Component } from 'react'
-import {
-  StyleSheet,
-} from 'react-native'
+import { StyleSheet } from 'react-native'
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-import MapView from 'react-native-maps'
+import * as actions from '../actions/station'
+import mapStyle from '../lib/map-style'
 
-export default class Map extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = { stations: null }
-  }
-
+const Map = class extends Component {
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude, longitude } = position.coords
-
-      this.setState({
-        userLocation: { latitude, longitude },
-      })
-    })
-
-    fetch('http://localhost:8000/api/get-stations').then(res => res.json()).then((json) => {
-      this.setState({ stations: json.formattedStations })
-    })
+    if (!this.props.stations) {
+      this.props.fetchAllStations()
+    }
   }
 
   render() {
-    const { stations, userLocation } = this.state
+    const { stations, location } = this.props
 
     if (!stations) {
       return null
@@ -35,15 +23,17 @@ export default class Map extends Component {
 
     return (
       <MapView
+        provider={PROVIDER_GOOGLE}
         style={styles.container}
         region={{
-          latitude: userLocation.latitude,
-          longitude: userLocation.longitude,
+          latitude: location.latitude,
+          longitude: location.longitude,
           latitudeDelta: 0.315,
           longitudeDelta: 0.321,
           showPointsOfInterest: false,
           showBuildings: false,
         }}
+        customMapStyle={mapStyle}
       >
         {stations.map(station => (
           <MapView.Marker
@@ -63,3 +53,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 })
+
+const mapStateToProps = ({ stations }) => ({
+  stations: stations.stations,
+  location: stations.location,
+})
+
+const mapDispatchToProps = dispatch => ({
+  ...bindActionCreators(actions, dispatch),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Map)

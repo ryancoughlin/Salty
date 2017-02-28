@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, ScrollView, ActivityIndicator, AppState, Button } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import SplashScreen from 'react-native-splash-screen'
 
 import * as actions from '../../actions/station'
 import TidePhrase from './tide-phrase'
@@ -102,6 +103,7 @@ const styles = StyleSheet.create({
 
 StationDetail.navigationOptions = ({ navigation }) => ({
   headerRight: <Button title="Locations" onPress={() => navigation.navigate('SavedLocations')} />,
+  headerLeft: <Button title="Map" onPress={() => navigation.navigate('Map')} />,
 })
 
 const mapStateToProps = ({ stations }) => ({

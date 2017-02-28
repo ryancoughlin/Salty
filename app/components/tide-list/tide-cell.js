@@ -8,7 +8,7 @@ import TideDirectionArrow from './tide-direction-arrow'
 
 export default class extends Component {
   get prettyTideTime() {
-    return moment(this.props.tide.time).format('hh:mma')
+    return moment.utc(this.props.tide.time).local().format('hh:mma')
   }
 
   render() {

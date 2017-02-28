@@ -6,6 +6,7 @@ import {
   START_LOADING_TIDES,
   FINISHED_LOADING_TIDES,
   DELETE_LOCATION,
+  FETCH_ALL_STATIONS,
 } from '../types'
 
 const initialState = {
@@ -34,6 +35,11 @@ export default function(state = initialState, action) {
           ...state.current,
           city: action.city,
         },
+      }
+    case FETCH_ALL_STATIONS:
+      return {
+        ...state,
+        ...action.stations,
       }
     case SAVE_LOCATION:
       return {

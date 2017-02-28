@@ -7,7 +7,7 @@ import BaseStyle from '../../base-styles'
 
 export default class NextTideRow extends Component {
   formatTideTime(time) {
-    return moment(time).format('hh:mma')
+    return moment.utc(time).local().format('hh:mma')
   }
 
   formatTideHeight(height) {

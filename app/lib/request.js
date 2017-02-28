@@ -1,23 +1,32 @@
 import { Alert } from 'react-native'
-import Config from './config'
+import Config from 'react-native-config'
 
-export default function requestTideData(location) {
-  const { latitude, longitude } = location
-  const baseUrl = `${Config.HOST}/api/get-data`
-  const url = `${baseUrl}?latitude=${latitude}&longitude=${longitude}`
-
-  return new Promise((resolve) => {
-    fetch(url).then(handleErrors).then(data => resolve(data.json())).catch(() => {
-      Alert.alert('Cannot complete request', 'We were uable fetch tide information.', [
-        { text: 'OK' },
-      ])
-    })
-  })
+const BASE_URL = Config.BASE_URL
+const DEFAULT_HEADERS = {
+  'Content-Type': 'application/json',
+  Accept: 'application/json',
 }
 
-function handleErrors(response) {
-  if (!response.ok) {
-    throw Error(response.statusText || reponse.status)
+export default function(path) {
+  const params = {
+    headers: {
+      ...DEFAULT_HEADERS,
+    },
   }
-  return response
+
+  const response = fetch(`${BASE_URL}${path}`, params)
+
+  response.catch(() => {
+    Alert.alert('Cannot complete request', 'We were uable fetch tide information.', [
+      { text: 'OK' },
+    ])
+  })
+
+  return response.then((res) => {
+    if (res.ok) {
+      return res.json()
+    } else {
+      return res.json().then(json => Promise.reject(json))
+    }
+  })
 }
