@@ -13,6 +13,7 @@ import {
 export function fetchTideData(location) {
   return (dispatch) => {
     dispatch({ type: START_LOADING_TIDES })
+
     const result = request(
       `/get-data?latitude=${location.latitude}&longitude=${location.longitude}`,
     )
