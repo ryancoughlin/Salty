@@ -18,13 +18,19 @@ export default class NextTideRow extends Component {
     return `${height.toFixed(1)}'`
   }
 
+  get pastTideStyle() {
+    if (this.props.tide.pastTide) {
+      return styles.pastTide
+    }
+  }
+
   render() {
     const { tide } = this.props
 
     return (
       <View style={styles.futureTideRow}>
-        <Text style={styles.futureTideType}>{_.upperFirst(tide.tide)}</Text>
-        <Text style={styles.futureTideInfo}>
+        <Text style={[styles.futureTideType, this.pastTideStyle]}>{_.upperFirst(tide.tide)}</Text>
+        <Text style={[styles.futureTideInfo, this.pastTideStyle]}>
           {this.formatTideTime(tide.time)} / {this.formatTideHeight(tide.height)}
         </Text>
       </View>
@@ -46,5 +52,8 @@ const styles = StyleSheet.create({
   futureTideInfo: {
     fontFamily: BaseStyle.numericFontFamily,
     fontSize: 14,
+  },
+  pastTide: {
+    textDecorationLine: 'line-through',
   },
 })
