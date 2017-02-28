@@ -27,11 +27,20 @@ const BaseStyle = {
 
   navigationBarStyles: {
     navBarBackgroundColor: 'white',
-    statusBarTextColorScheme: 'dark',
     navBarNoBorder: true,
     navBarTransparent: false,
     navBarTranslucent: false,
     navBarBlur: false,
+  },
+
+  chartAxisStyles: {
+    axis: { stroke: 'transparent' },
+    tickLabels: {
+      fontSize: 10,
+      padding: 5,
+      fontFamily: numericFontFamily,
+      fill: fadedBlackPearl,
+    },
   },
 
   transparent,

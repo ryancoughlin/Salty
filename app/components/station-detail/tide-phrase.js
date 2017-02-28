@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     marginBottom: 50,
+    marginTop: 40,
   },
   arrow: {
     marginTop: 12,

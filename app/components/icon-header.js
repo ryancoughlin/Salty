@@ -27,7 +27,6 @@ export default class extends Component {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    alignItems: 'flex-end',
     justifyContent: 'space-between',
     marginBottom: BaseStyle.smallSpacing,
     marginRight: BaseStyle.baseSpacing,

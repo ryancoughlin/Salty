@@ -6,7 +6,6 @@ import {
 } from 'react-native'
 
 import moment from 'moment'
-
 import BaseStyle from '../../base-styles'
 
 export default class extends Component {

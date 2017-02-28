@@ -7,7 +7,6 @@ const now = moment()
 export default function findNextTide(tides) {
   const todayKey = now.format(DATE_FORMAT)
   const todaysTides = tides[todayKey]
-
   const nextTideIndex = _.findIndex(todaysTides, (tide) => {
     const tideTime = moment(tide.time)
     return now.diff(tideTime) <= 0
@@ -17,7 +16,7 @@ export default function findNextTide(tides) {
     return findFirstTideTomorrow(tides)
   }
 
-  return tides[nextTideIndex]
+  return todaysTides[nextTideIndex]
 }
 
 function findFirstTideTomorrow(tides) {

@@ -17,8 +17,11 @@ import BaseStyle from '../../base-styles'
 
 export default class TideChart extends Component {
   get formattedWind() {
-    return this.props.wind.map((w, i) => {
-      return Object.assign({}, this.props.wind[i], {time: new Date(w.time)})
+    return _.map(this.props.wind, (wind) => {
+      return {
+        ...wind,
+        time: new Date(wind.time),
+      }
     })
   }
 
@@ -27,9 +30,10 @@ export default class TideChart extends Component {
       <View style={styles.container}>
         <ScrollView style={{ flex: 1 }} horizontal>
           <VictoryChart
-            height={230}
+            height={190}
             width={2500}
-            scale={{x: "time"}}
+            scale={{ x: 'time' }}
+            padding={{ top: 30, right: 40, bottom: 40, left: 30 }}
           >
             <VictoryBar
               y="windSpeed"
@@ -37,14 +41,12 @@ export default class TideChart extends Component {
               data={this.formattedWind}
               labelComponent={
                 <VictoryLabel
-                  dy={-0.25}
-                  dx={-20}
+                  dy={0.25}
+                  dx={-2}
                   textAnchor="middle"
                 />
               }
-              labels={
-                (datum) => `${datum.y}mph`
-              }
+              labels={datum => datum.y}
               style={{
                 data: {
                   fill: BaseStyle.actionColor,
@@ -66,14 +68,7 @@ export default class TideChart extends Component {
                   return wind.time
                 })
               }
-              style={{
-                axis: { stroke: 'transparent' },
-                tickLabels: {
-                  fontSize: 10,
-                  fontFamily: BaseStyle.numericFontFamily,
-                  fill: BaseStyle.subtleColor,
-                },
-              }}
+              style={BaseStyle.chartAxisStyles}
             />
           </VictoryChart>
         </ScrollView>
@@ -85,6 +80,14 @@ export default class TideChart extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
+    shadowColor: BaseStyle.darkBackgroundColor,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 30,
   },
   edgesContainer: {
     zIndex: 1,

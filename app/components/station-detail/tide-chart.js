@@ -20,8 +20,16 @@ import BaseStyle from '../../base-styles'
 import chartEdges from '../../assets/images/chart/chart-edges.png'
 
 export default class TideChart extends Component {
+  get formattedTides() {
+    return _.map(this.props.tides, (tide) => {
+      return {
+        ...tide,
+        time: new Date(tide.time),
+      }
+    })
+  }
+
   render() {
-    const { tides } = this.props
 
     return (
       <View style={styles.container}>
@@ -36,30 +44,17 @@ export default class TideChart extends Component {
               scale="time"
               orientation="bottom"
               tickValues={
-                _.map(tides, (tide) => {
+                _.map(this.formattedTides, (tide) => {
                   return tide.time
                 })
               }
-              tickFormat={
-                _.map(tides, (tide) => {
-                  return moment(tide.time).format('ha')
-                })
-              }
-              style={{
-                axis: { stroke: 'white' },
-                tickLabels: {
-                  fontSize: 10,
-                  padding: 5,
-                  fontFamily: BaseStyle.numericFontFamily,
-                  fill: BaseStyle.subtleColor,
-                },
-              }}
+              style={BaseStyle.chartAxisStyles}
             />
             <VictoryLine
+              data={this.formattedTides}
               interpolation="cardinal"
               x="time"
               y="height"
-              data={tides}
               style={{
                 data: {
                   stroke: BaseStyle.actionColor,
@@ -70,13 +65,9 @@ export default class TideChart extends Component {
             <VictoryScatter
               x="time"
               y="height"
-              data={tides}
-              labels={(datum) => datum.y}
-              labelComponent={
-                <VictoryLabel
-                  dy={-0.3 }
-                  text={(datum) => `${Math.round(datum.y * 10) / 10}'`} />
-              }
+              data={this.formattedTides}
+              labels={datum => `${datum.y}'`}
+              dx={-1}
               size={7}
               style={{
                 labels: {
@@ -101,6 +92,15 @@ export default class TideChart extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
+    shadowColor: BaseStyle.darkBackgroundColor,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 30,
+    marginBottom: 40,
   },
   edgesContainer: {
     zIndex: 1,
