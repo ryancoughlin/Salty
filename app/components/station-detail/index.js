@@ -62,7 +62,7 @@ export default class StationDetail extends Component {
               style={styles.tidePhrase}
               tideDirection={currentTideDirection}
               city={city}
-              todaysTides={todaysTides}
+              tides={tideTable}
             />
 
             <WeatherRow weather={weather.currentWind} icon="wind" />
