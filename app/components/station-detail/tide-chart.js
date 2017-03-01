@@ -6,13 +6,11 @@ import {
   View,
 } from 'react-native'
 
-import moment from 'moment'
 import _ from 'lodash'
 import {
   VictoryLine,
   VictoryChart,
   VictoryScatter,
-  VictoryLabel,
   VictoryAxis,
 } from 'victory-native'
 
@@ -30,15 +28,14 @@ export default class TideChart extends Component {
   }
 
   render() {
-
     return (
       <View style={styles.container}>
         <ScrollView style={{ flex: 1 }} horizontal>
           <VictoryChart
-            height={230}
+            height={200}
             width={2100}
             scale={{ x: 'time', y: 'linear' }}
-            padding={{ top: 30, right: 20, bottom: 50, left: 20 }}
+            padding={{ top: 30, right: 20, bottom: 16, left: 20 }}
           >
             <VictoryAxis
               scale="time"
@@ -59,7 +56,7 @@ export default class TideChart extends Component {
                 data: {
                   stroke: BaseStyle.actionColor,
                   strokeWidth: 3,
-                }
+                },
               }}
             />
             <VictoryScatter
