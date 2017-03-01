@@ -66,8 +66,7 @@ export default class TideChart extends Component {
               y="height"
               data={this.formattedTides}
               labels={datum => `${datum.y}'`}
-              dx={-1}
-              size={7}
+              size={6}
               style={{
                 labels: {
                   fill: BaseStyle.baseTextColor,
