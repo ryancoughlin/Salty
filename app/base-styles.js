@@ -18,7 +18,7 @@ const BaseStyle = {
   warningColor: pastelOrange,
   chartLabelColor: marinerBlue,
 
-  phraseFontSize: 60,
+  phraseFontSize: 56,
   baseFontSize: 18,
 
   baseSpacing: 20,
