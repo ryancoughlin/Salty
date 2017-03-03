@@ -30,7 +30,6 @@ export default class StationDetail extends Component {
   componentDidMount() {
     SplashScreen.hide()
     AppState.addEventListener('change', this.handleAppStateChange)
-    this.fetchTideData()
   }
 
   componentWillUnmount() {
@@ -39,6 +38,11 @@ export default class StationDetail extends Component {
 
   handleAppStateChange = (appState) => {
     this.setState({ previousAppState: appState })
+
+    if (appState === 'unknown') {
+      return
+    }
+
     if (appState === 'active' && this.state.previousState !== 'active') {
       this.fetchTideData()
     }
