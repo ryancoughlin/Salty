@@ -25,12 +25,16 @@ const BaseStyle = {
   smallSpacing: 6,
   largeSpacing: 26,
 
-  navigationBarStyles: {
-    navBarBackgroundColor: 'white',
-    navBarNoBorder: true,
-    navBarTransparent: false,
-    navBarTranslucent: false,
-    navBarBlur: false,
+  navigationBarHeight: 64,
+  navigationBar: {
+    backgroundColor: 'white',
+    borderBottomWidth: 0,
+  },
+  navigationTitle: {
+    fontWeight: '500',
+  },
+  navigationLeftButton: {
+    color: pictonBlue,
   },
 
   chartAxisStyles: {

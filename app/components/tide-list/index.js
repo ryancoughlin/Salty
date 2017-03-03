@@ -2,23 +2,13 @@ import React, { Component } from 'react'
 import {
   ListView,
 } from 'react-native'
-
 import TideCell from './tide-cell'
 import TideSectionHeader from './tide-section-header'
+import BaseStyle from '../../base-styles'
 
 export default class extends Component {
-  static navigatorButtons = {
-    leftButtons: [{
-      icon: require('../../assets/images/modal-close.png'),
-      id: 'close',
-      disableIconTint: true,
-    }],
-  }
-
   constructor(props) {
     super(props)
-
-    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this))
 
     const dataSource = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
@@ -30,27 +20,18 @@ export default class extends Component {
     }
   }
 
-  onNavigatorEvent(event) {
-    if (event.id === 'close') {
-      this.props.navigator.dismissModal()
-    }
-  }
-
   renderRow(row) {
-    return (
-      <TideCell tide={row} />
-    )
+    return (<TideCell tide={row} />)
   }
 
   renderSectionHeader(_section, dateString) {
-    return (
-      <TideSectionHeader date={dateString} />
-    )
+    return (<TideSectionHeader date={dateString} />)
   }
 
   render() {
     return (
       <ListView
+        style={{ marginTop: BaseStyle.navigationBarHeight }}
         dataSource={this.state.dataSource}
         renderRow={this.renderRow.bind(this)}
         renderSectionHeader={this.renderSectionHeader.bind(this)}

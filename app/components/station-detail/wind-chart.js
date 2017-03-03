@@ -33,7 +33,7 @@ export default class TideChart extends Component {
             height={190}
             width={2500}
             scale={{ x: 'time' }}
-            padding={{ top: 30, right: 40, bottom: 40, left: 30 }}
+            padding={{ top: 30, right: 40, bottom: 36, left: 30 }}
           >
             <VictoryBar
               y="windSpeed"
@@ -42,7 +42,7 @@ export default class TideChart extends Component {
               labelComponent={
                 <VictoryLabel
                   dy={0.25}
-                  dx={-2}
+                  dx={-5}
                   textAnchor="middle"
                 />
               }
@@ -63,6 +63,7 @@ export default class TideChart extends Component {
               }}
             />
             <VictoryAxis
+              offsetY={30}
               tickValues={
                 _.map(this.formattedWind, (wind) => {
                   return wind.time

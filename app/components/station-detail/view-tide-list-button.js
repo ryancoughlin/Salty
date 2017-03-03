@@ -4,22 +4,14 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native'
-
-import { Navigation } from 'react-native-navigation'
-
+import { Actions } from 'react-native-router-flux'
 import BaseStyle from '../../base-styles'
 
 export default class extends Component {
   openTideList() {
-    const { tideTable } = this.props
-
-    Navigation.showModal({
-      title: 'Tides',
-      screen: 'Salty.TideList',
-      passProps: { tides: tideTable },
-      navigatorStyle: BaseStyle.navigationBarStyles,
-    })
+    Actions.tideList({ tides: this.props.tideTable })
   }
+
   render() {
     return (
       <TouchableOpacity

@@ -13,6 +13,7 @@ import TodaysTides from './todays-tides'
 import DetailPanel from './detail-panel'
 import makeRequest from '../../lib/request'
 import { fetchLocation, fetchCityName } from '../../lib/location'
+import BaseStyle from '../../base-styles'
 
 export default class StationDetail extends Component {
   constructor(props) {
@@ -29,6 +30,7 @@ export default class StationDetail extends Component {
 
   componentDidMount() {
     SplashScreen.hide()
+    this.fetchTideData()
     AppState.addEventListener('change', this.handleAppStateChange)
   }
 
@@ -109,6 +111,7 @@ export default class StationDetail extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: BaseStyle.navigationBarHeight,
   },
   loadingIndicator: {
     flex: 1,
