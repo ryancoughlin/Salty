@@ -45,12 +45,16 @@ const styles = StyleSheet.create({
     height: 40,
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 20,
+    paddingRight: 20,
   },
   leftContainer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  tideArrow: {
+    width: 17,
+    height: 17,
   },
   tideType: {
     color: BaseStyle.baseTextColor,
@@ -62,8 +66,5 @@ const styles = StyleSheet.create({
     color: BaseStyle.baseTextColor,
     fontSize: 14,
     fontFamily: BaseStyle.numericFontFamily,
-  },
-  tideArrow: {
-    marginRight: 20,
   },
 })

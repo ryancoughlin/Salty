@@ -34,14 +34,11 @@ const TidePhrase = ({ city, tideDirection, tides }) => (
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    marginBottom: 50,
+    marginBottom: 40,
     marginTop: 40,
   },
   arrow: {
-    marginTop: 12,
-    width: 20,
-    height: 20,
-    marginHorizontal: 20,
+    marginTop: 14,
   },
   tidePhrase: {
     width: 600,

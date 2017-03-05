@@ -22,7 +22,7 @@ const BaseStyle = {
   baseFontSize: 18,
 
   baseSpacing: 20,
-  smallSpacing: 6,
+  smallSpacing: 10,
   largeSpacing: 26,
 
   navigationBarHeight: 64,

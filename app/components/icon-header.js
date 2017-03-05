@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: BaseStyle.smallSpacing,
     marginRight: BaseStyle.baseSpacing,
+    alignItems: 'flex-end',
   },
   leftLabel: {
     flexDirection: 'row',

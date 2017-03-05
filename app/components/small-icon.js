@@ -1,14 +1,14 @@
 import React from 'react'
 import {
   StyleSheet,
-  View,
   Image,
 } from 'react-native'
 
-const SmallIcon = ({ source }) => (
-  <View style={styles.container}>
-    <Image source={source} />
-  </View>
+const SmallIcon = ({ source, style }) => (
+  <Image
+    style={[styles.container, style]}
+    source={source}
+  />
 )
 
 const styles = StyleSheet.create({
@@ -16,8 +16,6 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     marginHorizontal: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 })
 
