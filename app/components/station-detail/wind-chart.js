@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.1,
     shadowRadius: 30,
+    marginBottom: 40,
   },
   edgesContainer: {
     zIndex: 1,
