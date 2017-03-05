@@ -6,6 +6,7 @@ import {
 
 const SmallIcon = ({ source, style }) => (
   <Image
+    resizeMode="contain"
     style={[styles.container, style]}
     source={source}
   />
