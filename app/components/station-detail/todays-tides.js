@@ -34,6 +34,6 @@ export default class FutureTides extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: 20,
-    marginBottom: 50,
+    marginBottom: 40,
   },
 })

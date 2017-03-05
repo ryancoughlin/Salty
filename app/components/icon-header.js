@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: BaseStyle.smallSpacing,
     marginRight: BaseStyle.baseSpacing,
+    marginBottom: 4,
     alignItems: 'flex-end',
   },
   leftLabel: {

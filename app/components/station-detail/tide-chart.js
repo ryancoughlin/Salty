@@ -15,7 +15,9 @@ import {
 } from 'victory-native'
 
 import BaseStyle from '../../base-styles'
+import hourlyClock from '../../assets/images/hourly-clock.png'
 import chartEdges from '../../assets/images/chart/chart-edges.png'
+import ChartPanelHeader from './chart-panel-header'
 
 export default class TideChart extends Component {
   get formattedTides() {
@@ -30,6 +32,11 @@ export default class TideChart extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <ChartPanelHeader
+          icon={hourlyClock}
+          headerText="Hourly Tide Charts"
+          bodyText="Yesterday through Tomorrow"
+        />
         <ScrollView style={{ flex: 1 }} horizontal>
           <VictoryChart
             height={200}

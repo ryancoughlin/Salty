@@ -14,6 +14,8 @@ import {
 
 import _ from 'lodash'
 import BaseStyle from '../../base-styles'
+import windIcon from '../../assets/images/wind.png'
+import ChartPanelHeader from './chart-panel-header'
 
 export default class TideChart extends Component {
   get formattedWind() {
@@ -28,6 +30,11 @@ export default class TideChart extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <ChartPanelHeader
+          icon={windIcon}
+          headerText="Hourly Wind Forecast"
+          bodyText="Wind speeds in mph"
+        />
         <ScrollView style={{ flex: 1 }} horizontal>
           <VictoryChart
             height={190}
