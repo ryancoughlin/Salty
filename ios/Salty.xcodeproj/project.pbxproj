@@ -24,6 +24,7 @@
 		414CCB9E5CE7436B8C781EAD /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A563666185C943AEAC6FC157 /* libAirMaps.a */; };
 		5CEE62F6E5C541C283C4967C /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1C276FA63A4D1887C40080 /* libReactNativeConfig.a */; };
 		5D0542801E5D316E00ABED8B /* Input-Regular_(InputMono-Light).ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D05427F1E5D316A00ABED8B /* Input-Regular_(InputMono-Light).ttf */; };
+		5D9B83D51E6E27150015AAE9 /* Kennebunkport.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5D9B83D41E6E27150015AAE9 /* Kennebunkport.gpx */; };
 		5DD765241E6214D100084138 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD765211E6214BD00084138 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		A5A5F1DA34B3419EBC07E222 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDEE009EC9E04B2DB0D9000E /* libSplashScreen.a */; };
@@ -265,6 +266,7 @@
 		249EBD002C0442A5ABA26321 /* libRNSVG.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSVG.a; sourceTree = "<group>"; };
 		461A3512CE7243518001B6F7 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		5D05427F1E5D316A00ABED8B /* Input-Regular_(InputMono-Light).ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Input-Regular_(InputMono-Light).ttf"; sourceTree = "<group>"; };
+		5D9B83D41E6E27150015AAE9 /* Kennebunkport.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Kennebunkport.gpx; path = ../gpx/Kennebunkport.gpx; sourceTree = "<group>"; };
 		5DD7651B1E6214BD00084138 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6A1C276FA63A4D1887C40080 /* libReactNativeConfig.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeConfig.a; sourceTree = "<group>"; };
 		700B6A1749264FF0BEAA85A8 /* RNGeocoder.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGeocoder.xcodeproj; path = "../node_modules/react-native-geocoder/ios/RNGeocoder.xcodeproj"; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 		13B07FAE1A68108700A75B9A /* Salty */ = {
 			isa = PBXGroup;
 			children = (
+				5D9B83F41E6E271B0015AAE9 /* Sample Locations */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				5D1F906E1DE8FEE2004659CB /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -452,6 +455,14 @@
 				5D5DB1AB1DF4938C003AA314 /* libReactNativeConfig.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		5D9B83F41E6E271B0015AAE9 /* Sample Locations */ = {
+			isa = PBXGroup;
+			children = (
+				5D9B83D41E6E27150015AAE9 /* Kennebunkport.gpx */,
+			);
+			name = "Sample Locations";
 			sourceTree = "<group>";
 		};
 		5DD7651C1E6214BD00084138 /* Products */ = {
@@ -869,6 +880,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D9B83D51E6E27150015AAE9 /* Kennebunkport.gpx in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				5D0542801E5D316E00ABED8B /* Input-Regular_(InputMono-Light).ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
