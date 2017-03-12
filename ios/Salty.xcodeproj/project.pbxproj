@@ -449,7 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				5D7BE3181E74E563004250C7 /* Fonts */,
-				5D7BE2AA1E74E056004250C7 /* gpx */,
+				5D7BE2AA1E74E056004250C7 /* GPX */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -476,12 +476,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5D7BE2AA1E74E056004250C7 /* gpx */ = {
+		5D7BE2AA1E74E056004250C7 /* GPX */ = {
 			isa = PBXGroup;
 			children = (
 				5D7BE2AB1E74E056004250C7 /* Kennebunkport.gpx */,
 			);
-			name = gpx;
+			name = GPX;
 			path = Salty/gpx;
 			sourceTree = "<group>";
 		};
