@@ -1,18 +1,13 @@
-package com.Salty;
+package com.salty;
 
 import android.app.Application;
-import android.util.Log;
 
 import com.facebook.react.ReactApplication;
-import com.airbnb.android.react.lottie.LottiePackage;
-import com.airbnb.android.react.lottie.LottiePackage;
-import com.cboy.rn.splashscreen.SplashScreenReactPackage;
 import com.horcrux.svg.SvgPackage;
-import com.reactnativenavigation.NavigationReactPackage;
+import com.cboy.rn.splashscreen.SplashScreenReactPackage;
 import com.airbnb.android.react.maps.MapsPackage;
 import com.devfd.RNGeocoder.RNGeocoderPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
-import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -33,11 +28,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new LottiePackage(),
-            new LottiePackage(),
-            new SplashScreenReactPackage(),
             new SvgPackage(),
-            new NavigationReactPackage(),
+            new SplashScreenReactPackage(),
             new MapsPackage(),
             new RNGeocoderPackage(),
             new ReactNativeConfigPackage()

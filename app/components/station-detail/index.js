@@ -5,7 +5,6 @@ import {
   ActivityIndicator,
   AppState,
 } from 'react-native'
-import SplashScreen from 'react-native-splash-screen'
 
 import TidePhrase from './tide-phrase'
 import WeatherRow from './weather-row'
@@ -29,7 +28,6 @@ export default class StationDetail extends Component {
   }
 
   componentDidMount() {
-    SplashScreen.hide()
     this.fetchTideData()
     AppState.addEventListener('change', this.handleAppStateChange)
   }

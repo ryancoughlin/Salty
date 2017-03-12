@@ -1,4 +1,4 @@
-package com.Salty;
+package com.salty;
 
 import com.facebook.react.ReactActivity;
 

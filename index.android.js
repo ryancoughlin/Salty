@@ -12,7 +12,7 @@ import {
   View
 } from 'react-native';
 
-export default class SaltyReact extends Component {
+export default class Salty extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('SaltyReact', () => SaltyReact);
+AppRegistry.registerComponent('Salty', () => Salty);
