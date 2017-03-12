@@ -69,7 +69,7 @@ export default class StationDetail extends Component {
   }
 
   render() {
-    const { tideChart, weather, city, tideTable, todaysTides, currentTideDirection, loading } = this.state
+    const { tideChart, weather, city, tideTable, todaysTides, loading } = this.state
 
     if (loading) {
       return (
@@ -84,9 +84,9 @@ export default class StationDetail extends Component {
       <ScrollView style={styles.container}>
         <TidePhrase
           style={styles.tidePhrase}
-          tideDirection={currentTideDirection}
           city={city}
           tides={tideTable}
+          todaysTides={todaysTides}
         />
 
         <WeatherRow weather={weather.currentWind} icon="wind" />

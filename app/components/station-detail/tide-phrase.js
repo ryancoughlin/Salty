@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
   StyleSheet,
   View,
@@ -8,28 +8,43 @@ import {
 import BaseStyle from '../../base-styles'
 import TideDirectionArrow from '../tide-list/tide-direction-arrow'
 import RemainingTideTime from './remaining-tide-time'
+import findTideDirection from '../../utils/find-tide-direction'
 
-const TidePhrase = ({ city, tideDirection, tides }) => (
-  <View style={styles.container}>
-    <TideDirectionArrow
-      direction={tideDirection}
-      style={styles.arrow}
-      largeTideArrow
-    />
-    <View style={styles.tidePhrase}>
-      <View style={styles.tidePhraseRow}>
-        <Text style={[styles.loudHeader, styles.tideDirectionText]}>
-          {tideDirection}
-        </Text>
-        <Text style={[styles.loudHeader, styles.fadedPhraseText]}>Tide</Text>
+export default class TidePhrase extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      tideDirection: findTideDirection(props.todaysTides),
+    }
+  }
+
+  render() {
+    const { city, tides } = this.props
+    const { tideDirection } = this.state
+    return (
+      <View style={styles.container}>
+        <TideDirectionArrow
+          direction={tideDirection}
+          style={styles.arrow}
+          largeTideArrow
+        />
+        <View style={styles.tidePhrase}>
+          <View style={styles.tidePhraseRow}>
+            <Text style={[styles.loudHeader, styles.tideDirectionText]}>
+              {tideDirection}
+            </Text>
+            <Text style={[styles.loudHeader, styles.fadedPhraseText]}>Tide</Text>
+          </View>
+          <Text style={[styles.loudHeader, styles.fadedPhraseText]}>
+            in {city}
+          </Text>
+          <RemainingTideTime tides={tides} />
+        </View>
       </View>
-      <Text style={[styles.loudHeader, styles.fadedPhraseText]}>
-        in {city}
-      </Text>
-      <RemainingTideTime tides={tides} />
-    </View>
-  </View>
-)
+    )
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -57,5 +72,3 @@ const styles = StyleSheet.create({
     lineHeight: 60,
   },
 })
-
-export default TidePhrase

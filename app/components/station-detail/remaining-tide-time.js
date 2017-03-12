@@ -10,7 +10,6 @@ import moment from 'moment'
 import findNextTide from '../../utils/find-next-tide'
 import BaseStyle from '../../base-styles'
 
-
 export default class RemainingTideTime extends Component {
   constructor(props) {
     super(props)
