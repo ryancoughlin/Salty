@@ -25,6 +25,12 @@ const BaseStyle = {
   smallSpacing: 10,
   largeSpacing: 26,
 
+  headerStyle: {
+    fontSize: 18,
+    color: blackPearl,
+    fontWeight: '600',
+  },
+
   navigationBarHeight: 64,
   navigationBar: {
     backgroundColor: 'white',

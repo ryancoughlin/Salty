@@ -5,25 +5,23 @@ import {
   Text,
 } from 'react-native'
 
-import IconHeader from '../icon-header'
+import BaseStyle from '../../base-styles'
 
-const ChartPanelHeader = ({ icon, headerText, bodyText }) => (
+const ChartPanelHeader = ({ headerText, bodyText }) => (
   <View style={styles.container}>
-    <IconHeader
-      icon={icon}
-      text={headerText}
-    />
+    <Text style={BaseStyle.headerStyle}>{headerText}</Text>
     <Text style={styles.bodyText}>{bodyText}</Text>
   </View>
 )
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 20,
+    paddingVertical: BaseStyle.baseSpacing,
+    paddingHorizontal: BaseStyle.baseSpacing,
+    marginLeft: BaseStyle.baseSpacing,
   },
   bodyText: {
     fontSize: 14,
-    marginLeft: 60,
   },
 })
 

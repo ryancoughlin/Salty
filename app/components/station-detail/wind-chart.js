@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import {
   ScrollView,
-  StyleSheet,
-  View,
 } from 'react-native'
 
 import {
@@ -14,8 +12,7 @@ import {
 
 import _ from 'lodash'
 import BaseStyle from '../../base-styles'
-import windIcon from '../../assets/images/wind.png'
-import ChartPanelHeader from './chart-panel-header'
+import ChartPanel from './chart-panel'
 
 export default class TideChart extends Component {
   get formattedWind() {
@@ -29,12 +26,10 @@ export default class TideChart extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <ChartPanelHeader
-          icon={windIcon}
-          headerText="Hourly Wind Forecast"
-          bodyText="Wind speeds in mph"
-        />
+      <ChartPanel
+        headerText="Hourly Wind Forecast"
+        bodyText="Wind speeds in mph"
+      >
         <ScrollView style={{ flex: 1 }} horizontal>
           <VictoryChart
             height={190}
@@ -80,28 +75,7 @@ export default class TideChart extends Component {
             />
           </VictoryChart>
         </ScrollView>
-      </View>
+      </ChartPanel>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    shadowColor: BaseStyle.darkBackgroundColor,
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 30,
-    marginBottom: 40,
-  },
-  edgesContainer: {
-    zIndex: 1,
-    position: 'absolute',
-    top: 0,
-    left: 0,
-  },
-})

@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import {
   ScrollView,
-  StyleSheet,
-  Image,
-  View,
 } from 'react-native'
 
 import _ from 'lodash'
@@ -15,9 +12,7 @@ import {
 } from 'victory-native'
 
 import BaseStyle from '../../base-styles'
-import hourlyClock from '../../assets/images/hourly-clock.png'
-import chartEdges from '../../assets/images/chart/chart-edges.png'
-import ChartPanelHeader from './chart-panel-header'
+import ChartPanel from './chart-panel'
 
 export default class TideChart extends Component {
   get formattedTides() {
@@ -31,12 +26,10 @@ export default class TideChart extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <ChartPanelHeader
-          icon={hourlyClock}
-          headerText="Hourly Tide Charts"
-          bodyText="Yesterday through Tomorrow"
-        />
+      <ChartPanel
+        headerText="Hourly Tide Charts"
+        bodyText="Yesterday through Tomorrow"
+      >
         <ScrollView style={{ flex: 1 }} horizontal>
           <VictoryChart
             height={200}
@@ -72,7 +65,7 @@ export default class TideChart extends Component {
               x="time"
               y="height"
               data={this.formattedTides}
-              labels={datum => `${datum.y}'`}
+              labels={datum => `${datum.y}`}
               size={6}
               style={{
                 labels: {
@@ -89,28 +82,7 @@ export default class TideChart extends Component {
             />
           </VictoryChart>
         </ScrollView>
-      </View>
+      </ChartPanel>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    shadowColor: BaseStyle.darkBackgroundColor,
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 30,
-    marginBottom: 40,
-  },
-  edgesContainer: {
-    zIndex: 1,
-    position: 'absolute',
-    top: 0,
-    left: 0,
-  },
-})
