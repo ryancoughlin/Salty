@@ -3,19 +3,17 @@ import Config from './config'
 
 export default function makeRequest(location) {
   const { latitude, longitude } = location
-  const url = `${Config.HOST}/get-data`
+  const baseUrl = `${Config.HOST}/get-data`
+  const url = `${baseUrl}?latitude=${latitude}&longitude=${longitude}`
 
-  return new Promise((resolve, reject) => {
-    fetch(`${url}?lat=${latitude}&lng=${longitude}`)
-    .then(res => res.json())
-    .then((json) => {
-      resolve(json)
-    })
+  return new Promise((resolve) => {
+    fetch(url).then(data => resolve(data.json()))
     .catch((error) => {
+      console.log(error)
       Alert.alert(
          'No Internet Connection',
-         'That\'s not good. Salty could not fetch tide information.',
-        [{ text: 'OK' }]
+         'We were uable fetch tide information.',
+        [{ text: 'OK' }],
       )
     })
   })
