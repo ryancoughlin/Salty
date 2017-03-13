@@ -11,6 +11,7 @@ import {
 import store, { rehydrateStore } from './app/store'
 import StationDetail from './app/components/station-detail'
 import TideList from './app/components/tide-list'
+import Map from './app/components/map'
 import BaseStyle from './app/base-styles'
 
 class Salty extends Component {
@@ -42,6 +43,12 @@ class Salty extends Component {
                 initial
                 key="stationDetail"
                 component={StationDetail}
+              />
+              <Scene
+                key="map"
+                component={Map}
+                leftTitle="Close"
+                onLeft={() => Actions.pop()}
               />
               <Scene
                 key="tideList"

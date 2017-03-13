@@ -2,32 +2,45 @@ import React, { Component } from 'react'
 import {
   StyleSheet,
 } from 'react-native'
-
 import MapView from 'react-native-maps'
+
+import MapMarker from './map-marker'
+import Config from '../lib/config'
+import { mapStyle } from '../utils/map-style'
 
 export default class Map extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { stations: null }
+    this.state = {
+      stations: null,
+      region: {
+        latitude: null,
+        longitude: null,
+        latitudeDelta: 0.315,
+        longitudeDelta: 0.321,
+      },
+    }
   }
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude, longitude } = position.coords
-
+      console.log(position.coords)
       this.setState({
-        userLocation: { latitude, longitude },
+        region: {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        },
       })
     })
 
-    fetch('http://localhost:8000/api/get-stations').then(res => res.json()).then((json) => {
-      this.setState({ stations: json.formattedStations })
+    fetch(`${Config.HOST}/get-stations`).then(res => res.json()).then((json) => {
+      this.setState({ stations: json.stations })
     })
   }
 
   render() {
-    const { stations, userLocation } = this.state
+    const { stations, region } = this.state
 
     if (!stations) {
       return null
@@ -36,14 +49,8 @@ export default class Map extends Component {
     return (
       <MapView
         style={styles.container}
-        region={{
-          latitude: userLocation.latitude,
-          longitude: userLocation.longitude,
-          latitudeDelta: 0.315,
-          longitudeDelta: 0.321,
-          showPointsOfInterest: false,
-          showBuildings: false,
-        }}
+        customMapStyle={mapStyle}
+        region={region}
       >
         {stations.map(station => (
           <MapView.Marker
@@ -51,7 +58,9 @@ export default class Map extends Component {
               latitude: station.location[0],
               longitude: station.location[1],
             }}
-          />
+          >
+            <MapMarker {...station} />
+          </MapView.Marker>
         ))}
       </MapView>
     )
