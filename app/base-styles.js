@@ -19,6 +19,7 @@ const BaseStyle = {
   chartLabelColor: marinerBlue,
 
   baseFontSize: 18,
+  smallFontSize: 14,
 
   baseSpacing: 20,
   smallSpacing: 10,

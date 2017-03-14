@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import {
   StyleSheet,
+  Image,
 } from 'react-native'
 import MapView from 'react-native-maps'
 
 import MapMarker from './map-marker'
+import MapCallout from './map-callout'
 import Config from '../lib/config'
 import { mapStyle } from '../utils/map-style'
+import stationMarker from '../assets/images/map/station-marker.png'
 
 export default class Map extends Component {
   constructor(props) {
@@ -44,7 +47,6 @@ export default class Map extends Component {
     return (
       <MapView
         style={styles.container}
-        customMapStyle={mapStyle}
         region={{
           latitude: userLocation.latitude,
           longitude: userLocation.longitude,
@@ -52,14 +54,21 @@ export default class Map extends Component {
           longitudeDelta: 0.321,
         }}
       >
-        {stations.map(station => (
+        {stations.map((station, index) => (
           <MapView.Marker
+            key={index}
+            image={stationMarker}
             coordinate={{
               latitude: station.location[0],
               longitude: station.location[1],
             }}
+            calloutOffset={{ x: 0, y: 30 }}
           >
-            <MapMarker {...station} />
+            <MapView.Callout
+              tooltip
+            >
+              <MapCallout station={station} />
+            </MapView.Callout>
           </MapView.Marker>
         ))}
       </MapView>
