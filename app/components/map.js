@@ -14,12 +14,7 @@ export default class Map extends Component {
 
     this.state = {
       stations: null,
-      region: {
-        latitude: null,
-        longitude: null,
-        latitudeDelta: 0.315,
-        longitudeDelta: 0.321,
-      },
+      userLocation: null,
     }
   }
 
@@ -27,7 +22,7 @@ export default class Map extends Component {
     navigator.geolocation.getCurrentPosition((position) => {
       console.log(position.coords)
       this.setState({
-        region: {
+        userLocation: {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         },
@@ -40,7 +35,7 @@ export default class Map extends Component {
   }
 
   render() {
-    const { stations, region } = this.state
+    const { stations, userLocation } = this.state
 
     if (!stations) {
       return null
@@ -50,7 +45,12 @@ export default class Map extends Component {
       <MapView
         style={styles.container}
         customMapStyle={mapStyle}
-        region={region}
+        region={{
+          latitude: userLocation.latitude,
+          longitude: userLocation.longitude,
+          latitudeDelta: 0.315,
+          longitudeDelta: 0.321,
+        }}
       >
         {stations.map(station => (
           <MapView.Marker
