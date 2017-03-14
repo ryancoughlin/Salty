@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import {
   StyleSheet,
-  Image,
 } from 'react-native'
 import MapView from 'react-native-maps'
 
-import MapMarker from './map-marker'
-import MapCallout from './map-callout'
 import Config from '../lib/config'
-import { mapStyle } from '../utils/map-style'
+import MapCallout from './map-callout'
 import stationMarker from '../assets/images/map/station-marker.png'
 
 export default class Map extends Component {
