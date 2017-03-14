@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
       height: 0,
     },
     shadowOpacity: 0.1,
-    shadowRadius: 30,
+    shadowRadius: 20,
     marginBottom: 40,
     marginHorizontal: BaseStyle.baseSpacing,
     borderRadius: 4,
