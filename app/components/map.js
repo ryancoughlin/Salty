@@ -4,6 +4,7 @@ import {
 } from 'react-native'
 import MapView from 'react-native-maps'
 
+import { Actions } from 'react-native-router-flux'
 import Config from '../lib/config'
 import MapCallout from './map-callout'
 import stationMarker from '../assets/images/map/station-marker.png'
@@ -31,6 +32,12 @@ export default class Map extends Component {
 
     fetch(`${Config.HOST}/get-stations`).then(res => res.json()).then((json) => {
       this.setState({ stations: json.stations })
+    })
+  }
+
+  pushStationDetail(station) {
+    Actions.stationDetail({
+      ...station,
     })
   }
 
@@ -63,6 +70,13 @@ export default class Map extends Component {
           >
             <MapView.Callout
               tooltip
+              width={258}
+              height={98}
+              onPress={() => {
+                Actions.stationDetail({
+                  ...station,
+                })
+              }}
             >
               <MapCallout station={station} />
             </MapView.Callout>

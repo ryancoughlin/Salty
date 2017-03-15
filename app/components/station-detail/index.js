@@ -20,6 +20,13 @@ const StationDetail = class extends Component {
   constructor(props) {
     super(props)
 
+    if (props) {
+      this.state = {
+        city: props.name,
+      }
+    }
+
+
     this.handleAppStateChange = this.handleAppStateChange.bind(this)
 
     this.state = {
@@ -30,6 +37,10 @@ const StationDetail = class extends Component {
   componentDidMount() {
     this.findCurrentLocation()
     AppState.addEventListener('change', this.handleAppStateChange)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps)
   }
 
   componentWillUnmount() {
