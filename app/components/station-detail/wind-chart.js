@@ -32,7 +32,7 @@ export default class TideChart extends Component {
       >
         <ScrollView style={{ flex: 1 }} horizontal>
           <VictoryChart
-            height={190}
+            height={170}
             width={2500}
             scale={{ x: 'time' }}
             padding={{ top: 30, right: 40, bottom: 36, left: 30 }}
