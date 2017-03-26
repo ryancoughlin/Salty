@@ -30,13 +30,20 @@ export default class TidePhrase extends Component {
           largeTideArrow
         />
         <View style={styles.tidePhrase}>
-          <View style={styles.tidePhraseRow}>
-            <Text style={[styles.loudHeader, styles.tideDirectionText]}>
+          <View style={styles.tideDirectionRow}>
+            <Text style={[BaseStyle.tidePhraseStyle, styles.tideDirectionText]}>
               {tideDirection}
             </Text>
-            <Text style={[styles.loudHeader, styles.fadedPhraseText]}>Tide</Text>
+            <Text style={[BaseStyle.tidePhraseStyle, styles.fadedPhraseText]}>Tide</Text>
           </View>
-          <Text style={[styles.loudHeader, styles.fadedPhraseText]}>
+          <Text
+            numberOfLines={1}
+            ellipsizeMode="tail"
+            style={[
+              BaseStyle.tidePhraseStyle,
+              styles.fadedPhraseText,
+            ]}
+          >
             in {city}
           </Text>
           <RemainingTideTime tides={tides} />
@@ -49,26 +56,18 @@ export default class TidePhrase extends Component {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    marginBottom: 40,
-    marginTop: 40,
+    marginBottom: BaseStyle.largeSpacing,
   },
   arrow: {
-    marginTop: 14,
+    marginTop: 10,
   },
   tidePhrase: {
-    width: 600,
+    flex: 1,
   },
-  tidePhraseRow: {
+  tideDirectionRow: {
     flexDirection: 'row',
   },
   tideDirectionText: {
     color: BaseStyle.baseTextColor,
-  },
-  loudHeader: {
-    fontSize: BaseStyle.phraseFontSize,
-    fontWeight: 'bold',
-    color: '#E5E7E9',
-    marginRight: 8,
-    lineHeight: 60,
   },
 })

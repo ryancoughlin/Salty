@@ -18,13 +18,18 @@ const BaseStyle = {
   warningColor: pastelOrange,
   chartLabelColor: marinerBlue,
 
-  phraseFontSize: 56,
   baseFontSize: 18,
 
   baseSpacing: 20,
   smallSpacing: 10,
-  largeSpacing: 26,
-
+  largeSpacing: 40,
+  tidePhraseStyle: {
+    fontWeight: 'bold',
+    color: '#E5E7E9',
+    fontSize: 42,
+    lineHeight: 48,
+    marginRight: 8,
+  },
   headerStyle: {
     fontSize: 18,
     color: blackPearl,
