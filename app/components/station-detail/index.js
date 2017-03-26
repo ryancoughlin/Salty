@@ -5,30 +5,30 @@ import {
   ActivityIndicator,
   AppState,
 } from 'react-native'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
+import * as actions from '../../actions/station'
 import TidePhrase from './tide-phrase'
 import WeatherRow from './weather-row'
 import TodaysTides from './todays-tides'
 import DetailPanel from './detail-panel'
-import makeRequest from '../../lib/request'
-import { fetchLocation, fetchCityName } from '../../lib/location'
+import { fetchLocation } from '../../lib/location'
 import BaseStyle from '../../base-styles'
 
-export default class StationDetail extends Component {
+const StationDetail = class extends Component {
   constructor(props) {
     super(props)
 
     this.handleAppStateChange = this.handleAppStateChange.bind(this)
 
     this.state = {
-      weather: null,
       previousAppState: null,
-      loading: true,
     }
   }
 
   componentDidMount() {
-    this.fetchTideData()
+    this.findCurrentLocation()
     AppState.addEventListener('change', this.handleAppStateChange)
   }
 
@@ -44,34 +44,21 @@ export default class StationDetail extends Component {
     }
 
     if (appState === 'active' && this.state.previousState !== 'active') {
-      this.fetchTideData()
+      this.findCurrentLocation()
     }
   }
 
-  fetchTideData() {
-    this.setState({ loading: true })
+  findCurrentLocation() {
     fetchLocation().then((location) => {
-      fetchCityName(location).then((city) => {
-        this.setState({ city })
-      })
-
-      makeRequest(location).then((json) => {
-        this.setState({
-          weather: json.weather,
-          tideChart: json.tides.hourly,
-          tideTable: json.tides.formatted,
-          todaysTides: json.tides.todaysTides,
-          loading: false,
-          currentTideDirection: json.tides.currentTideDirection,
-        })
-      })
+      this.props.fetchTideData(location)
+      this.props.findCityName(location)
     })
   }
 
   render() {
-    const { tideChart, weather, city, tideTable, todaysTides, loading } = this.state
+    const { city, tides, weather } = this.props.current
 
-    if (loading) {
+    if (this.props.loading) {
       return (
         <ActivityIndicator
           style={styles.loadingIndicator}
@@ -85,21 +72,21 @@ export default class StationDetail extends Component {
         <TidePhrase
           style={styles.tidePhrase}
           city={city}
-          tides={tideTable}
-          todaysTides={todaysTides}
+          tides={tides.formatted}
+          todaysTides={tides.todaysTides}
         />
 
         <WeatherRow weather={weather.currentWind} icon="wind" />
         <WeatherRow weather={weather.currentWeather} icon={weather.icon} />
 
         <TodaysTides
-          tideTable={tideTable}
-          todaysTides={todaysTides}
+          tideTable={tides.formatted}
+          todaysTides={tides.todaysTides}
         />
 
         <DetailPanel
           wind={weather.wind}
-          tideChart={tideChart}
+          tideChart={tides.hourly}
         />
       </ScrollView>
     )
@@ -117,3 +104,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 })
+
+const mapStateToProps = ({ stations }) => ({
+  city: stations.current.city,
+  current: stations.current,
+  loading: stations.loading,
+})
+
+const mapDispatchToProps = dispatch => ({
+  ...bindActionCreators(actions, dispatch),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(StationDetail)

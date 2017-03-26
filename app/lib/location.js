@@ -15,7 +15,7 @@ export function fetchLocation() {
   })
 }
 
-export function fetchCityName(location) {
+export function geoCodeLocation(location) {
   return new Promise((resolve) => {
     const { latitude, longitude } = location
     Geocoder.geocodePosition({ lat: latitude, lng: longitude }).then((userLocation) => {

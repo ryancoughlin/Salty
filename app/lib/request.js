@@ -1,15 +1,14 @@
 import { Alert } from 'react-native'
 import Config from './config'
 
-export default function makeRequest(location) {
+export default function requestTideData(location) {
   const { latitude, longitude } = location
   const baseUrl = `${Config.HOST}/get-data`
   const url = `${baseUrl}?latitude=${latitude}&longitude=${longitude}`
 
   return new Promise((resolve) => {
     fetch(url).then(data => resolve(data.json()))
-    .catch((error) => {
-      console.log(error)
+    .catch(() => {
       Alert.alert(
          'No Internet Connection',
          'We were uable fetch tide information.',

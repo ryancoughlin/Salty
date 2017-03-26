@@ -44,7 +44,6 @@ export default class TideChart extends Component {
               labelComponent={
                 <VictoryLabel
                   dy={0.25}
-                  dx={-5}
                   textAnchor="middle"
                 />
               }
