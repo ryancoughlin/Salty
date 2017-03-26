@@ -27,8 +27,8 @@ export default class TideChart extends Component {
   render() {
     return (
       <ChartPanel
-        headerText="Hourly Wind Forecast"
-        bodyText="Wind speeds in mph"
+        headerText="Wind Forecast"
+        bodyText="Speeds in mph"
       >
         <ScrollView style={{ flex: 1 }} horizontal>
           <VictoryChart

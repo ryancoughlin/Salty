@@ -27,8 +27,8 @@ export default class TideChart extends Component {
   render() {
     return (
       <ChartPanel
-        headerText="Hourly Tide Charts"
-        bodyText="Yesterday through Tomorrow"
+        headerText="Tide Depths"
+        bodyText="Over the next 24 hours"
       >
         <ScrollView style={{ flex: 1 }} horizontal>
           <VictoryChart
