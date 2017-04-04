@@ -2,14 +2,13 @@ import React, { Component } from 'react'
 import {
   ScrollView,
 } from 'react-native'
-
-import _ from 'lodash'
 import {
   VictoryLine,
   VictoryChart,
   VictoryScatter,
   VictoryAxis,
 } from 'victory-native'
+import _ from 'lodash'
 
 import BaseStyle from '../../base-styles'
 import ChartPanel from './chart-panel'

@@ -19,7 +19,7 @@
     "react-native-router-flux": "^3.38.0",
     "react-native-splash-screen": "^2.0.0",
     "react-native-svg": "^4.4.1",
-    "victory-native": "^0.6.0"
+    "victory-native": "^0.7.1"
   },
   "jest": {
     "preset": "jest-react-native"
