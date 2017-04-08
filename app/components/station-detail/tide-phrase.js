@@ -41,7 +41,6 @@ export default class TidePhrase extends Component {
             ellipsizeMode="tail"
             style={[
               BaseStyle.tidePhraseStyle,
-              styles.fadedPhraseText,
               styles.cityText,
             ]}
           >
