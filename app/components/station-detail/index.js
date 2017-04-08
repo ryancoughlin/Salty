@@ -49,11 +49,16 @@ const StationDetail = class extends Component {
   }
 
   requestLoctionInformation() {
-    if (this.props.location) {
-      this.props.fetchTideData(this.props.location)
-      this.props.findCityName(this.props.location)
+    const { location, fetchTideData, findCityName } = this.props
+
+    if (location) {
+      fetchTideData(location)
+      findCityName(location)
     } else {
-      this.findCurrentLocation()
+      fetchLocation().then((location) => {
+        fetchTideData(location)
+        findCityName(location)
+      })
     }
   }
 
