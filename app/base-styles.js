@@ -46,8 +46,9 @@ const BaseStyle = {
   navigationTitle: {
     fontWeight: '500',
   },
-  navigationLeftButton: {
+  navigationButton: {
     color: pictonBlue,
+    fontWeight: '500',
   },
 
   chartAxisStyles: {

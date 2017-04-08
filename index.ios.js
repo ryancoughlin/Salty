@@ -34,8 +34,8 @@ class Salty extends Component {
       <Provider store={store}>
         <Router
           navigationBarStyle={BaseStyle.navigationBar}
-          leftButtonStyle={{ marginTop: 2 }}
-          leftButtonTextStyle={[BaseStyle.navigationLeftButton, BaseStyle.navigationTitle]}
+          leftButtonTextStyle={BaseStyle.navigationButton}
+          rightButtonTextStyle={BaseStyle.navigationButton}
         >
           <Scene key="modal" component={Modal}>
             <Scene key="root">
