@@ -34,7 +34,7 @@ export default class TidePhrase extends Component {
             <Text style={[BaseStyle.tidePhraseStyle, styles.tideDirectionText]}>
               {tideDirection}
             </Text>
-            <Text style={[BaseStyle.tidePhraseStyle, styles.fadedPhraseText]}>Tide</Text>
+            <Text style={BaseStyle.tidePhraseStyle}>Tide</Text>
           </View>
           <Text
             numberOfLines={1}
@@ -42,6 +42,7 @@ export default class TidePhrase extends Component {
             style={[
               BaseStyle.tidePhraseStyle,
               styles.fadedPhraseText,
+              styles.cityText,
             ]}
           >
             in {city}
@@ -69,5 +70,9 @@ const styles = StyleSheet.create({
   },
   tideDirectionText: {
     color: BaseStyle.baseTextColor,
+  },
+  cityText: {
+    marginBottom: 5,
+    paddingRight: BaseStyle.baseSpacing,
   },
 })

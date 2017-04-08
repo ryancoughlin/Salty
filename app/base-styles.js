@@ -26,9 +26,9 @@ const BaseStyle = {
   tidePhraseStyle: {
     fontWeight: 'bold',
     color: '#E5E7E9',
-    fontSize: 42,
-    lineHeight: 48,
-    marginRight: 8,
+    fontSize: 36,
+    lineHeight: 42,
+    marginRight: 6,
   },
   headerStyle: {
     fontSize: 18,
