@@ -22,6 +22,7 @@ const BaseStyle = {
 
   baseSpacing: 20,
   smallSpacing: 10,
+  tinySpacing: 4,
   largeSpacing: 40,
   tidePhraseStyle: {
     fontWeight: 'bold',

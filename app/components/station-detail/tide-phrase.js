@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     color: BaseStyle.baseTextColor,
   },
   cityText: {
-    marginBottom: 5,
+    marginBottom: BaseStyle.tinySpacing,
     paddingRight: BaseStyle.baseSpacing,
   },
 })

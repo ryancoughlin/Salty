@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
   },
   bodyText: {
     fontSize: 14,
+    marginTop: BaseStyle.tinySpacing,
   },
 })
 
