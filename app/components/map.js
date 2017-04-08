@@ -21,7 +21,6 @@ export default class Map extends Component {
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position.coords)
       this.setState({
         userLocation: {
           latitude: position.coords.latitude,
@@ -32,12 +31,6 @@ export default class Map extends Component {
 
     fetch(`${Config.HOST}/get-stations`).then(res => res.json()).then((json) => {
       this.setState({ stations: json.stations })
-    })
-  }
-
-  pushStationDetail(station) {
-    Actions.stationDetail({
-      ...station,
     })
   }
 
@@ -74,7 +67,10 @@ export default class Map extends Component {
               height={98}
               onPress={() => {
                 Actions.stationDetail({
-                  ...station,
+                  location: {
+                    latitude: station.location[0],
+                    longitude: station.location[1],
+                  },
                 })
               }}
             >

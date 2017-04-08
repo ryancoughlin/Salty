@@ -43,13 +43,24 @@ class Salty extends Component {
                 initial
                 key="stationDetail"
                 component={StationDetail}
+                rightTitle="Find"
+                onRight={() => Actions.map()}
+                type="reset"
               />
               <Scene
                 key="map"
-                component={Map}
                 leftTitle="Close"
+                direction="vertical"
                 onLeft={() => Actions.pop()}
-              />
+              >
+                <Scene
+                  titleStyle={BaseStyle.navigationTitle}
+                  key="mapModal"
+                  title="Find a Station"
+                  component={Map}
+                />
+              </Scene>
+
               <Scene
                 key="tideList"
                 direction="vertical"
@@ -62,7 +73,6 @@ class Salty extends Component {
                   key="tideListModal"
                   title="Tide Tables"
                   component={TideList}
-                  direction="vertical"
                   panHandlers={null}
                 />
               </Scene>
