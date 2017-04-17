@@ -1,6 +1,6 @@
 {
   "name": "Salty",
-  "version": "0.0.1",
+  "version": "1.0",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -10,20 +10,20 @@
     "eslint-plugin-react-native": "^2.2.0",
     "lodash": "^4.16.6",
     "moment": "^2.15.2",
-    "react": "15.4.2",
-    "react-native": "^0.42.0",
+    "react": "16.0.0-alpha.6",
+    "react-native": "0.44.0",
     "react-native-config": "^0.1.2",
     "react-native-geocoder": "^0.4.6",
     "react-native-maps": "^0.13.0",
-    "react-native-router-flux": "^3.38.0",
     "react-native-splash-screen": "^2.0.0",
     "react-native-svg": "^4.4.1",
-    "victory-native": "^0.7.1",
+    "react-navigation": "^1.0.0-beta.9",
     "react-redux": "^5.0.3",
     "redux": "^3.6.0",
     "redux-logger": "^3.0.0",
     "redux-persist": "^4.5.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "victory-native": "^0.8.0"
   },
   "jest": {
     "preset": "jest-react-native"
@@ -40,5 +40,10 @@
     "jest": "16.0.2",
     "jest-react-native": "16.1.0",
     "react-test-renderer": "15.3.2"
-  }
+  },
+  "description": "What is the tide currently doing?",
+  "main": "index.js",
+  "repository": "https://github.com/ryancoughlin/Salty.git",
+  "author": "Ryan Coughlin <ryan@ryancoughlin.com>",
+  "license": "MIT"
 }

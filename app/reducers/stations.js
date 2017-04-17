@@ -1,17 +1,19 @@
+import _ from 'lodash'
 import {
   SAVE_LOCATION,
   FETCH_TIDE_DATA,
   FIND_CITY_NAME,
   START_LOADING_TIDES,
   FINISHED_LOADING_TIDES,
+  DELETE_LOCATION,
 } from '../types'
 
 const initialState = {
-  loading: false,
+  loading: true,
   current: {
-    city: "Loading..."
+    city: 'Loading...',
   },
-  saved: [],
+  saved: {},
 }
 
 export default function(state = initialState, action) {
@@ -27,15 +29,21 @@ export default function(state = initialState, action) {
     case FIND_CITY_NAME:
       return {
         ...state,
+        location: action.location,
         current: {
           ...state.current,
           city: action.city,
-        }
+        },
       }
     case SAVE_LOCATION:
       return {
         ...state,
-        saved: {},
+        saved: {
+          ...state.saved,
+          [action.location.city]: {
+            ...action.location,
+          },
+        },
       }
     case START_LOADING_TIDES:
       return {
@@ -46,6 +54,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         loading: false,
+      }
+    case DELETE_LOCATION:
+      return {
+        ...state,
+        saved: _.omit(state.saved, action.city),
       }
     default:
       return state

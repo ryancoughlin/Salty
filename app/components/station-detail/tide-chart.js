@@ -1,13 +1,6 @@
 import React, { Component } from 'react'
-import {
-  ScrollView,
-} from 'react-native'
-import {
-  VictoryLine,
-  VictoryChart,
-  VictoryScatter,
-  VictoryAxis,
-} from 'victory-native'
+import { ScrollView } from 'react-native'
+import { VictoryLine, VictoryChart, VictoryScatter, VictoryAxis } from 'victory-native'
 import _ from 'lodash'
 
 import BaseStyle from '../../base-styles'
@@ -15,20 +8,15 @@ import ChartPanel from './chart-panel'
 
 export default class TideChart extends Component {
   get formattedTides() {
-    return _.map(this.props.tides, (tide) => {
-      return {
-        ...tide,
-        time: new Date(tide.time),
-      }
-    })
+    return _.map(this.props.tides, tide => ({
+      ...tide,
+      time: new Date(tide.time),
+    }))
   }
 
   render() {
     return (
-      <ChartPanel
-        headerText="Tide Depths"
-        bodyText="Over the next 24 hours"
-      >
+      <ChartPanel headerText="Tide Depths" bodyText="Over the next 24 hours">
         <ScrollView style={{ flex: 1 }} horizontal>
           <VictoryChart
             height={170}
@@ -40,11 +28,7 @@ export default class TideChart extends Component {
               scale="time"
               orientation="bottom"
               offsetY={30}
-              tickValues={
-                _.map(this.formattedTides, (tide) => {
-                  return tide.time
-                })
-              }
+              tickValues={_.map(this.formattedTides, tide => tide.time)}
               style={BaseStyle.chartAxisStyles}
             />
             <VictoryLine

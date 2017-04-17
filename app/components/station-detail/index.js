@@ -1,10 +1,5 @@
 import React, { Component } from 'react'
-import {
-  StyleSheet,
-  ScrollView,
-  ActivityIndicator,
-  AppState,
-} from 'react-native'
+import { StyleSheet, ScrollView, ActivityIndicator, AppState, View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -13,6 +8,8 @@ import TidePhrase from './tide-phrase'
 import WeatherRow from './weather-row'
 import TodaysTides from './todays-tides'
 import DetailPanel from './detail-panel'
+import SaveLocationButton from '../buttons/save-location-button'
+import RemoveLocationButton from '../buttons/remove-location-button'
 import { fetchLocation } from '../../lib/location'
 import BaseStyle from '../../base-styles'
 
@@ -59,12 +56,7 @@ const StationDetail = class extends Component {
     const { city, tides, weather } = this.props.current
 
     if (this.props.loading) {
-      return (
-        <ActivityIndicator
-          style={styles.loadingIndicator}
-          size="large"
-        />
-      )
+      return <ActivityIndicator style={styles.loadingIndicator} size="large" />
     }
 
     return (
@@ -75,19 +67,18 @@ const StationDetail = class extends Component {
           tides={tides.formatted}
           todaysTides={tides.todaysTides}
         />
-
         <WeatherRow weather={weather.currentWind} icon="wind" />
         <WeatherRow weather={weather.currentWeather} icon={weather.icon} />
+        <TodaysTides tideTable={tides.formatted} todaysTides={tides.todaysTides} />
+        <DetailPanel wind={weather.wind} tideChart={tides.hourly} />
 
-        <TodaysTides
-          tideTable={tides.formatted}
-          todaysTides={tides.todaysTides}
-        />
-
-        <DetailPanel
-          wind={weather.wind}
-          tideChart={tides.hourly}
-        />
+        {this.props.isSaved
+          ? <RemoveLocationButton city={city} deleteLocation={this.props.deleteLocation} />
+          : <SaveLocationButton
+            saveLocation={this.props.saveLocation}
+            location={this.props.location}
+            city={city}
+          />}
       </ScrollView>
     )
   }
@@ -96,7 +87,7 @@ const StationDetail = class extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: BaseStyle.navigationBarHeight,
+    backgroundColor: 'white',
   },
   loadingIndicator: {
     flex: 1,
@@ -106,9 +97,11 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = ({ stations }) => ({
-  city: stations.current.city,
   current: stations.current,
   loading: stations.loading,
+  saved: stations.saved,
+  location: stations.location,
+  isSaved: !!stations.saved[stations.current.city],
 })
 
 const mapDispatchToProps = dispatch => ({

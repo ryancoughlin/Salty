@@ -6,6 +6,7 @@ import {
   FIND_CITY_NAME,
   START_LOADING_TIDES,
   FINISHED_LOADING_TIDES,
+  DELETE_LOCATION,
 } from '../types'
 
 export function saveLocation(location) {
@@ -13,25 +14,28 @@ export function saveLocation(location) {
 }
 
 export function fetchTideData(location) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch({ type: START_LOADING_TIDES })
-    requestTideData(location).then((json) => {
-      dispatch({
-        type: FETCH_TIDE_DATA,
-        locationData: json
+    requestTideData(location)
+      .then((json) => {
+        dispatch({
+          type: FETCH_TIDE_DATA,
+          locationData: json,
+        })
       })
-    }).then(() => {
-      dispatch({ type: FINISHED_LOADING_TIDES })
-    })
+      .then(() => {
+        dispatch({ type: FINISHED_LOADING_TIDES })
+      })
   }
 }
 
 export function findCityName(location) {
-  return dispatch => {
+  return (dispatch) => {
     geoCodeLocation(location).then((city) => {
       dispatch({
         type: FIND_CITY_NAME,
-        city: city,
+        location,
+        city,
       })
     })
   }
@@ -43,4 +47,8 @@ export function startLoadingTides() {
 
 export function finishedLoadingTides() {
   return { type: FINISHED_LOADING_TIDES, loading: false }
+}
+
+export function deleteLocation(city) {
+  return { type: DELETE_LOCATION, city }
 }

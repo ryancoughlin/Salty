@@ -1,8 +1,5 @@
 import React from 'react'
-import {
-  StyleSheet,
-  View,
-} from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
 import ChartPanelHeader from './chart-panel-header'
 import BaseStyle from '../../base-styles'
@@ -10,10 +7,7 @@ import BaseStyle from '../../base-styles'
 
 const ChartPanel = ({ headerText, bodyText, children }) => (
   <View style={styles.container}>
-    <ChartPanelHeader
-      headerText={headerText}
-      bodyText={bodyText}
-    />
+    <ChartPanelHeader headerText={headerText} bodyText={bodyText} />
     {children}
   </View>
 )
@@ -27,11 +21,11 @@ const styles = StyleSheet.create({
       width: 0,
       height: 0,
     },
-    shadowOpacity: 0.07,
-    shadowRadius: 20,
+    shadowOpacity: 0.1,
+    shadowRadius: 16,
     marginBottom: BaseStyle.baseSpacing,
     marginHorizontal: BaseStyle.baseSpacing,
-    borderRadius: 2,
+    borderRadius: 10,
   },
   bodyText: {
     fontSize: 14,

@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import {
-  ListView,
-} from 'react-native'
+import { ListView } from 'react-native'
 import TideCell from './tide-cell'
 import TideSectionHeader from './tide-section-header'
 import BaseStyle from '../../base-styles'
@@ -21,11 +19,11 @@ export default class extends Component {
   }
 
   renderRow(row) {
-    return (<TideCell tide={row} />)
+    return <TideCell tide={row} />
   }
 
   renderSectionHeader(_section, dateString) {
-    return (<TideSectionHeader date={dateString} />)
+    return <TideSectionHeader date={dateString} />
   }
 
   render() {

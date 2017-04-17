@@ -20,10 +20,11 @@ const BaseStyle = {
 
   baseFontSize: 18,
 
-  baseSpacing: 20,
-  smallSpacing: 10,
   tinySpacing: 4,
+  smallSpacing: 10,
+  baseSpacing: 20,
   largeSpacing: 40,
+
   tidePhraseStyle: {
     fontWeight: 'bold',
     color: '#E5E7E9',
