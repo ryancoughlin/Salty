@@ -28,7 +28,7 @@ const StationDetail = class extends Component {
   }
 
   componentDidMount() {
-    this.findCurrentLocation()
+    this.requestLoctionInformation()
     AppState.addEventListener('change', this.handleAppStateChange)
   }
 
@@ -44,15 +44,22 @@ const StationDetail = class extends Component {
     }
 
     if (appState === 'active' && this.state.previousState !== 'active') {
-      this.findCurrentLocation()
+      this.requestLoctionInformation()
     }
   }
 
-  findCurrentLocation() {
-    fetchLocation().then((location) => {
-      this.props.fetchTideData(location)
-      this.props.findCityName(location)
-    })
+  requestLoctionInformation() {
+    const { location, fetchTideData, findCityName } = this.props
+
+    if (location) {
+      fetchTideData(location)
+      findCityName(location)
+    } else {
+      fetchLocation().then((location) => {
+        fetchTideData(location)
+        findCityName(location)
+      })
+    }
   }
 
   render() {

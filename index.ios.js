@@ -11,6 +11,7 @@ import {
 import store, { rehydrateStore } from './app/store'
 import StationDetail from './app/components/station-detail'
 import TideList from './app/components/tide-list'
+import Map from './app/components/map'
 import BaseStyle from './app/base-styles'
 
 class Salty extends Component {
@@ -33,8 +34,8 @@ class Salty extends Component {
       <Provider store={store}>
         <Router
           navigationBarStyle={BaseStyle.navigationBar}
-          leftButtonStyle={{ marginTop: 2 }}
-          leftButtonTextStyle={[BaseStyle.navigationLeftButton, BaseStyle.navigationTitle]}
+          leftButtonTextStyle={BaseStyle.navigationButton}
+          rightButtonTextStyle={BaseStyle.navigationButton}
         >
           <Scene key="modal" component={Modal}>
             <Scene key="root">
@@ -42,7 +43,24 @@ class Salty extends Component {
                 initial
                 key="stationDetail"
                 component={StationDetail}
+                rightTitle="Find"
+                onRight={() => Actions.map()}
+                type="reset"
               />
+              <Scene
+                key="map"
+                leftTitle="Close"
+                direction="vertical"
+                onLeft={() => Actions.pop()}
+              >
+                <Scene
+                  titleStyle={BaseStyle.navigationTitle}
+                  key="mapModal"
+                  title="Find a Station"
+                  component={Map}
+                />
+              </Scene>
+
               <Scene
                 key="tideList"
                 direction="vertical"
@@ -55,7 +73,6 @@ class Salty extends Component {
                   key="tideListModal"
                   title="Tide Tables"
                   component={TideList}
-                  direction="vertical"
                   panHandlers={null}
                 />
               </Scene>
