@@ -19,7 +19,6 @@ const BaseStyle = {
   chartLabelColor: marinerBlue,
 
   baseFontSize: 18,
-  smallFontSize: 14,
 
   baseSpacing: 20,
   smallSpacing: 10,
@@ -46,9 +45,8 @@ const BaseStyle = {
   navigationTitle: {
     fontWeight: '500',
   },
-  navigationButton: {
+  navigationLeftButton: {
     color: pictonBlue,
-    fontWeight: '500',
   },
 
   chartAxisStyles: {

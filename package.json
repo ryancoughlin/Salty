@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "rm:babelrc": "(find node_modules -type f -name .babelrc | grep -v /react-native/ | xargs rm) || true",
     "test": "jest"
   },
   "dependencies": {
@@ -14,7 +15,7 @@
     "react-native": "^0.42.0",
     "react-native-config": "^0.1.2",
     "react-native-geocoder": "^0.4.6",
-    "react-native-maps": "^0.14.0",
+    "react-native-maps": "^0.13.1",
     "react-native-router-flux": "^3.38.0",
     "react-native-splash-screen": "^2.0.0",
     "react-native-svg": "^5.1.5",
