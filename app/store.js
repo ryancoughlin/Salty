@@ -3,11 +3,11 @@ import { createStore, applyMiddleware } from 'redux'
 import { persistStore, autoRehydrate } from 'redux-persist'
 import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk'
-import rootReducer from './reducers'
+import AppReducer from './reducers'
 
 const logger = createLogger()
 const store = createStore(
-  rootReducer,
+  AppReducer,
   autoRehydrate(),
   applyMiddleware(logger, thunk),
 )

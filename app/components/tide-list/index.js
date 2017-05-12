@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import { ListView } from 'react-native'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
+import * as actions from '../../actions/station'
 import TideCell from './tide-cell'
 import TideSectionHeader from './tide-section-header'
+import CloseModalButton from '../buttons/close-modal-button'
 import BaseStyle from '../../base-styles'
 
-export default class extends Component {
+const TideTable = class extends Component {
   constructor(props) {
     super(props)
 
@@ -14,7 +19,7 @@ export default class extends Component {
     })
 
     this.state = {
-      dataSource: dataSource.cloneWithRowsAndSections(props.tides),
+      dataSource: dataSource.cloneWithRowsAndSections(this.props.current.tides.formatted),
     }
   }
 
@@ -37,3 +42,17 @@ export default class extends Component {
     )
   }
 }
+
+TideTable.navigationOptions = () => ({
+  headerLeft: <CloseModalButton />,
+})
+
+const mapStateToProps = ({ stations }) => ({
+  current: stations.current,
+})
+
+const mapDispatchToProps = dispatch => ({
+  ...bindActionCreators(actions, dispatch),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TideTable)

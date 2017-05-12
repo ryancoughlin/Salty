@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, ScrollView, ActivityIndicator, AppState, View, Text } from 'react-native'
+import { StyleSheet, ScrollView, ActivityIndicator, AppState, Button } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -11,7 +11,6 @@ import DetailPanel from './detail-panel'
 import SaveLocationButton from '../buttons/save-location-button'
 import RemoveLocationButton from '../buttons/remove-location-button'
 import { fetchLocation } from '../../lib/location'
-import BaseStyle from '../../base-styles'
 
 const StationDetail = class extends Component {
   constructor(props) {
@@ -67,9 +66,14 @@ const StationDetail = class extends Component {
           tides={tides.formatted}
           todaysTides={tides.todaysTides}
         />
+
         <WeatherRow weather={weather.currentWind} icon="wind" />
         <WeatherRow weather={weather.currentWeather} icon={weather.icon} />
-        <TodaysTides tideTable={tides.formatted} todaysTides={tides.todaysTides} />
+        <TodaysTides
+          tideTable={tides.formatted}
+          todaysTides={tides.todaysTides}
+          navigate={this.props.navigation.navigate}
+        />
         <DetailPanel wind={weather.wind} tideChart={tides.hourly} />
 
         {this.props.isSaved
@@ -94,6 +98,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+})
+
+StationDetail.navigationOptions = ({ navigation }) => ({
+  headerRight: <Button title="Locations" onPress={() => navigation.navigate('SavedLocations')} />,
 })
 
 const mapStateToProps = ({ stations }) => ({

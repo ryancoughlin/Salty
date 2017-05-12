@@ -5,9 +5,9 @@ import FullWidthButton from './full-width-button'
 
 export default class SaveButtonLocation extends Component {
   saveLocation() {
-    const { city, location } = this.props
+    const { city, location, saveLocation } = this.props
 
-    return this.props.saveLocation({
+    return saveLocation({
       location: {
         latitude: location.latitude,
         longitude: location.longitude,

@@ -3649,9 +3649,9 @@ react-native-geocoder@^0.4.6:
   version "0.4.8"
   resolved "https://registry.yarnpkg.com/react-native-geocoder/-/react-native-geocoder-0.4.8.tgz#4763ad0a45bd365061b80f52c06564fcc62658e1"
 
-react-native-maps@^0.13.0:
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.13.1.tgz#ed2a7e62f155a51f43c49742eba5bc313eaf2f1e"
+react-native-maps@^0.15.0:
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.15.0.tgz#f61720eb5ba59e39f2e1041783b489dbec98bb9c"
 
 react-native-splash-screen@^2.0.0:
   version "2.0.0"

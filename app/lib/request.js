@@ -7,10 +7,17 @@ export default function requestTideData(location) {
   const url = `${baseUrl}?latitude=${latitude}&longitude=${longitude}`
 
   return new Promise((resolve) => {
-    fetch(url).then(data => resolve(data.json())).catch(() => {
-      Alert.alert('No Internet Connection', 'We were uable fetch tide information.', [
+    fetch(url).then(handleErrors).then(data => resolve(data.json())).catch(() => {
+      Alert.alert('Cannot complete request', 'We were uable fetch tide information.', [
         { text: 'OK' },
       ])
     })
   })
+}
+
+function handleErrors(response) {
+  if (!response.ok) {
+    throw Error(response.statusText || reponse.status)
+  }
+  return response
 }

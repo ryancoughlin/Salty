@@ -16,7 +16,7 @@ export default class extends Component {
 
     return (
       <View style={styles.container}>
-        <IconHeader text='Wind Forecast' icon={windIcon}/>
+        <IconHeader text="Wind Forecast" icon={windIcon} />
         <WindChart wind={wind} />
       </View>
     )
@@ -25,6 +25,6 @@ export default class extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: BaseStyle.largeSpacing
+    marginTop: BaseStyle.largeSpacing,
   },
 })

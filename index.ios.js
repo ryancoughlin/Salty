@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { AppRegistry } from 'react-native'
 import { Provider } from 'react-redux'
-import { StackNavigator } from 'react-navigation'
-
 import store, { rehydrateStore } from './app/store'
-import StationDetail from './app/components/station-detail'
+import { AppNavigator } from './app/app-navigator'
 
 class Salty extends Component {
   constructor(props) {
@@ -24,21 +22,9 @@ class Salty extends Component {
 
     return (
       <Provider store={store}>
-        <StationDetail />
+        <AppNavigator />
       </Provider>
     )
   }
 }
-
-const SaltyApp = StackNavigator(
-  {
-    Salty: { screen: Salty },
-  },
-  {
-    style: {
-      backgroundColor: 'white',
-    },
-  },
-)
-
-AppRegistry.registerComponent('Salty', () => SaltyApp)
+AppRegistry.registerComponent('Salty', () => Salty)

@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 10,
     marginVertical: BaseStyle.baseSpacing,
-    paddingVertical: BaseStyle.smallSpacing,
+    paddingVertical: BaseStyle.smallSpacing - 3,
   },
 })
 

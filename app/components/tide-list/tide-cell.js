@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
-import {
-  View,
-  Text,
-  StyleSheet,
-} from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 
 import moment from 'moment'
 import _ from 'lodash'
@@ -21,16 +17,13 @@ export default class extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.leftContainer}>
-          <TideDirectionArrow
-            direction={tide.tide}
-            style={styles.tideArrow}
-          />
+          <TideDirectionArrow direction={tide.tide} style={styles.tideArrow} />
           <Text style={styles.tideType}>{_.upperFirst(tide.tide)}</Text>
           <Text style={styles.digitText}>{this.prettyTideTime}</Text>
         </View>
 
         <View style={styles.heightContainer}>
-          <Text style={styles.digitText}>{tide.height}&apos;</Text>
+          <Text style={styles.digitText}>{tide.height}'</Text>
         </View>
       </View>
     )

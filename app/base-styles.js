@@ -1,22 +1,23 @@
-import {
-  numericFontFamily,
-} from './fonts'
+import Colors from './styles/colors'
+import Navigation from './styles/navigation'
 
-const blackPearl = 'rgba(1, 13, 36, 1)'
-const fadedBlackPearl = 'rgba(1, 13, 36, 0.5)'
-const pictonBlue = 'rgba(82, 187, 255, 1)'
-const pastelOrange = 'rgba(255, 186, 73, 1)'
-const marinerBlue = 'rgba(57, 103, 153, 1)'
-const transparent = 'rgba(0, 0, 0, 0)'
+import { numericFontFamily } from './fonts'
 
 const BaseStyle = {
-  baseBackgroundColor: 'white',
-  darkBackgroundColor: blackPearl,
-  baseTextColor: blackPearl,
-  actionColor: pictonBlue,
-  subtleColor: fadedBlackPearl,
-  warningColor: pastelOrange,
-  chartLabelColor: marinerBlue,
+  ...Colors,
+  navigation: {
+    ...Navigation,
+  },
+  headerStyle: {
+    fontSize: 18,
+    color: Colors.baseTextColor,
+    fontWeight: '600',
+  },
+  largeHeaderText: {
+    fontSize: 28,
+    color: Colors.baseTextColor,
+    fontWeight: 'bold',
+  },
 
   baseFontSize: 18,
 
@@ -32,23 +33,6 @@ const BaseStyle = {
     lineHeight: 42,
     marginRight: 6,
   },
-  headerStyle: {
-    fontSize: 18,
-    color: blackPearl,
-    fontWeight: '600',
-  },
-
-  navigationBarHeight: 64,
-  navigationBar: {
-    backgroundColor: 'white',
-    borderBottomWidth: 0,
-  },
-  navigationTitle: {
-    fontWeight: '500',
-  },
-  navigationLeftButton: {
-    color: pictonBlue,
-  },
 
   chartAxisStyles: {
     axis: { stroke: 'transparent' },
@@ -56,11 +40,10 @@ const BaseStyle = {
       fontSize: 10,
       padding: 5,
       fontFamily: numericFontFamily,
-      fill: fadedBlackPearl,
+      fill: Colors.fadedBlackPearl,
     },
   },
 
-  transparent,
   numericFontFamily,
 }
 

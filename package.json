@@ -14,7 +14,7 @@
     "react-native": "0.44.0",
     "react-native-config": "^0.1.2",
     "react-native-geocoder": "^0.4.6",
-    "react-native-maps": "^0.13.0",
+    "react-native-maps": "^0.15.0",
     "react-native-splash-screen": "^2.0.0",
     "react-native-svg": "^4.4.1",
     "react-navigation": "^1.0.0-beta.9",

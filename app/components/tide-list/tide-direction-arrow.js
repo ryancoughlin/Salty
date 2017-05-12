@@ -6,7 +6,7 @@ import upArrow from '../../assets/images/high-tide-arrow.png'
 
 export default class extends Component {
   get tideDirectionArrow() {
-    var direction = 'high'
+    let direction = 'high'
 
     if (this.props.largeTideArrow) {
       direction = 'Incoming'
