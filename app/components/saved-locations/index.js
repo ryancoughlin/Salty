@@ -13,7 +13,8 @@ const SavedLocations = ({ saved }) => (
     <FlatList
       style={styles.listView}
       data={_.values(saved)}
-      renderItem={({ item, index }) => <SavedLocationItem key={index} {...item} />}
+      renderItem={({ item }) => <SavedLocationItem {...item} />}
+      keyExtractor={(item) => item.location.longitude}
     />
   </View>
 )

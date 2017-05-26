@@ -8,7 +8,7 @@ import * as actions from '../../actions/station'
 import modalClose from '../../assets/images/modal-close.png'
 
 const CloseModalButton = ({ closeModal }) => (
-  <TouchableOpacity onPress={() => closeModal()}>
+  <TouchableOpacity onPress={() => closeModal}>
     <Image source={modalClose} style={styles.closeIcon} />
   </TouchableOpacity>
 )

@@ -25,7 +25,15 @@ const StationDetail = class extends Component {
   }
 
   componentDidMount() {
-    this.findCurrentLocation()
+    const { params } = this.props.navigation.state
+
+    if (params && params.location) {
+      this.props.fetchTideData(params.location)
+      this.props.findCityName(params.location)
+    } else {
+      this.findCurrentLocation()
+    }
+
     AppState.addEventListener('change', this.handleAppStateChange)
   }
 

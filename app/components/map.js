@@ -4,8 +4,11 @@ import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
+import CloseModalButton from './buttons/close-modal-button'
 import * as actions from '../actions/station'
+import MapCallout from './map-callout'
 import mapStyle from '../lib/map-style'
+import stationMarker from '../assets/images/station-marker.png'
 
 const Map = class extends Component {
   componentDidMount() {
@@ -28,25 +31,31 @@ const Map = class extends Component {
         region={{
           latitude: location.latitude,
           longitude: location.longitude,
-          latitudeDelta: 0.315,
-          longitudeDelta: 0.321,
-          showPointsOfInterest: false,
-          showBuildings: false,
+          latitudeDelta: 0.200,
+          longitudeDelta: 0.200,
         }}
         customMapStyle={mapStyle}
       >
-        {stations.map(station => (
-          <MapView.Marker
-            coordinate={{
-              latitude: station.location[0],
-              longitude: station.location[1],
-            }}
-          />
+        {stations.map((station, index) => (
+          <MapView.Marker key={index} image={stationMarker} coordinate={station.location}>
+            <MapView.Callout
+              tooltip
+              onPress={() => {
+                this.props.navigation.navigate('StationDetail', { location: station.location })
+              }}
+            >
+              <MapCallout station={station} />
+            </MapView.Callout>
+          </MapView.Marker>
         ))}
       </MapView>
     )
   }
 }
+
+Map.navigationOptions = ({ navigation }) => ({
+  headerLeft: <CloseModalButton goBack={navigation.goBack('StationDetail')} />,
+})
 
 const styles = StyleSheet.create({
   container: {
