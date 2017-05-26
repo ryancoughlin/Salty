@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
-import {
-  StyleSheet,
-  View,
-  Text,
-} from 'react-native'
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 
 import BaseStyle from '../../base-styles'
 import TideDirectionArrow from '../tide-list/tide-direction-arrow'
@@ -20,33 +16,33 @@ export default class TidePhrase extends Component {
   }
 
   render() {
-    const { city, tides } = this.props
+    const { city, tides, navigate } = this.props
     const { tideDirection } = this.state
+
     return (
       <View style={styles.container}>
-        <TideDirectionArrow
-          direction={tideDirection}
-          style={styles.arrow}
-          largeTideArrow
-        />
+        <TideDirectionArrow direction={tideDirection} style={styles.arrow} largeTideArrow />
         <View style={styles.tidePhrase}>
           <View style={styles.tideDirectionRow}>
-            <Text style={[BaseStyle.tidePhraseStyle, styles.tideDirectionText]}>
+            <Text style={[BaseStyle.tidePhrase, styles.tideDirectionText]}>
               {tideDirection}
             </Text>
-            <Text style={BaseStyle.tidePhraseStyle}>Tide</Text>
+            <Text style={BaseStyle.tidePhrase}>Tide</Text>
           </View>
-          <Text
-            numberOfLines={1}
-            ellipsizeMode="tail"
-            style={[
-              BaseStyle.tidePhraseStyle,
-              styles.fadedPhraseText,
-              styles.cityText,
-            ]}
-          >
-            in {city}
-          </Text>
+          <View style={styles.tideLocationRow}>
+            <Text style={BaseStyle.tidePhrase}>
+              in
+            </Text>
+            <TouchableOpacity onPress={() => navigate('Map')}>
+              <Text
+                numberOfLines={1}
+                ellipsizeMode="tail"
+                style={[BaseStyle.tidePhrase, styles.cityText]}
+              >
+                {city}
+              </Text>
+            </TouchableOpacity>
+          </View>
           <RemainingTideTime tides={tides} />
         </View>
       </View>
@@ -62,17 +58,20 @@ const styles = StyleSheet.create({
   arrow: {
     marginTop: 10,
   },
-  tidePhrase: {
-    flex: 1,
-  },
   tideDirectionRow: {
     flexDirection: 'row',
   },
   tideDirectionText: {
     color: BaseStyle.baseTextColor,
   },
+  tideLocationRow: {
+    flex: 1,
+    flexDirection: 'row',
+  },
   cityText: {
     marginBottom: BaseStyle.tinySpacing,
-    paddingRight: BaseStyle.baseSpacing,
+    marginRight: BaseStyle.baseSpacing,
+    textDecorationLine: 'underline',
+    textDecorationColor: '#E5E7E9',
   },
 })

@@ -14,13 +14,13 @@ const SavedLocations = ({ saved }) => (
       style={styles.listView}
       data={_.values(saved)}
       renderItem={({ item }) => <SavedLocationItem {...item} />}
-      keyExtractor={(item) => item.location.longitude}
+      keyExtractor={item => item.location.longitude}
     />
   </View>
 )
 
 SavedLocations.navigationOptions = ({ navigation }) => ({
-  headerLeft: <CloseModalButton goBack={navigation.goBack('StationDetail')} />,
+  headerLeft: <CloseModalButton goBack={navigation.goBack('SavedLocations')} />,
 })
 
 const styles = StyleSheet.create({

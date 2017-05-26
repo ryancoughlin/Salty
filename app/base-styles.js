@@ -26,14 +26,18 @@ const BaseStyle = {
   baseSpacing: 20,
   largeSpacing: 40,
 
-  tidePhraseStyle: {
+  tidePhrase: {
     fontWeight: 'bold',
     color: '#E5E7E9',
     fontSize: 36,
     lineHeight: 42,
-    marginRight: 6,
+    marginRight: 4,
   },
-
+  navigationButton: {
+    fontSize: 16,
+    color: Colors.baseTextColor,
+    marginTop: -4,
+  },
   chartAxisStyles: {
     axis: { stroke: 'transparent' },
     tickLabels: {

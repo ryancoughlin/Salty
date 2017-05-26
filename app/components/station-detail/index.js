@@ -11,6 +11,7 @@ import TodaysTides from './todays-tides'
 import DetailPanel from './detail-panel'
 import SaveLocationButton from '../buttons/save-location-button'
 import RemoveLocationButton from '../buttons/remove-location-button'
+import NavigationBarItem from '../buttons/navigation-bar-item'
 import { fetchLocation } from '../../lib/location'
 
 const StationDetail = class extends Component {
@@ -62,6 +63,7 @@ const StationDetail = class extends Component {
 
   render() {
     const { city, tides, weather } = this.props.current
+    const { navigate } = this.props.navigation
 
     if (this.props.loading) {
       return <ActivityIndicator style={styles.loadingIndicator} size="large" />
@@ -74,6 +76,7 @@ const StationDetail = class extends Component {
           city={city}
           tides={tides.formatted}
           todaysTides={tides.todaysTides}
+          navigate={navigate}
         />
 
         <WeatherRow weather={weather.currentWind} icon="wind" />
@@ -81,7 +84,7 @@ const StationDetail = class extends Component {
         <TodaysTides
           tideTable={tides.formatted}
           todaysTides={tides.todaysTides}
-          navigate={this.props.navigation.navigate}
+          navigate={navigate}
         />
         <DetailPanel wind={weather.wind} tideChart={tides.hourly} />
 
@@ -110,8 +113,12 @@ const styles = StyleSheet.create({
 })
 
 StationDetail.navigationOptions = ({ navigation }) => ({
-  headerRight: <Button title="Locations" onPress={() => navigation.navigate('SavedLocations')} />,
-  headerLeft: <Button title="Map" onPress={() => navigation.navigate('Map')} />,
+  headerRight: (
+    <NavigationBarItem
+      title="My Locations"
+      navigate={() => navigation.navigate('SavedLocations')}
+    />
+  ),
 })
 
 const mapStateToProps = ({ stations }) => ({
