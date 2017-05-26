@@ -8,24 +8,25 @@ import {
   FINISHED_LOADING_TIDES,
   DELETE_LOCATION,
   FETCH_ALL_STATIONS,
+  ERROR_LOADING_TIDES,
 } from '../types'
 
 export function fetchTideData(location) {
   return (dispatch) => {
     dispatch({ type: START_LOADING_TIDES })
 
-    const result = request(
-      `/get-data?latitude=${location.latitude}&longitude=${location.longitude}`,
-    )
+    const { latitude, longitude } = location
+    const result = request(`/get-data?latitude=${latitude}&longitude=${longitude}`)
     result
       .then((json) => {
         dispatch({
           type: FETCH_TIDE_DATA,
           locationData: json,
         })
-      })
-      .finally(() => {
         dispatch({ type: FINISHED_LOADING_TIDES })
+      })
+      .catch((error) => {
+        dispatch({ type: ERROR_LOADING_TIDES })
       })
   }
 }
@@ -67,4 +68,8 @@ export function startLoadingTides() {
 
 export function finishedLoadingTides() {
   return { type: FINISHED_LOADING_TIDES, loading: false }
+}
+
+export function errorLoadingTides() {
+  return { type: ERROR_LOADING_TIDES, error: true }
 }

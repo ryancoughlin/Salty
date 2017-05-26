@@ -9,6 +9,7 @@ import TidePhrase from './tide-phrase'
 import WeatherRow from './weather-row'
 import TodaysTides from './todays-tides'
 import DetailPanel from './detail-panel'
+import NetworkError from '../network-error'
 import SaveLocationButton from '../buttons/save-location-button'
 import RemoveLocationButton from '../buttons/remove-location-button'
 import NavigationBarItem from '../buttons/navigation-bar-item'
@@ -62,23 +63,26 @@ const StationDetail = class extends Component {
   }
 
   render() {
+    const { loading, error, location } = this.props
     const { city, tides, weather } = this.props.current
     const { navigate } = this.props.navigation
 
-    if (this.props.loading) {
+    if (loading) {
       return <ActivityIndicator style={styles.loadingIndicator} size="large" />
+    }
+
+    if (error) {
+      return <NetworkError location={location} />
     }
 
     return (
       <ScrollView style={styles.container}>
         <TidePhrase
-          style={styles.tidePhrase}
           city={city}
           tides={tides.formatted}
           todaysTides={tides.todaysTides}
           navigate={navigate}
         />
-
         <WeatherRow weather={weather.currentWind} icon="wind" />
         <WeatherRow weather={weather.currentWeather} icon={weather.icon} />
         <TodaysTides
@@ -124,6 +128,7 @@ StationDetail.navigationOptions = ({ navigation }) => ({
 const mapStateToProps = ({ stations }) => ({
   current: stations.current,
   loading: stations.loading,
+  error: stations.error,
   saved: stations.saved,
   location: stations.location,
   isSaved: !!stations.saved[stations.current.city],

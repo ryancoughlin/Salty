@@ -7,13 +7,13 @@ import {
   FINISHED_LOADING_TIDES,
   DELETE_LOCATION,
   FETCH_ALL_STATIONS,
+  ERROR_LOADING_TIDES,
 } from '../types'
 
 const initialState = {
+  error: false,
   loading: true,
-  current: {
-    city: 'Loading...',
-  },
+  current: {},
   saved: {},
 }
 
@@ -60,6 +60,13 @@ export default function(state = initialState, action) {
       return {
         ...state,
         loading: false,
+        error: false,
+      }
+    case ERROR_LOADING_TIDES:
+      return {
+        ...state,
+        loading: false,
+        error: true,
       }
     case DELETE_LOCATION:
       return {
