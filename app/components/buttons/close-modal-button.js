@@ -6,8 +6,8 @@ import { bindActionCreators } from 'redux'
 import * as actions from '../../actions/station'
 import modalClose from '../../assets/images/modal-close.png'
 
-const CloseModalButton = ({ navigation }) => (
-  <TouchableOpacity onPress={() => navigation.goBack(null)}>
+const CloseModalButton = ({ goBack }) => (
+  <TouchableOpacity onPress={goBack}>
     <Image source={modalClose} style={styles.closeIcon} />
   </TouchableOpacity>
 )
