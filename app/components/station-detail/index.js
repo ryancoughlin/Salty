@@ -29,10 +29,10 @@ const StationDetail = class extends Component {
     const { params } = this.props.navigation.state
 
     if (params && params.location) {
-      this.props.fetchWeather(location)
-      this.props.fetchTides(location)
-      this.props.fetchTideChart(location)
-      this.props.findCityName(location)
+      this.props.fetchWeather(params.location)
+      this.props.fetchTides(params.location)
+      this.props.fetchTideChart(params.location)
+      this.props.findCityName(params.location)
     } else {
       this.findCurrentLocation()
     }
