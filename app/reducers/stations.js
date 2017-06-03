@@ -24,9 +24,7 @@ export default function(state = initialState, action) {
         ...state,
         current: {
           ...state.current,
-          tides: {
-            ...action.tides,
-          },
+          ...action.tides,
         },
       }
     case FETCH_TIDE_CHART:
@@ -34,10 +32,8 @@ export default function(state = initialState, action) {
         ...state,
         current: {
           ...state.current,
-          tides: {
-            ...state.current.tides,
-            chart: action.tideChart,
-          },
+          ...state.current.tides,
+          chart: action.tideChart,
         },
       }
     case FETCH_WEATHER:

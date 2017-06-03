@@ -66,7 +66,7 @@ const StationDetail = class extends Component {
   }
 
   render() {
-    const { city, tides, weather } = this.props.current
+    const { city, today, tables, chart, weather } = this.props.current
     const { navigate } = this.props.navigation
 
     if (this.props.loading) {
@@ -78,15 +78,15 @@ const StationDetail = class extends Component {
         <TidePhrase
           style={styles.tidePhrase}
           city={city}
-          tides={tides.tables}
-          todaysTides={tides.todaysTides}
+          tides={tables}
+          todaysTides={today}
           navigate={navigate}
         />
 
         <WeatherRow weather={weather.currentWind} icon="wind" />
         <WeatherRow weather={weather.currentWeather} icon={weather.icon} />
-        <TodaysTides tideTable={tides.tables} todaysTides={tides.today} navigate={navigate} />
-        <DetailPanel wind={weather.wind} tideChart={tides.chart} />
+        <TodaysTides tideTable={tables} todaysTides={today} navigate={navigate} />
+        <DetailPanel wind={weather.wind} tideChart={chart} />
 
         {this.props.isSaved
           ? <RemoveLocationButton city={city} deleteLocation={this.props.deleteLocation} />
