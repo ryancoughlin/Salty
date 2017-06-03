@@ -59,7 +59,7 @@ const Map = class extends Component {
 }
 
 Map.navigationOptions = ({ navigation }) => ({
-  headerLeft: <CloseModalButton goBack={navigation.goBack('StationDetail')} />,
+  headerLeft: <CloseModalButton back={navigation.goBack} />,
 })
 
 const styles = StyleSheet.create({

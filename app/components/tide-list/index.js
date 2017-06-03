@@ -43,8 +43,8 @@ const TideTable = class extends Component {
   }
 }
 
-TideTable.navigationOptions = () => ({
-  headerLeft: <CloseModalButton />,
+TideTable.navigationOptions = ({ navigation }) => ({
+  headerLeft: <CloseModalButton back={navigation.goBack} />,
 })
 
 const mapStateToProps = ({ stations }) => ({
