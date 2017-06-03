@@ -2,7 +2,9 @@ import request from '../lib/request'
 import { geoCodeLocation } from '../lib/location'
 import {
   SAVE_LOCATION,
-  FETCH_TIDE_DATA,
+  FETCH_TIDES,
+  FETCH_TIDE_CHART,
+  FETCH_WEATHER,
   FIND_CITY_NAME,
   START_LOADING_TIDES,
   FINISHED_LOADING_TIDES,
@@ -10,18 +12,54 @@ import {
   FETCH_ALL_STATIONS,
 } from '../types'
 
-export function fetchTideData(location) {
+export function fetchTides(location) {
+  return (dispatch) => {
+    dispatch({ type: START_LOADING_TIDES })
+
+    const result = request(`/tides?latitude=${location.latitude}&longitude=${location.longitude}`)
+    result
+      .then((json) => {
+        dispatch({
+          type: FETCH_TIDES,
+          tides: json,
+        })
+      })
+      .finally(() => {
+        dispatch({ type: FINISHED_LOADING_TIDES })
+      })
+  }
+}
+
+export function fetchTideChart(location) {
   return (dispatch) => {
     dispatch({ type: START_LOADING_TIDES })
 
     const result = request(
-      `/get-data?latitude=${location.latitude}&longitude=${location.longitude}`,
+      `/tide-chart?latitude=${location.latitude}&longitude=${location.longitude}`,
     )
     result
       .then((json) => {
         dispatch({
-          type: FETCH_TIDE_DATA,
-          locationData: json,
+          type: FETCH_TIDE_CHART,
+          tideChart: json,
+        })
+      })
+      .finally(() => {
+        dispatch({ type: FINISHED_LOADING_TIDES })
+      })
+  }
+}
+
+export function fetchWeather(location) {
+  return (dispatch) => {
+    dispatch({ type: START_LOADING_TIDES })
+
+    const result = request(`/weather?latitude=${location.latitude}&longitude=${location.longitude}`)
+    result
+      .then((json) => {
+        dispatch({
+          type: FETCH_WEATHER,
+          weather: json,
         })
       })
       .finally(() => {
@@ -44,7 +82,7 @@ export function findCityName(location) {
 
 export function fetchAllStations() {
   return (dispatch) => {
-    request('/get-stations').then((stations) => {
+    request('/stations').then((stations) => {
       dispatch({
         type: FETCH_ALL_STATIONS,
         stations,

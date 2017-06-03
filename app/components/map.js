@@ -37,7 +37,7 @@ const Map = class extends Component {
         customMapStyle={mapStyle}
       >
         {stations.map((station, index) => (
-          <MapView.Marker key={index} image={stationMarker} coordinate={station.location}>
+          <MapView.Marker key={index} coordinate={station.location}>
             <MapView.Callout
               tooltip
               onPress={() => {

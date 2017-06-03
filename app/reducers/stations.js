@@ -1,7 +1,9 @@
 import _ from 'lodash'
 import {
   SAVE_LOCATION,
-  FETCH_TIDE_DATA,
+  FETCH_TIDES,
+  FETCH_TIDE_CHART,
+  FETCH_WEATHER,
   FIND_CITY_NAME,
   START_LOADING_TIDES,
   FINISHED_LOADING_TIDES,
@@ -11,20 +13,35 @@ import {
 
 const initialState = {
   loading: true,
-  current: {
-    city: 'Loading...',
-  },
+  current: {},
   saved: {},
 }
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case FETCH_TIDE_DATA:
+    case FETCH_TIDES:
       return {
         ...state,
         current: {
           ...state.current,
-          ...action.locationData,
+          ...action.tides,
+        },
+      }
+    case FETCH_TIDE_CHART:
+      return {
+        ...state,
+        current: {
+          ...state.current,
+          ...state.current.tides,
+          chart: action.tideChart,
+        },
+      }
+    case FETCH_WEATHER:
+      return {
+        ...state,
+        current: {
+          ...state.current,
+          weather: action.weather,
         },
       }
     case FIND_CITY_NAME:

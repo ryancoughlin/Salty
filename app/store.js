@@ -6,19 +6,17 @@ import thunk from 'redux-thunk'
 import AppReducer from './reducers'
 
 const logger = createLogger()
-const store = createStore(
-  AppReducer,
-  autoRehydrate(),
-  applyMiddleware(logger, thunk),
-)
+const store = createStore(AppReducer, autoRehydrate(), applyMiddleware(logger, thunk))
 
 export function rehydrateStore(rehydrateCallback) {
-  persistStore(store, {
-    storage: AsyncStorage,
-    whitelist: [
-      'stations',
-    ],
-  }, rehydrateCallback)
+  persistStore(
+    store,
+    {
+      storage: AsyncStorage,
+      whitelist: ['stations'],
+    },
+    rehydrateCallback,
+  )
 }
 
 export default store

@@ -29,7 +29,9 @@ const StationDetail = class extends Component {
     const { params } = this.props.navigation.state
 
     if (params && params.location) {
-      this.props.fetchTideData(params.location)
+      this.props.fetchWeather(params.location)
+      this.props.fetchTides(params.location)
+      this.props.fetchTideChart(params.location)
       this.props.findCityName(params.location)
     } else {
       this.findCurrentLocation()
@@ -56,17 +58,19 @@ const StationDetail = class extends Component {
 
   findCurrentLocation() {
     fetchLocation().then((location) => {
-      this.props.fetchTideData(location)
+      this.props.fetchWeather(location)
+      this.props.fetchTides(location)
+      this.props.fetchTideChart(location)
       this.props.findCityName(location)
     })
   }
 
   render() {
-    const { city, tides, weather } = this.props.current
+    const { city, today, tables, chart, weather } = this.props.current
     const { navigate } = this.props.navigation
 
     if (this.props.loading) {
-      return <ActivityIndicator style={styles.loadingIndicator} size="large" />
+      return <ActivityIndicator />
     }
 
     return (
@@ -74,19 +78,15 @@ const StationDetail = class extends Component {
         <TidePhrase
           style={styles.tidePhrase}
           city={city}
-          tides={tides.formatted}
-          todaysTides={tides.todaysTides}
+          tides={tables}
+          todaysTides={today}
           navigate={navigate}
         />
 
         <WeatherRow weather={weather.currentWind} icon="wind" />
         <WeatherRow weather={weather.currentWeather} icon={weather.icon} />
-        <TodaysTides
-          tideTable={tides.formatted}
-          todaysTides={tides.todaysTides}
-          navigate={navigate}
-        />
-        <DetailPanel wind={weather.wind} tideChart={tides.hourly} />
+        <TodaysTides tideTable={tables} todaysTides={today} navigate={navigate} />
+        <DetailPanel wind={weather.wind} tideChart={chart} />
 
         {this.props.isSaved
           ? <RemoveLocationButton city={city} deleteLocation={this.props.deleteLocation} />
