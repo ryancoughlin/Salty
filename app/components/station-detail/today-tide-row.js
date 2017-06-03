@@ -15,7 +15,10 @@ export default class NextTideRow extends Component {
   }
 
   get pastTideStyle() {
-    if (this.props.tide.pastTide) {
+    const time = this.props.tide.time
+    const now = moment()
+
+    if (moment.utc(time).local().diff(now, 'minutes') < 0) {
       return styles.pastTide
     }
   }
