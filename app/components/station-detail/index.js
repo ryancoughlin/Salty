@@ -58,10 +58,10 @@ const StationDetail = class extends Component {
 
   findCurrentLocation() {
     fetchLocation().then((location) => {
+      this.props.findCityName(location)
       this.props.fetchWeather(location)
       this.props.fetchTides(location)
       this.props.fetchTideChart(location)
-      this.props.findCityName(location)
     })
   }
 
@@ -108,6 +108,7 @@ const styles = StyleSheet.create({
   loadingIndicator: {
     flex: 1,
     alignItems: 'center',
+    backgroundColor: 'white',
     justifyContent: 'center',
   },
 })
