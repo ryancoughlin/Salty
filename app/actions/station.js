@@ -32,39 +32,27 @@ export function fetchTides(location) {
 
 export function fetchTideChart(location) {
   return (dispatch) => {
-    dispatch({ type: START_LOADING_TIDES })
-
     const result = request(
       `/tide-chart?latitude=${location.latitude}&longitude=${location.longitude}`,
     )
-    result
-      .then((json) => {
-        dispatch({
-          type: FETCH_TIDE_CHART,
-          tideChart: json,
-        })
+    result.then((json) => {
+      dispatch({
+        type: FETCH_TIDE_CHART,
+        tideChart: json,
       })
-      .finally(() => {
-        dispatch({ type: FINISHED_LOADING_TIDES })
-      })
+    })
   }
 }
 
 export function fetchWeather(location) {
   return (dispatch) => {
-    dispatch({ type: START_LOADING_TIDES })
-
     const result = request(`/weather?latitude=${location.latitude}&longitude=${location.longitude}`)
-    result
-      .then((json) => {
-        dispatch({
-          type: FETCH_WEATHER,
-          weather: json,
-        })
+    result.then((json) => {
+      dispatch({
+        type: FETCH_WEATHER,
+        weather: json,
       })
-      .finally(() => {
-        dispatch({ type: FINISHED_LOADING_TIDES })
-      })
+    })
   }
 }
 
