@@ -29,8 +29,10 @@ const StationDetail = class extends Component {
     const { params } = this.props.navigation.state
 
     if (params && params.location) {
-      this.props.fetchTides(params.location)
-      this.props.findCityName(params.location)
+      this.props.fetchWeather(location)
+      this.props.fetchTides(location)
+      this.props.fetchTideChart(location)
+      this.props.findCityName(location)
     } else {
       this.findCurrentLocation()
     }
@@ -66,6 +68,8 @@ const StationDetail = class extends Component {
   render() {
     const { city, tides, weather } = this.props.current
     const { navigate } = this.props.navigation
+
+    console.log(this.props.current.tides.today)
 
     if (this.props.loading) {
       return <ActivityIndicator style={styles.loadingIndicator} size="large" />

@@ -7,7 +7,7 @@ import ViewTideListButton from './view-tide-list-button'
 import TodayTideRow from './today-tide-row'
 import tideIcon from '../../assets/images/tide.png'
 
-const FutureTides = ({ tideTable, todaysTides, navigate }) => (
+const TodaysTides = ({ tideTable, todaysTides, navigate }) => (
   <View style={styles.container}>
     <IconHeader
       text="Today's Tides"
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default FutureTides
+export default TodaysTides
