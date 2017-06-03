@@ -19,7 +19,7 @@ const TideTable = class extends Component {
     })
 
     this.state = {
-      dataSource: dataSource.cloneWithRowsAndSections(this.props.current.tides.formatted),
+      dataSource: dataSource.cloneWithRowsAndSections(this.props.current.tides.tables),
     }
   }
 

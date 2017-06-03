@@ -82,7 +82,7 @@ export function findCityName(location) {
 
 export function fetchAllStations() {
   return (dispatch) => {
-    request('/get-stations').then((stations) => {
+    request('/stations').then((stations) => {
       dispatch({
         type: FETCH_ALL_STATIONS,
         stations,

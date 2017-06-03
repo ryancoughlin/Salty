@@ -13,9 +13,7 @@ import {
 
 const initialState = {
   loading: true,
-  current: {
-    city: 'Loading...',
-  },
+  current: {},
   saved: {},
 }
 
