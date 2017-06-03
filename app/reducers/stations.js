@@ -24,7 +24,9 @@ export default function(state = initialState, action) {
         ...state,
         current: {
           ...state.current,
-          ...action.tides,
+          tides: {
+            ...action.tides,
+          },
         },
       }
     case FETCH_TIDE_CHART:
