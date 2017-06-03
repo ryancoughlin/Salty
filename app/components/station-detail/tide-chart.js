@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, Text } from 'react-native'
+import { ScrollView, ActivityIndicator } from 'react-native'
 import { VictoryLine, VictoryChart, VictoryScatter, VictoryAxis } from 'victory-native'
 import _ from 'lodash'
 
@@ -15,9 +15,8 @@ export default class TideChart extends Component {
   }
 
   render() {
-    console.log(this.props.tides)
     if (!this.props.tides) {
-      return <Text>Loading...</Text>
+      return <ActivityIndicator style={styles.loadingIndicator} size="large" />
     }
 
     return (

@@ -69,10 +69,8 @@ const StationDetail = class extends Component {
     const { city, tides, weather } = this.props.current
     const { navigate } = this.props.navigation
 
-    console.log(this.props.current.tides.today)
-
     if (this.props.loading) {
-      return <ActivityIndicator style={styles.loadingIndicator} size="large" />
+      return <ActivityIndicator />
     }
 
     return (
