@@ -70,7 +70,7 @@ const StationDetail = class extends Component {
     const { navigate } = this.props.navigation
 
     if (this.props.loading) {
-      return <ActivityIndicator />
+      return <ActivityIndicator style={styles.loadingIndicator} size="large" />
     }
 
     return (
