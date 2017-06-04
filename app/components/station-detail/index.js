@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { StyleSheet, ScrollView, ActivityIndicator, AppState, Button } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import SplashScreen from 'react-native-splash-screen'
 
 import * as actions from '../../actions/station'
 import TidePhrase from './tide-phrase'
