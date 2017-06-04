@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { AppRegistry } from 'react-native'
 import { Provider } from 'react-redux'
+import SplashScreen from 'react-native-splash-screen'
+
 import store, { rehydrateStore } from './app/store'
 import { AppNavigator } from './app/app-navigator'
 
@@ -14,6 +16,7 @@ class Salty extends Component {
   }
 
   componentDidMount() {
+    SplashScreen.hide()
     rehydrateStore(() => this.setState({ shouldDisplay: true }))
   }
 
