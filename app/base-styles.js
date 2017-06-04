@@ -14,7 +14,7 @@ const BaseStyle = {
     fontWeight: '600',
   },
   largeHeaderText: {
-    fontSize: 28,
+    fontSize: 26,
     color: Colors.baseTextColor,
     fontWeight: 'bold',
   },
@@ -28,9 +28,9 @@ const BaseStyle = {
 
   tidePhrase: {
     fontWeight: 'bold',
-    color: '#E5E7E9',
-    fontSize: 36,
-    lineHeight: 42,
+    color: Colors.subtleColor,
+    fontSize: 34,
+    lineHeight: 40,
     marginRight: 4,
   },
   navigationButton: {

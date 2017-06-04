@@ -4,13 +4,14 @@ const pictonBlue = 'rgba(82, 187, 255, 1)'
 const pastelOrange = 'rgba(255, 186, 73, 1)'
 const marinerBlue = 'rgba(57, 103, 153, 1)'
 const transparent = 'rgba(0, 0, 0, 0)'
+const hitGray = 'rgba(163, 174, 184, 1)'
 
 export default {
   baseBackgroundColor: 'white',
   darkBackgroundColor: blackPearl,
   baseTextColor: blackPearl,
   actionColor: pictonBlue,
-  subtleColor: fadedBlackPearl,
+  subtleColor: hitGray,
   warningColor: pastelOrange,
   chartLabelColor: marinerBlue,
   transparent,

@@ -72,6 +72,6 @@ const styles = StyleSheet.create({
     marginBottom: BaseStyle.tinySpacing,
     marginRight: BaseStyle.baseSpacing,
     textDecorationLine: 'underline',
-    textDecorationColor: '#E5E7E9',
+    textDecorationColor: BaseStyle.subtleColor,
   },
 })
