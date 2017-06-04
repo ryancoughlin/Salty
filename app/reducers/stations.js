@@ -9,9 +9,12 @@ import {
   FINISHED_LOADING_TIDES,
   DELETE_LOCATION,
   FETCH_ALL_STATIONS,
+  NOT_NEAR_STATION,
+  NEAR_STATION,
 } from '../types'
 
 const initialState = {
+  stationsNearby: true,
   loading: true,
   current: {},
   saved: {},
@@ -82,6 +85,16 @@ export default function(state = initialState, action) {
       return {
         ...state,
         saved: _.omit(state.saved, action.city),
+      }
+    case NOT_NEAR_STATION:
+      return {
+        ...state,
+        stationsNearby: false,
+      }
+    case NEAR_STATION:
+      return {
+        ...state,
+        stationsNearby: true,
       }
     default:
       return state

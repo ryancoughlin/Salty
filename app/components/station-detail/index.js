@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import * as actions from '../../actions/station'
+import NoNearbyStations from '../no-nearby-stations'
 import TidePhrase from './tide-phrase'
 import WeatherRow from './weather-row'
 import TodaysTides from './todays-tides'
@@ -16,12 +17,7 @@ import { fetchLocation } from '../../lib/location'
 const StationDetail = class extends Component {
   constructor(props) {
     super(props)
-
     this.handleAppStateChange = this.handleAppStateChange.bind(this)
-
-    this.state = {
-      previousAppState: null,
-    }
   }
 
   componentDidMount() {
@@ -44,13 +40,7 @@ const StationDetail = class extends Component {
   }
 
   handleAppStateChange = (appState) => {
-    this.setState({ previousAppState: appState })
-
-    if (appState === 'unknown') {
-      return
-    }
-
-    if (appState === 'active' && this.state.previousState !== 'active') {
+    if (appState === 'active') {
       this.findCurrentLocation()
     }
   }
@@ -65,11 +55,22 @@ const StationDetail = class extends Component {
   }
 
   render() {
+    const {
+      navigation,
+      loading,
+      stationsNearby,
+      saveLocation,
+      deleteLocation,
+      location,
+    } = this.props
     const { city, today, tables, chart, weather } = this.props.current
-    const { navigate } = this.props.navigation
 
-    if (this.props.loading) {
+    if (loading) {
       return <ActivityIndicator style={styles.loadingIndicator} size="large" />
+    }
+
+    if (!stationsNearby) {
+      return <NoNearbyStations city={city} navigation={navigation} />
     }
 
     return (
@@ -79,7 +80,7 @@ const StationDetail = class extends Component {
           city={city}
           tides={tables}
           todaysTides={today}
-          navigate={navigate}
+          navigate={navigation.navigate}
         />
 
         <WeatherRow weather={weather.currentWind} icon="wind" />
@@ -88,12 +89,8 @@ const StationDetail = class extends Component {
         <DetailPanel wind={weather.wind} tideChart={chart} />
 
         {this.props.isSaved
-          ? <RemoveLocationButton city={city} deleteLocation={this.props.deleteLocation} />
-          : <SaveLocationButton
-            saveLocation={this.props.saveLocation}
-            location={this.props.location}
-            city={city}
-          />}
+          ? <RemoveLocationButton city={city} deleteLocation={deleteLocation} />
+          : <SaveLocationButton saveLocation={saveLocation} location={location} city={city} />}
       </ScrollView>
     )
   }
@@ -123,6 +120,7 @@ StationDetail.navigationOptions = ({ navigation }) => ({
 
 const mapStateToProps = ({ stations }) => ({
   current: stations.current,
+  stationsNearby: stations.stationsNearby,
   loading: stations.loading,
   saved: stations.saved,
   location: stations.location,
