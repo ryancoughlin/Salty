@@ -74,13 +74,7 @@ const StationDetail = class extends Component {
 
     return (
       <ScrollView style={styles.container}>
-        <TidePhrase
-          style={styles.tidePhrase}
-          city={city}
-          tides={tables}
-          todaysTides={today}
-          navigate={navigate}
-        />
+        <TidePhrase style={styles.tidePhrase} city={city} tides={tables} navigate={navigate} />
 
         <WeatherRow weather={weather.currentWind} icon="wind" />
         <WeatherRow weather={weather.currentWeather} icon={weather.icon} />

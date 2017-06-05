@@ -1,13 +1,12 @@
 import _ from 'lodash'
 import moment from 'moment'
 
-export default function findTideDirection(todaysTides) {
-  const now = moment()
-  const isPastTide = tide => moment.utc(tide.time).local().diff(now, 'minutes') < 0
-  const futureTides = _.filter(todaysTides, tide => !isPastTide(tide))
-  const nextTide = futureTides[0].tide
+import findNextTide from './find-next-tide'
 
-  if (nextTide === 'high' || futureTides.length === 0) {
+export default function findTideDirection(tides) {
+  const nextTide = findNextTide(tides)
+
+  if (nextTide.tide === 'high') {
     return _.upperFirst('incoming')
   } else {
     return _.upperFirst('outgoing')

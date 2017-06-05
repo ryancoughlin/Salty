@@ -11,7 +11,7 @@ export default class TidePhrase extends Component {
     super(props)
 
     this.state = {
-      tideDirection: findTideDirection(props.todaysTides),
+      tideDirection: findTideDirection(props.tides),
     }
   }
 
