@@ -12,7 +12,7 @@ export default class extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.date}>{this.formattedDate}</Text>
+        <Text style={BaseStyle.headerStyle}>{this.formattedDate}</Text>
       </View>
     )
   }
@@ -23,13 +23,8 @@ const styles = StyleSheet.create({
     backgroundColor: BaseStyle.baseBackgroundColor,
     flexDirection: 'row',
     height: 70,
-    paddingHorizontal: 20,
+    paddingHorizontal: BaseStyle.baseSpacing,
+    paddingBottom: 6,
     alignItems: 'flex-end',
-  },
-  date: {
-    color: BaseStyle.baseTextColor,
-    fontSize: 18,
-    fontWeight: '600',
-    marginBottom: 8,
   },
 })

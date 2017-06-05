@@ -21,10 +21,7 @@ export default class extends Component {
           <Text style={styles.tideType}>{_.upperFirst(tide.tide)}</Text>
           <Text style={styles.digitText}>{this.prettyTideTime}</Text>
         </View>
-
-        <View style={styles.heightContainer}>
-          <Text style={styles.digitText}>{tide.height}'</Text>
-        </View>
+        <Text style={styles.digitText}>{tide.height}'</Text>
       </View>
     )
   }
@@ -35,10 +32,10 @@ const styles = StyleSheet.create({
     backgroundColor: BaseStyle.baseBackgroundColor,
     flexDirection: 'row',
     flex: 1,
-    height: 40,
+    height: 36,
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingRight: 20,
+    paddingRight: BaseStyle.baseSpacing,
   },
   leftContainer: {
     flex: 1,
