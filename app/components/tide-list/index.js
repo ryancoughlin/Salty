@@ -34,7 +34,6 @@ const TideTable = class extends Component {
   render() {
     return (
       <ListView
-        style={{ marginTop: BaseStyle.navigationBarHeight }}
         dataSource={this.state.dataSource}
         renderRow={this.renderRow.bind(this)}
         renderSectionHeader={this.renderSectionHeader.bind(this)}
