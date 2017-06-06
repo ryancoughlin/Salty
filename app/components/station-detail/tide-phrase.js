@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, TouchableOpacity, Dimensions } from 'react-native'
 
 import BaseStyle from '../../base-styles'
 import TideDirectionArrow from '../tide-list/tide-direction-arrow'
@@ -23,13 +23,13 @@ export default class TidePhrase extends Component {
       <View style={styles.container}>
         <TideDirectionArrow direction={tideDirection} style={styles.arrow} largeTideArrow />
         <View style={styles.tidePhrase}>
-          <View style={styles.tideDirectionRow}>
+          <View style={styles.phraseRow}>
             <Text style={[BaseStyle.tidePhrase, styles.tideDirectionText]}>
               {tideDirection}
             </Text>
             <Text style={BaseStyle.tidePhrase}>Tide</Text>
           </View>
-          <View style={styles.tideLocationRow}>
+          <View style={styles.phraseRow}>
             <Text style={BaseStyle.tidePhrase}>
               in
             </Text>
@@ -49,7 +49,7 @@ export default class TidePhrase extends Component {
     )
   }
 }
-
+const { width } = Dimensions.get('window')
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
@@ -58,19 +58,15 @@ const styles = StyleSheet.create({
   arrow: {
     marginTop: 10,
   },
-  tideDirectionRow: {
+  phraseRow: {
     flexDirection: 'row',
   },
   tideDirectionText: {
     color: BaseStyle.baseTextColor,
   },
-  tideLocationRow: {
-    flex: 1,
-    flexDirection: 'row',
-  },
   cityText: {
+    width: width - 100,
     marginBottom: BaseStyle.tinySpacing,
-    marginRight: BaseStyle.baseSpacing,
     textDecorationLine: 'underline',
     textDecorationColor: BaseStyle.subtleColor,
   },
