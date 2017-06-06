@@ -19,7 +19,7 @@ const TideTable = class extends Component {
     })
 
     this.state = {
-      dataSource: dataSource.cloneWithRowsAndSections(this.props.current.tides.formatted),
+      dataSource: dataSource.cloneWithRowsAndSections(this.props.current.tables),
     }
   }
 
@@ -43,8 +43,8 @@ const TideTable = class extends Component {
   }
 }
 
-TideTable.navigationOptions = () => ({
-  headerLeft: <CloseModalButton />,
+TideTable.navigationOptions = ({ navigation }) => ({
+  headerLeft: <CloseModalButton back={navigation.goBack} />,
 })
 
 const mapStateToProps = ({ stations }) => ({

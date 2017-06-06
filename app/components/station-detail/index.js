@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { StyleSheet, ScrollView, ActivityIndicator, AppState, Button } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import SplashScreen from 'react-native-splash-screen'
 
 import * as actions from '../../actions/station'
+import NoNearbyStations from '../no-nearby-stations'
 import TidePhrase from './tide-phrase'
 import WeatherRow from './weather-row'
 import TodaysTides from './todays-tides'
@@ -17,19 +17,16 @@ import { fetchLocation } from '../../lib/location'
 const StationDetail = class extends Component {
   constructor(props) {
     super(props)
-
     this.handleAppStateChange = this.handleAppStateChange.bind(this)
-
-    this.state = {
-      previousAppState: null,
-    }
   }
 
   componentDidMount() {
     const { params } = this.props.navigation.state
 
     if (params && params.location) {
-      this.props.fetchTideData(params.location)
+      this.props.fetchWeather(params.location)
+      this.props.fetchTides(params.location)
+      this.props.fetchTideChart(params.location)
       this.props.findCityName(params.location)
     } else {
       this.findCurrentLocation()
@@ -43,30 +40,37 @@ const StationDetail = class extends Component {
   }
 
   handleAppStateChange = (appState) => {
-    this.setState({ previousAppState: appState })
-
-    if (appState === 'unknown') {
-      return
-    }
-
-    if (appState === 'active' && this.state.previousState !== 'active') {
+    if (appState === 'active') {
       this.findCurrentLocation()
     }
   }
 
   findCurrentLocation() {
     fetchLocation().then((location) => {
-      this.props.fetchTideData(location)
       this.props.findCityName(location)
+      this.props.fetchWeather(location)
+      this.props.fetchTides(location)
+      this.props.fetchTideChart(location)
     })
   }
 
   render() {
-    const { city, tides, weather } = this.props.current
-    const { navigate } = this.props.navigation
+    const {
+      navigation,
+      loading,
+      stationsNearby,
+      saveLocation,
+      deleteLocation,
+      location,
+    } = this.props
+    const { city, today, tables, chart, weather } = this.props.current
 
-    if (this.props.loading) {
+    if (loading) {
       return <ActivityIndicator style={styles.loadingIndicator} size="large" />
+    }
+
+    if (!stationsNearby) {
+      return <NoNearbyStations city={city} navigation={navigation} />
     }
 
     return (
@@ -74,27 +78,19 @@ const StationDetail = class extends Component {
         <TidePhrase
           style={styles.tidePhrase}
           city={city}
-          tides={tides.formatted}
-          todaysTides={tides.todaysTides}
-          navigate={navigate}
+          tides={tables}
+          todaysTides={today}
+          navigate={navigation.navigate}
         />
 
         <WeatherRow weather={weather.currentWind} icon="wind" />
         <WeatherRow weather={weather.currentWeather} icon={weather.icon} />
-        <TodaysTides
-          tideTable={tides.formatted}
-          todaysTides={tides.todaysTides}
-          navigate={navigate}
-        />
-        <DetailPanel wind={weather.wind} tideChart={tides.hourly} />
+        <TodaysTides tideTable={tables} todaysTides={today} navigate={navigate} />
+        <DetailPanel wind={weather.wind} tideChart={chart} />
 
         {this.props.isSaved
-          ? <RemoveLocationButton city={city} deleteLocation={this.props.deleteLocation} />
-          : <SaveLocationButton
-            saveLocation={this.props.saveLocation}
-            location={this.props.location}
-            city={city}
-          />}
+          ? <RemoveLocationButton city={city} deleteLocation={deleteLocation} />
+          : <SaveLocationButton saveLocation={saveLocation} location={location} city={city} />}
       </ScrollView>
     )
   }
@@ -108,6 +104,7 @@ const styles = StyleSheet.create({
   loadingIndicator: {
     flex: 1,
     alignItems: 'center',
+    backgroundColor: 'white',
     justifyContent: 'center',
   },
 })
@@ -123,6 +120,7 @@ StationDetail.navigationOptions = ({ navigation }) => ({
 
 const mapStateToProps = ({ stations }) => ({
   current: stations.current,
+  stationsNearby: stations.stationsNearby,
   loading: stations.loading,
   saved: stations.saved,
   location: stations.location,

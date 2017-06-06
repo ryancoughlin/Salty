@@ -20,7 +20,7 @@ const SavedLocations = ({ saved }) => (
 )
 
 SavedLocations.navigationOptions = ({ navigation }) => ({
-  headerLeft: <CloseModalButton goBack={navigation.goBack('SavedLocations')} />,
+  headerLeft: <CloseModalButton back={navigation.goBack} />,
 })
 
 const styles = StyleSheet.create({

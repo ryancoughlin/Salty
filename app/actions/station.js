@@ -1,32 +1,71 @@
+import _ from 'lodash'
+
 import request from '../lib/request'
 import { geoCodeLocation } from '../lib/location'
 import {
   SAVE_LOCATION,
-  FETCH_TIDE_DATA,
+  FETCH_TIDES,
+  FETCH_TIDE_CHART,
+  FETCH_WEATHER,
   FIND_CITY_NAME,
   START_LOADING_TIDES,
   FINISHED_LOADING_TIDES,
   DELETE_LOCATION,
   FETCH_ALL_STATIONS,
+  NOT_NEAR_STATION,
+  NEAR_STATION,
 } from '../types'
 
-export function fetchTideData(location) {
+export function fetchTides(location) {
   return (dispatch) => {
     dispatch({ type: START_LOADING_TIDES })
 
-    const result = request(
-      `/get-data?latitude=${location.latitude}&longitude=${location.longitude}`,
-    )
+    const result = request(`/tides?latitude=${location.latitude}&longitude=${location.longitude}`)
     result
       .then((json) => {
-        dispatch({
-          type: FETCH_TIDE_DATA,
-          locationData: json,
-        })
+        if (!_.isEmpty(json)) {
+          console.log('EVERYTHING IS OK: ', json)
+          dispatch({ type: NEAR_STATION })
+          dispatch({
+            type: FETCH_TIDES,
+            tides: json,
+          })
+        } else {
+          console.log('~~~~~~~~~~~~~~ something is off: ', json)
+          dispatch({
+            type: NOT_NEAR_STATION,
+          })
+        }
       })
       .finally(() => {
         dispatch({ type: FINISHED_LOADING_TIDES })
       })
+  }
+}
+
+export function fetchTideChart(location) {
+  return (dispatch) => {
+    const { latitude, longitude } = location
+    const result = request(`/tide-chart?latitude=${latitude}&longitude=${longitude}`)
+    result.then((json) => {
+      dispatch({
+        type: FETCH_TIDE_CHART,
+        tideChart: json,
+      })
+    })
+  }
+}
+
+export function fetchWeather(location) {
+  return (dispatch) => {
+    const { latitude, longitude } = location
+    const result = request(`/weather?latitude=${latitude}&longitude=${longitude}`)
+    result.then((json) => {
+      dispatch({
+        type: FETCH_WEATHER,
+        weather: json,
+      })
+    })
   }
 }
 
@@ -44,7 +83,7 @@ export function findCityName(location) {
 
 export function fetchAllStations() {
   return (dispatch) => {
-    request('/get-stations').then((stations) => {
+    request('/stations').then((stations) => {
       dispatch({
         type: FETCH_ALL_STATIONS,
         stations,
@@ -59,6 +98,10 @@ export function saveLocation(location) {
 
 export function deleteLocation(city) {
   return { type: DELETE_LOCATION, city }
+}
+
+export function noStationsNearby() {
+  return { type: NOT_NEAR_STATION, noStationsNearby: true }
 }
 
 export function startLoadingTides() {

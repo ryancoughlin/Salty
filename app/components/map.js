@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native'
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { NavigationActions } from 'react-navigation'
 
 import CloseModalButton from './buttons/close-modal-button'
 import * as actions from '../actions/station'
@@ -15,6 +16,15 @@ const Map = class extends Component {
     if (!this.props.stations) {
       this.props.fetchAllStations()
     }
+  }
+
+  navigateToStation(location) {
+    const stationDetail = NavigationActions.reset({
+      index: 0,
+      actions: [NavigationActions.navigate({ routeName: 'StationDetail', params: { location } })],
+    })
+
+    this.props.navigation.dispatch(stationDetail)
   }
 
   render() {
@@ -37,13 +47,8 @@ const Map = class extends Component {
         customMapStyle={mapStyle}
       >
         {stations.map((station, index) => (
-          <MapView.Marker key={index} image={stationMarker} coordinate={station.location}>
-            <MapView.Callout
-              tooltip
-              onPress={() => {
-                this.props.navigation.navigate('StationDetail', { location: station.location })
-              }}
-            >
+          <MapView.Marker key={index} coordinate={station.location}>
+            <MapView.Callout tooltip onPress={() => this.navigateToStation(station.location)}>
               <MapCallout station={station} />
             </MapView.Callout>
           </MapView.Marker>
@@ -54,7 +59,7 @@ const Map = class extends Component {
 }
 
 Map.navigationOptions = ({ navigation }) => ({
-  headerLeft: <CloseModalButton goBack={navigation.goBack('StationDetail')} />,
+  headerLeft: <CloseModalButton back={navigation.goBack} />,
 })
 
 const styles = StyleSheet.create({
