@@ -8,7 +8,7 @@ const IconHeader = ({ rightLabel, icon, text }) =>
   <View style={styles.container}>
     <View style={styles.leftLabel}>
       <SmallIcon source={icon} />
-      <Text style={BaseStyle.headerStyle}>{text}</Text>
+      <Text style={BaseStyle.secondaryHeader}>{text}</Text>
     </View>
     {rightLabel}
   </View>

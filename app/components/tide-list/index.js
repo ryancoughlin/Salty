@@ -7,7 +7,6 @@ import * as actions from '../../actions/station'
 import TideCell from './tide-cell'
 import TideSectionHeader from './tide-section-header'
 import CloseModalButton from '../buttons/close-modal-button'
-import BaseStyle from '../../base-styles'
 
 const TideTable = class extends Component {
   constructor(props) {

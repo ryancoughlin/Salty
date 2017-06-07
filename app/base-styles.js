@@ -1,14 +1,10 @@
 import Colors from './styles/colors'
-import Navigation from './styles/navigation'
 
 import { numericFontFamily } from './fonts'
 
 const BaseStyle = {
   ...Colors,
-  navigation: {
-    ...Navigation,
-  },
-  headerStyle: {
+  secondaryHeader: {
     fontSize: 18,
     color: Colors.baseTextColor,
     fontWeight: '600',
@@ -18,25 +14,16 @@ const BaseStyle = {
     color: Colors.baseTextColor,
     fontWeight: 'bold',
   },
-
   baseFontSize: 18,
-
   tinySpacing: 4,
   smallSpacing: 10,
   baseSpacing: 20,
-  largeSpacing: 40,
-
+  largeSpacing: 44,
   tidePhrase: {
     fontWeight: 'bold',
     color: Colors.subtleColor,
     fontSize: 34,
-    lineHeight: 40,
     marginRight: 4,
-  },
-  navigationButton: {
-    fontSize: 16,
-    color: Colors.baseTextColor,
-    marginTop: -4,
   },
   chartAxisStyles: {
     axis: { stroke: 'transparent' },

@@ -5,7 +5,7 @@ import BaseStyle from '../../base-styles'
 
 const ChartPanelHeader = ({ headerText, bodyText }) =>
   <View style={styles.container}>
-    <Text style={BaseStyle.headerStyle}>{headerText}</Text>
+    <Text style={BaseStyle.secondaryHeader}>{headerText}</Text>
     <Text style={styles.bodyText}>{bodyText}</Text>
   </View>
 

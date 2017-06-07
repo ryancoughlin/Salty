@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import SplashScreen from 'react-native-splash-screen'
 
 import store, { rehydrateStore } from './app/store'
-import { AppNavigator } from './app/app-navigator'
+import App from './app/components/app'
 
 class Salty extends Component {
   constructor(props) {
@@ -21,13 +21,12 @@ class Salty extends Component {
   }
 
   render() {
-    if (!this.state.shouldDisplay) return null
-
     return (
       <Provider store={store}>
-        <AppNavigator />
+        <App />
       </Provider>
     )
   }
 }
+
 AppRegistry.registerComponent('Salty', () => Salty)

@@ -1,14 +1,10 @@
 import React from 'react'
 import { TouchableOpacity, Image, StyleSheet } from 'react-native'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-
-import * as actions from '../../actions/station'
 
 import modalClose from '../../assets/images/modal-close.png'
 
-const CloseModalButton = ({ back }) =>
-  <TouchableOpacity onPress={() => back()}>
+const CloseModalButton = ({ dismissModal }) =>
+  <TouchableOpacity onPress={dismissModal}>
     <Image source={modalClose} style={styles.closeIcon} />
   </TouchableOpacity>
 
@@ -18,8 +14,4 @@ const styles = StyleSheet.create({
   },
 })
 
-const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators(actions, dispatch),
-})
-
-export default connect(null, mapDispatchToProps)(CloseModalButton)
+export default CloseModalButton

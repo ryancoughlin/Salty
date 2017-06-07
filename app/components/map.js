@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native'
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { NavigationActions } from 'react-navigation'
 
 import CloseModalButton from './buttons/close-modal-button'
 import * as actions from '../actions/station'
@@ -19,12 +18,10 @@ const Map = class extends Component {
   }
 
   navigateToStation(location) {
-    const stationDetail = NavigationActions.reset({
-      index: 0,
-      actions: [NavigationActions.navigate({ routeName: 'StationDetail', params: { location } })],
-    })
-
-    this.props.navigation.dispatch(stationDetail)
+    this.props.fetchWeather(location)
+    this.props.fetchTides(location)
+    this.props.fetchTideChart(location)
+    this.props.findCityName(location)
   }
 
   render() {

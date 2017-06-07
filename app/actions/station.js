@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 import request from '../lib/request'
 import { geoCodeLocation } from '../lib/location'
 import {
@@ -10,6 +12,8 @@ import {
   FINISHED_LOADING_TIDES,
   DELETE_LOCATION,
   FETCH_ALL_STATIONS,
+  NOT_NEAR_STATION,
+  NEAR_STATION,
 } from '../types'
 
 export function fetchTides(location) {
@@ -19,10 +23,17 @@ export function fetchTides(location) {
     const result = request(`/tides?latitude=${location.latitude}&longitude=${location.longitude}`)
     result
       .then((json) => {
-        dispatch({
-          type: FETCH_TIDES,
-          tides: json,
-        })
+        if (!_.isEmpty(json)) {
+          dispatch({ type: NEAR_STATION })
+          dispatch({
+            type: FETCH_TIDES,
+            tides: json,
+          })
+        } else {
+          dispatch({
+            type: NOT_NEAR_STATION,
+          })
+        }
       })
       .finally(() => {
         dispatch({ type: FINISHED_LOADING_TIDES })
@@ -32,9 +43,8 @@ export function fetchTides(location) {
 
 export function fetchTideChart(location) {
   return (dispatch) => {
-    const result = request(
-      `/tide-chart?latitude=${location.latitude}&longitude=${location.longitude}`,
-    )
+    const { latitude, longitude } = location
+    const result = request(`/tide-chart?latitude=${latitude}&longitude=${longitude}`)
     result.then((json) => {
       dispatch({
         type: FETCH_TIDE_CHART,
@@ -46,7 +56,8 @@ export function fetchTideChart(location) {
 
 export function fetchWeather(location) {
   return (dispatch) => {
-    const result = request(`/weather?latitude=${location.latitude}&longitude=${location.longitude}`)
+    const { latitude, longitude } = location
+    const result = request(`/weather?latitude=${latitude}&longitude=${longitude}`)
     result.then((json) => {
       dispatch({
         type: FETCH_WEATHER,
@@ -85,6 +96,10 @@ export function saveLocation(location) {
 
 export function deleteLocation(city) {
   return { type: DELETE_LOCATION, city }
+}
+
+export function noStationsNearby() {
+  return { type: NOT_NEAR_STATION, noStationsNearby: true }
 }
 
 export function startLoadingTides() {

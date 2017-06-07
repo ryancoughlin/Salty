@@ -16,7 +16,7 @@ export default class TidePhrase extends Component {
   }
 
   render() {
-    const { city, tides, navigate } = this.props
+    const { city, tides, toggleModal } = this.props
     const { tideDirection } = this.state
 
     return (
@@ -33,7 +33,7 @@ export default class TidePhrase extends Component {
             <Text style={BaseStyle.tidePhrase}>
               in
             </Text>
-            <TouchableOpacity onPress={() => navigate('Map')}>
+            <TouchableOpacity onPress={toggleModal}>
               <Text
                 numberOfLines={1}
                 ellipsizeMode="tail"
@@ -53,7 +53,7 @@ const { width } = Dimensions.get('window')
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    marginBottom: BaseStyle.largeSpacing,
+    marginVertical: BaseStyle.largeSpacing,
   },
   arrow: {
     marginTop: 10,

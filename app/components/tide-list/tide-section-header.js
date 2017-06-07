@@ -12,7 +12,7 @@ export default class extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={BaseStyle.headerStyle}>{this.formattedDate}</Text>
+        <Text style={BaseStyle.secondaryHeader}>{this.formattedDate}</Text>
       </View>
     )
   }
