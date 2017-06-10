@@ -7,7 +7,7 @@ import _ from 'lodash'
 import BaseStyle from '../../base-styles'
 import ChartPanel from './chart-panel'
 
-export default class TideChart extends Component {
+export default class WindChart extends Component {
   get formattedWind() {
     return _.map(this.props.wind, wind => ({
       ...wind,

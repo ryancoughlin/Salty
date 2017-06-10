@@ -29,7 +29,9 @@ export default class RemainingTideTime extends Component {
     const time = moment.utc(this.state.nextTide.time).local()
     const diff = moment.duration(time.diff(moment()))
 
-    return `${this.padNumbers(diff.hours())}:${this.padNumbers(diff.minutes())}:${this.padNumbers(diff.seconds())} `
+    return `${this.padNumbers(diff.hours())}:${this.padNumbers(diff.minutes())}:${this.padNumbers(
+      diff.seconds(),
+    )} `
   }
 
   get formattedTideDirection() {

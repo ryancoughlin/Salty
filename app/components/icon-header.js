@@ -1,28 +1,17 @@
-import React, { Component } from 'react'
-import {
-  View,
-  Text,
-  StyleSheet,
-} from 'react-native'
+import React from 'react'
+import { View, Text, StyleSheet } from 'react-native'
 
 import BaseStyle from '../base-styles'
 import SmallIcon from './small-icon'
 
-export default class extends Component {
-  render() {
-    const { rightLabel } = this.props
-
-    return (
-      <View style={styles.container}>
-        <View style={styles.leftLabel}>
-          <SmallIcon source={this.props.icon} />
-          <Text style={styles.header}>{this.props.text}</Text>
-        </View>
-        {rightLabel}
-      </View>
-    )
-  }
-}
+const IconHeader = ({ rightLabel, icon, text }) =>
+  <View style={styles.container}>
+    <View style={styles.leftLabel}>
+      <SmallIcon source={icon} />
+      <Text style={BaseStyle.headerStyle}>{text}</Text>
+    </View>
+    {rightLabel}
+  </View>
 
 const styles = StyleSheet.create({
   container: {
@@ -36,9 +25,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  header: {
-    fontSize: 18,
-    color: BaseStyle.baseTextColor,
-    fontWeight: '600',
-  },
 })
+
+export default IconHeader

@@ -41,18 +41,18 @@ const Map = class extends Component {
         region={{
           latitude: location.latitude,
           longitude: location.longitude,
-          latitudeDelta: 0.200,
-          longitudeDelta: 0.200,
+          latitudeDelta: 0.2,
+          longitudeDelta: 0.2,
         }}
         customMapStyle={mapStyle}
       >
-        {stations.map((station, index) => (
+        {stations.map((station, index) =>
           <MapView.Marker key={index} coordinate={station.location}>
             <MapView.Callout tooltip onPress={() => this.navigateToStation(station.location)}>
               <MapCallout station={station} />
             </MapView.Callout>
-          </MapView.Marker>
-        ))}
+          </MapView.Marker>,
+        )}
       </MapView>
     )
   }

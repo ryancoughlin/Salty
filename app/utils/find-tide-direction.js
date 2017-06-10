@@ -1,5 +1,4 @@
 import _ from 'lodash'
-import moment from 'moment'
 
 import findNextTide from './find-next-tide'
 

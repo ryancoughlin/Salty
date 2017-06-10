@@ -7,7 +7,7 @@ import ViewTideListButton from './view-tide-list-button'
 import TodayTideRow from './today-tide-row'
 import tideIcon from '../../assets/images/tide.png'
 
-const TodaysTides = ({ tideTable, todaysTides, navigate }) => (
+const TodaysTides = ({ tideTable, todaysTides, navigate }) =>
   <View style={styles.container}>
     <IconHeader
       text="Today's Tides"
@@ -16,7 +16,6 @@ const TodaysTides = ({ tideTable, todaysTides, navigate }) => (
     />
     {_.map(todaysTides, (tide, i) => <TodayTideRow tide={tide} key={i} />)}
   </View>
-)
 
 const styles = StyleSheet.create({
   container: {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, ActivityIndicator } from 'react-native'
+import { ScrollView } from 'react-native'
 import { VictoryLine, VictoryChart, VictoryScatter, VictoryAxis } from 'victory-native'
 import _ from 'lodash'
 
@@ -15,10 +15,6 @@ export default class TideChart extends Component {
   }
 
   render() {
-    if (!this.props.tides) {
-      return <ActivityIndicator style={styles.loadingIndicator} size="large" />
-    }
-
     return (
       <ChartPanel headerText="Tide Depths" bodyText="Over the next 24 hours">
         <ScrollView style={{ flex: 1 }} horizontal>
