@@ -20,7 +20,7 @@ export default class WindChart extends Component {
       <ChartPanel headerText="Wind Forecast" bodyText="Speeds in mph">
         <ScrollView style={{ flex: 1 }} horizontal>
           <VictoryChart
-            height={170}
+            height={150}
             width={2500}
             scale={{ x: 'time' }}
             padding={{ top: 30, right: 40, bottom: 36, left: 30 }}

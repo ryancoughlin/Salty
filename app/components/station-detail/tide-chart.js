@@ -19,7 +19,7 @@ export default class TideChart extends Component {
       <ChartPanel headerText="Tide Depths" bodyText="Over the next 24 hours">
         <ScrollView style={{ flex: 1 }} horizontal>
           <VictoryChart
-            height={170}
+            height={150}
             width={1100}
             scale={{ x: 'time', y: 'linear' }}
             padding={{ top: 30, right: 20, bottom: 40, left: 20 }}
@@ -34,7 +34,7 @@ export default class TideChart extends Component {
             <VictoryLine
               domainPadding={{ x: [3, 0] }}
               data={this.formattedTides}
-              interpolation="cardinal"
+              interpolation="basis"
               x="time"
               y="height"
               style={{
@@ -57,7 +57,7 @@ export default class TideChart extends Component {
                   fontSize: 12,
                 },
                 data: {
-                  strokeWidth: 5,
+                  strokeWidth: 4,
                   fill: BaseStyle.actionColor,
                   stroke: 'white',
                 },
