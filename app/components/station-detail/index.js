@@ -9,6 +9,7 @@ import WeatherRow from './weather-row'
 import TodaysTides from './todays-tides'
 import SaltyModal from '../modal'
 import TideTable from '../tide-list'
+import SavedLocations from '../saved-locations'
 import Map from '../map'
 import DetailPanel from './detail-panel'
 import SaveLocationButton from '../buttons/save-location-button'
@@ -46,6 +47,7 @@ const StationDetail = class extends Component {
           toggleModal={() => this.setState({ tideTableVisible: !tideTableVisible })}
         />
         <DetailPanel wind={weather.wind} tideChart={chart} />
+        <SavedLocations />
 
         {this.props.isSaved
           ? <RemoveLocationButton city={city} deleteLocation={deleteLocation} />

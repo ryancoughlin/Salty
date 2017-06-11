@@ -1,39 +1,48 @@
 import React from 'react'
-import { FlatList, View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import _ from 'lodash'
+import { bindActionCreators } from 'redux'
 
+import * as actions from '../../actions/station'
 import SavedLocationItem from './saved-location-item'
-import CloseModalButton from '../buttons/close-modal-button'
+import PanelHeader from './../station-detail/panel-header'
 import BaseStyle from '../../base-styles'
 
-const SavedLocations = ({ saved }) => (
+const SavedLocations = ({ saved, findCityName, fetchWeather, fetchTides, fetchTideChart }) => (
   <View style={styles.container}>
-    <Text style={[BaseStyle.largeHeaderText, styles.locationHeader]}>My Locations</Text>
-    <FlatList
-      style={styles.listView}
-      data={_.values(saved)}
-      renderItem={({ item }) => <SavedLocationItem {...item} />}
-      keyExtractor={item => item.location.longitude}
-    />
+    <PanelHeader headerText="Other Locations" bodyText="Save your favorites" />
+    <View style={styles.savedLocations}>
+      {_.map(saved, (station, i) => (
+        <SavedLocationItem
+          key={i}
+          city={station.city}
+          viewStation={() => {
+            findCityName(station.location)
+            fetchWeather(station.location)
+            fetchTides(station.location)
+            fetchTideChart(station.location)
+          }}
+        />
+      ))}
+    </View>
   </View>
 )
 
-SavedLocations.navigationOptions = ({ navigation }) => ({
-  headerLeft: <CloseModalButton back={navigation.goBack} />,
-})
-
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-  },
-  listView: {
-    flex: 1,
-  },
-  locationHeader: {
-    backgroundColor: BaseStyle.baseBackgroundColor,
     paddingLeft: BaseStyle.baseSpacing,
-    color: BaseStyle.subtleColor,
+    marginTop: BaseStyle.baseSpacing,
+    shadowColor: BaseStyle.darkBackgroundColor,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 16,
+  },
+  savedLocations: {
+    marginLeft: BaseStyle.baseSpacing,
   },
 })
 
@@ -41,4 +50,8 @@ const mapStateToProps = ({ stations }) => ({
   saved: stations.saved,
 })
 
-export default connect(mapStateToProps)(SavedLocations)
+const mapDispatchToProps = dispatch => ({
+  ...bindActionCreators(actions, dispatch),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SavedLocations)

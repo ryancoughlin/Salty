@@ -3,11 +3,12 @@ import { StyleSheet, View, Text } from 'react-native'
 
 import BaseStyle from '../../base-styles'
 
-const ChartPanelHeader = ({ headerText, bodyText }) =>
+const PanelHeader = ({ headerText, bodyText }) => (
   <View style={styles.container}>
     <Text style={BaseStyle.secondaryHeader}>{headerText}</Text>
     <Text style={styles.bodyText}>{bodyText}</Text>
   </View>
+)
 
 const styles = StyleSheet.create({
   container: {
@@ -16,9 +17,10 @@ const styles = StyleSheet.create({
     marginLeft: BaseStyle.baseSpacing,
   },
   bodyText: {
+    color: BaseStyle.mediumGray,
     fontSize: 14,
-    marginTop: BaseStyle.tinySpacing,
+    marginTop: BaseStyle.tinySpacing - 2,
   },
 })
 
-export default ChartPanelHeader
+export default PanelHeader

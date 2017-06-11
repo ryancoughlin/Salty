@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import ChartPanelHeader from './chart-panel-header'
+import PanelHeader from './panel-header'
 import BaseStyle from '../../base-styles'
 // import chartEdges from '../../assets/images/chart/chart-edges.png'
 

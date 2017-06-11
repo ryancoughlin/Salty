@@ -5,7 +5,7 @@ import { numericFontFamily } from './fonts'
 const BaseStyle = {
   ...Colors,
   secondaryHeader: {
-    fontSize: 18,
+    fontSize: 20,
     color: Colors.baseTextColor,
     fontWeight: '600',
   },
