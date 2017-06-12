@@ -5,11 +5,12 @@ import PanelHeader from './panel-header'
 import BaseStyle from '../../base-styles'
 // import chartEdges from '../../assets/images/chart/chart-edges.png'
 
-const ChartPanel = ({ headerText, bodyText, children }) =>
+const ChartPanel = ({ headerText, bodyText, children }) => (
   <View style={styles.container}>
-    <ChartPanelHeader headerText={headerText} bodyText={bodyText} />
+    <PanelHeader headerText={headerText} bodyText={bodyText} />
     {children}
   </View>
+)
 
 const styles = StyleSheet.create({
   container: {
