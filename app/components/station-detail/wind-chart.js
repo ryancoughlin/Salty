@@ -21,7 +21,7 @@ export default class WindChart extends Component {
         <ScrollView style={{ flex: 1 }} horizontal>
           <VictoryChart
             height={150}
-            width={2500}
+            width={2000}
             scale={{ x: 'time' }}
             padding={{ top: 30, right: 40, bottom: 36, left: 30 }}
           >
@@ -29,14 +29,13 @@ export default class WindChart extends Component {
               y="windSpeed"
               x="time"
               data={this.formattedWind}
-              labelComponent={<VictoryLabel dy={0.25} textAnchor="middle" />}
               labels={datum => datum.y}
               style={{
                 data: {
                   fill: BaseStyle.actionColor,
-                  width: 34,
+                  width: 2,
                   strokeLinejoin: 'round',
-                  strokeWidth: 6,
+                  strokeWidth: 4,
                   stroke: BaseStyle.actionColor,
                 },
                 labels: {

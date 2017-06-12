@@ -5,7 +5,7 @@ const pastelOrange = 'rgba(255, 186, 73, 1)'
 const marinerBlue = 'rgba(57, 103, 153, 1)'
 const transparent = 'rgba(0, 0, 0, 0)'
 const hitGray = 'rgba(163, 174, 184, 1)'
-const shuttleGray = 'rgba(96, 100, 104, 1)'
+const shuttleGray = 'rgba(111, 117, 124, 1)'
 
 export default {
   baseBackgroundColor: 'white',

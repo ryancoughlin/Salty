@@ -28,10 +28,10 @@ const BaseStyle = {
   chartAxisStyles: {
     axis: { stroke: 'transparent' },
     tickLabels: {
-      fontSize: 10,
+      fontSize: 9,
       padding: 5,
       fontFamily: numericFontFamily,
-      fill: Colors.fadedBlackPearl,
+      fill: Colors.mediumGray,
     },
   },
 

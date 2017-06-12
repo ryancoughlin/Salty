@@ -35,7 +35,7 @@ export default class RemainingTideTime extends Component {
   }
 
   get formattedTideDirection() {
-    return `UNTIL ${this.state.nextTide.tide.toUpperCase()}`
+    return `UNTIL ${this.state.nextTide.type.toUpperCase()}`
   }
 
   padNumbers(number) {
@@ -44,7 +44,7 @@ export default class RemainingTideTime extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View>
         <Text style={styles.futureTideInfo}>
           {this.formattedTime}
           {this.formattedTideDirection}
@@ -55,11 +55,9 @@ export default class RemainingTideTime extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    marginLeft: 2,
-  },
   futureTideInfo: {
     fontFamily: BaseStyle.numericFontFamily,
     fontSize: 12,
+    marginLeft: 2,
   },
 })
