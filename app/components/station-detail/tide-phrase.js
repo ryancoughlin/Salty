@@ -6,50 +6,52 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native'
+import { connect } from 'react-redux'
 
 import BaseStyle from '../../base-styles'
 import TideDirectionArrow from '../tide-list/tide-direction-arrow'
 import RemainingTideTime from './remaining-tide-time'
-import findTideDirection from '../../utils/find-tide-direction'
+import TideDirectionPhrase from './tide-direction-phrase'
 
-export default class TidePhrase extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      tideDirection: findTideDirection(props.tides),
-    }
-  }
-
+const TidePhrase = class extends Component {
   render() {
-    const { city, tides, toggleModal } = this.props
-    const { tideDirection } = this.state
+    const { city, tides } = this.props.current
+    const { isPurchased } = this.props
+
+    if (!tides) {
+      return null
+    }
 
     return (
       <View style={styles.container}>
-        <TideDirectionArrow
-          direction={tideDirection}
-          style={styles.arrow}
-          largeTideArrow
-        />
+        <TideDirectionArrow tides={tides} style={styles.arrow} largeTideArrow />
         <View style={styles.tidePhrase}>
           <View style={styles.phraseRow}>
-            <Text style={[BaseStyle.tidePhrase, styles.tideDirectionText]}>
-              {tideDirection}
-            </Text>
+            <TideDirectionPhrase
+              tides={tides}
+              style={[BaseStyle.tidePhrase, styles.tideDirectionText]}
+            />
             <Text style={BaseStyle.tidePhrase}>Tide</Text>
           </View>
           <View style={styles.phraseRow}>
             <Text style={BaseStyle.tidePhrase}>in</Text>
-            <TouchableOpacity onPress={toggleModal}>
-              <Text
+            {isPurchased
+              ? <TouchableOpacity onPress={this.props.toggleModal}>
+                <Text
+                  numberOfLines={1}
+                  ellipsizeMode="tail"
+                  style={[BaseStyle.tidePhrase, styles.cityText]}
+                >
+                  {city}
+                </Text>
+              </TouchableOpacity>
+              : <Text
                 numberOfLines={1}
                 ellipsizeMode="tail"
-                style={[BaseStyle.tidePhrase, styles.cityText]}
+                style={BaseStyle.tidePhrase}
               >
                 {city}
-              </Text>
-            </TouchableOpacity>
+              </Text>}
           </View>
           <RemainingTideTime tides={tides} />
         </View>
@@ -79,3 +81,10 @@ const styles = StyleSheet.create({
     textDecorationColor: BaseStyle.subtleColor,
   },
 })
+
+const mapStateToProps = ({ stations }) => ({
+  current: stations.current,
+  isPurchased: stations.isPurchased,
+})
+
+export default connect(mapStateToProps)(TidePhrase)

@@ -13,11 +13,13 @@ import {
   FETCH_ALL_STATIONS,
   NOT_NEAR_STATION,
   NEAR_STATION,
+  IS_PURCHASED,
 } from '../types'
 
 const initialState = {
   stationsNearby: true,
   loading: true,
+  isPurchased: false,
   current: {},
   saved: {},
 }
@@ -114,6 +116,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         stationsNearby: true,
+      }
+    case IS_PURCHASED:
+      return {
+        ...state,
+        isPurchased: true,
       }
     default:
       return state

@@ -16,24 +16,27 @@ import {
   FETCH_ALL_STATIONS,
   NOT_NEAR_STATION,
   NEAR_STATION,
+  IS_PURCHASED
 } from '../types'
 
 export function fetchTides(location) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({ type: START_LOADING_TIDES })
 
-    const result = request(`/tides?latitude=${location.latitude}&longitude=${location.longitude}`)
+    const result = request(
+      `/tides?latitude=${location.latitude}&longitude=${location.longitude}`
+    )
     result
-      .then((json) => {
+      .then(json => {
         if (!_.isEmpty(json)) {
           dispatch({ type: NEAR_STATION })
           dispatch({
             type: FETCH_TIDES,
-            tides: json,
+            tides: json
           })
         } else {
           dispatch({
-            type: NOT_NEAR_STATION,
+            type: NOT_NEAR_STATION
           })
         }
       })
@@ -44,75 +47,81 @@ export function fetchTides(location) {
 }
 
 export function fetchTideChart(location) {
-  return (dispatch) => {
+  return dispatch => {
     const { latitude, longitude } = location
-    const result = request(`/tide-chart?latitude=${latitude}&longitude=${longitude}`)
-    result.then((json) => {
+    const result = request(
+      `/tide-chart?latitude=${latitude}&longitude=${longitude}`
+    )
+    result.then(json => {
       dispatch({
         type: FETCH_TIDE_CHART,
-        tideChart: json,
+        tideChart: json
       })
     })
   }
 }
 
 export function fetchWaterTemperature(location) {
-  return (dispatch) => {
+  return dispatch => {
     const { latitude, longitude } = location
-    const result = request(`/water-temperature?latitude=${latitude}&longitude=${longitude}`)
-    result.then((json) => {
+    const result = request(
+      `/water-temperature?latitude=${latitude}&longitude=${longitude}`
+    )
+    result.then(json => {
       dispatch({
         type: FETCH_WATER_TEMPERATURE,
-        waterTemperature: json,
+        waterTemperature: json
       })
     })
   }
 }
 
 export function fetchSwellInfo(location) {
-  return (dispatch) => {
+  return dispatch => {
     const { latitude, longitude } = location
     const result = request(`/swell?latitude=${latitude}&longitude=${longitude}`)
-    result.then((json) => {
+    result.then(json => {
       dispatch({
         type: FETCH_SWELL_INFO,
-        swell: json,
+        swell: json
       })
     })
   }
 }
 
 export function fetchWeather(location) {
-  return (dispatch) => {
+  return dispatch => {
     const { latitude, longitude } = location
-    const result = request(`/weather?latitude=${latitude}&longitude=${longitude}`)
-    result.then((json) => {
+    const result = request(
+      `/weather?latitude=${latitude}&longitude=${longitude}`
+    )
+    result.then(json => {
       dispatch({
         type: FETCH_WEATHER,
-        weather: json,
+        weather: json
       })
     })
   }
 }
 
 export function findCityName(location) {
-  return (dispatch) => {
-    geoCodeLocation(location).then((city) => {
+  return dispatch => {
+    geoCodeLocation(location).then(city => {
       dispatch({
         type: FIND_CITY_NAME,
         location,
-        city,
+        city
       })
     })
   }
 }
 
 export function fetchAllStations() {
-  return (dispatch) => {
-    request('/stations').then((stations) => {
+  return dispatch => {
+    request('/stations').then(stations => {
       dispatch({
         type: FETCH_ALL_STATIONS,
-        stations,
+        stations
       })
     })
   }
@@ -136,4 +145,8 @@ export function startLoadingTides() {
 
 export function finishedLoadingTides() {
   return { type: FINISHED_LOADING_TIDES, loading: false }
+}
+
+export function purchaseSuccessful() {
+  return { type: IS_PURCHASED, isPurchased: true }
 }

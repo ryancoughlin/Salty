@@ -8,6 +8,7 @@ import * as actions from '../actions/station'
 import NoNearbyStations from './no-nearby-stations'
 import ActivityOverlay from './activity-overlay'
 import StationDetail from './station-detail'
+import Upsell from './upsell'
 import { fetchLocation } from '../lib/location'
 
 const App = class extends Component {
@@ -48,19 +49,25 @@ const App = class extends Component {
       return
     }
 
-    if (appState === 'active' && this.state.previousState !== 'active') {
+    if (appState === 'active' && this.state.previousAppState === 'background') {
       this.findCurrentLocation()
     }
+
+    this.setState({ previousAppState: appState })
   }
 
   render() {
-    const { current } = this.props
+    const { current, isPurchased, stationsNearby } = this.props
 
     if (_.isEmpty(current.weather)) {
       return <ActivityOverlay />
     }
 
-    if (!this.props.stationsNearby) {
+    if (!isPurchased) {
+      return <Upsell />
+    }
+
+    if (!stationsNearby) {
       return <NoNearbyStations />
     }
 
@@ -71,6 +78,7 @@ const App = class extends Component {
 const mapStateToProps = ({ stations }) => ({
   stationsNearby: stations.stationsNearby,
   current: stations.current,
+  isPurchased: stations.isPurchased,
 })
 
 const mapDispatchToProps = dispatch => ({

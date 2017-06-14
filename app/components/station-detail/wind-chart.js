@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView } from 'react-native'
+import { ScrollView, View } from 'react-native'
 
 import { VictoryBar, VictoryChart, VictoryAxis } from 'victory-native'
 

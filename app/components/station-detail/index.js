@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, ScrollView } from 'react-native'
+import { StyleSheet, ScrollView, View } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -7,13 +7,13 @@ import * as actions from '../../actions/station'
 import TidePhrase from './tide-phrase'
 import WeatherRow from './weather-row'
 import TodaysTides from './todays-tides'
-import SaltyModal from '../modal'
-import TideTable from '../tide-list'
-import SavedLocations from '../saved-locations'
-import Map from '../map'
 import DetailPanel from './detail-panel'
 import SaveLocationButton from '../buttons/save-location-button'
 import RemoveLocationButton from '../buttons/remove-location-button'
+import SavedLocations from '../saved-locations'
+import TideTable from '../tide-list'
+import Map from '../map'
+import SaltyModal from '../modal'
 import BaseStyle from '../../base-styles'
 
 const StationDetail = class extends Component {
@@ -27,29 +27,23 @@ const StationDetail = class extends Component {
   }
 
   render() {
-    const { tideTableVisible, mapVisible } = this.state
+    const { mapVisible, tideTableVisible } = this.state
     const { saveLocation, deleteLocation, location } = this.props
     const {
       city,
       todaysTides,
       weather,
-      tides,
     } = this.props.current
-
-    console.log(weather)
 
     return (
       <ScrollView style={styles.container}>
         <TidePhrase
-          style={styles.tidePhrase}
-          city={city}
-          tides={tides}
           toggleModal={() => this.setState({ mapVisible: !mapVisible })}
         />
+
         <WeatherRow weather={weather.currentWind} icon="wind" />
         <WeatherRow weather={weather.currentWeather} icon={weather.icon} />
         <TodaysTides
-          tideTable={tides}
           todaysTides={todaysTides}
           toggleModal={() =>
             this.setState({ tideTableVisible: !tideTableVisible })}
