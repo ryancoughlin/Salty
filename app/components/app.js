@@ -34,6 +34,7 @@ const App = class extends Component {
       this.props.fetchWeather(location)
       this.props.fetchTides(location)
       this.props.fetchTideChart(location)
+      this.props.fetchWaterTemperature(location)
     })
   }
 
