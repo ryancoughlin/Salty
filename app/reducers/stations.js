@@ -3,6 +3,7 @@ import {
   SAVE_LOCATION,
   FETCH_TIDES,
   FETCH_TIDE_CHART,
+  FETCH_WATER_TEMPERATURE,
   FETCH_WEATHER,
   FIND_CITY_NAME,
   START_LOADING_TIDES,
@@ -37,6 +38,14 @@ export default function(state = initialState, action) {
           ...state.current,
           ...state.current.tides,
           chart: action.tideChart,
+        },
+      }
+    case FETCH_WATER_TEMPERATURE:
+      return {
+        ...state,
+        current: {
+          ...state.current,
+          waterTemperature: action.waterTemperature,
         },
       }
     case FETCH_WEATHER:

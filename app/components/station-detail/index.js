@@ -29,7 +29,7 @@ const StationDetail = class extends Component {
   render() {
     const { tideTableVisible, mapVisible } = this.state
     const { saveLocation, deleteLocation, location } = this.props
-    const { city, today, tables, chart, weather } = this.props.current
+    const { city, todaysTides, tables, chart, weather, waterTemperature } = this.props.current
 
     return (
       <ScrollView style={styles.container}>
@@ -43,10 +43,10 @@ const StationDetail = class extends Component {
         <WeatherRow weather={weather.currentWeather} icon={weather.icon} />
         <TodaysTides
           tideTable={tables}
-          todaysTides={today}
+          todaysTides={todaysTides}
           toggleModal={() => this.setState({ tideTableVisible: !tideTableVisible })}
         />
-        <DetailPanel wind={weather.wind} tideChart={chart} />
+        <DetailPanel wind={weather.wind} tideChart={chart} waterTemperature={waterTemperature} />
         <SavedLocations />
 
         {this.props.isSaved

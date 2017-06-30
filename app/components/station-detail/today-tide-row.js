@@ -28,7 +28,7 @@ export default class NextTideRow extends Component {
 
     return (
       <View style={styles.futureTideRow}>
-        <Text style={[styles.futureTideType, this.pastTideStyle]}>{_.upperFirst(tide.tide)}</Text>
+        <Text style={[styles.futureTideType, this.pastTideStyle]}>{_.upperFirst(tide.type)}</Text>
         <Text style={[styles.futureTideInfo, this.pastTideStyle]}>
           {this.formatTideTime(tide.time)} / {this.formatTideHeight(tide.height)}
         </Text>

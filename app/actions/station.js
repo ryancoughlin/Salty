@@ -6,6 +6,7 @@ import {
   SAVE_LOCATION,
   FETCH_TIDES,
   FETCH_TIDE_CHART,
+  FETCH_WATER_TEMPERATURE,
   FETCH_WEATHER,
   FIND_CITY_NAME,
   START_LOADING_TIDES,
@@ -49,6 +50,19 @@ export function fetchTideChart(location) {
       dispatch({
         type: FETCH_TIDE_CHART,
         tideChart: json,
+      })
+    })
+  }
+}
+
+export function fetchWaterTemperature(location) {
+  return (dispatch) => {
+    const { latitude, longitude } = location
+    const result = request(`/water-temperature?latitude=${latitude}&longitude=${longitude}`)
+    result.then((json) => {
+      dispatch({
+        type: FETCH_WATER_TEMPERATURE,
+        waterTemperature: json,
       })
     })
   }
