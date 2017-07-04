@@ -4,6 +4,7 @@ import {
   FETCH_TIDES,
   FETCH_TIDE_CHART,
   FETCH_WATER_TEMPERATURE,
+  FETCH_SWELL_INFO,
   FETCH_WEATHER,
   FIND_CITY_NAME,
   START_LOADING_TIDES,
@@ -48,6 +49,15 @@ export default function(state = initialState, action) {
           waterTemperature: action.waterTemperature,
         },
       }
+    case FETCH_SWELL_INFO:
+      return {
+        ...state,
+        current: {
+          ...state.current,
+          swell: action.swell,
+        },
+      }
+
     case FETCH_WEATHER:
       return {
         ...state,

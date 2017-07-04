@@ -8,6 +8,7 @@ import {
   FETCH_TIDE_CHART,
   FETCH_WATER_TEMPERATURE,
   FETCH_WEATHER,
+  FETCH_SWELL_INFO,
   FIND_CITY_NAME,
   START_LOADING_TIDES,
   FINISHED_LOADING_TIDES,
@@ -63,6 +64,19 @@ export function fetchWaterTemperature(location) {
       dispatch({
         type: FETCH_WATER_TEMPERATURE,
         waterTemperature: json,
+      })
+    })
+  }
+}
+
+export function fetchSwellInfo(location) {
+  return (dispatch) => {
+    const { latitude, longitude } = location
+    const result = request(`/swell?latitude=${latitude}&longitude=${longitude}`)
+    result.then((json) => {
+      dispatch({
+        type: FETCH_SWELL_INFO,
+        swell: json,
       })
     })
   }
