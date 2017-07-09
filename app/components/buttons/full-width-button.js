@@ -4,9 +4,9 @@ import { View, Button, StyleSheet } from 'react-native'
 import BaseStyle from '../../base-styles'
 
 const FullWidthButton = ({ text, onPress }) =>
-  <View style={styles.container}>
+  (<View style={styles.container}>
     <Button onPress={onPress} title={text} color={BaseStyle.actionColor} />
-  </View>
+  </View>)
 
 const styles = StyleSheet.create({
   container: {

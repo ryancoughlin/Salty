@@ -6,18 +6,15 @@ import upArrow from '../../assets/images/high-tide-arrow.png'
 
 export default class extends Component {
   get tideDirectionArrow() {
-    if (this.props.largeTideArrow) {
-      direction = 'Incoming'
-    }
-
     if (this.props.direction === 'high') {
       return upArrow
-    } else {
-      return downArrow
     }
+    return downArrow
   }
 
   render() {
-    return <SmallIcon source={this.tideDirectionArrow} style={this.props.style} />
+    return (
+      <SmallIcon source={this.tideDirectionArrow} style={this.props.style} />
+    )
   }
 }

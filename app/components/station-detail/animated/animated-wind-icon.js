@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import {
-  Animated,
-} from 'react-native'
+import { Animated } from 'react-native'
 import Animation from 'lottie-react-native'
 
 import windAnimation from '../../../animations/wind.json'

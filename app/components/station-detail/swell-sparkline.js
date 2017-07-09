@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import { ScrollView } from 'react-native'
-import { VictoryLine, VictoryChart, VictoryAxis } from 'victory-native'
+import { VictoryLine } from 'victory-native'
 import _ from 'lodash'
-
-import BaseStyle from '../../base-styles'
 
 export default class SwellSparkline extends Component {
   get formatSwell() {

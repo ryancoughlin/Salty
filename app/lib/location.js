@@ -7,7 +7,7 @@ export function fetchLocation() {
       (position) => {
         resolve(position.coords)
       },
-      (e) => {
+      () => {
         Alert.alert(
           'Location is unavailable',
           'Enable location services for Salty under Settings',
@@ -26,7 +26,7 @@ export function geoCodeLocation(location) {
       .then((userLocation) => {
         resolve(userLocation[0].locality)
       })
-      .catch((e) => {
+      .catch(() => {
         Alert.alert(
           'Cannot find city name',
           'We were unable to geocode your position. Conditions displayed will be accurate.',

@@ -5,7 +5,7 @@ import BaseStyle from '../base-styles'
 import smallStationMark from '../assets/images/no-stations-nearby/small-mark.png'
 
 const NoNearbyStations = ({ city, navigation }) =>
-  <View style={styles.container}>
+  (<View style={styles.container}>
     <View>
       <Image source={smallStationMark} style={styles.smallMark} />
       <Text style={styles.notFoundHeader}>Oops, we can't find a station near {city}</Text>
@@ -13,7 +13,7 @@ const NoNearbyStations = ({ city, navigation }) =>
         <Text style={styles.findStationText}>Find stations</Text>
       </TouchableOpacity>
     </View>
-  </View>
+  </View>)
 
 const styles = StyleSheet.create({
   container: {

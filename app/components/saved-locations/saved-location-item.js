@@ -1,15 +1,16 @@
 import React from 'react'
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 
 import BaseStyle from '../../base-styles'
 import rightArrow from '../../assets/images/right-arrow.png'
 
-const SavedLocationItem = ({ city, viewStation }) => (
-  <TouchableOpacity style={styles.container} onPress={viewStation}>
-    <Text style={[BaseStyle.secondaryHeader, styles.cityNameText]}>{city}</Text>
+const SavedLocationItem = ({ city, viewStation }) =>
+  (<TouchableOpacity style={styles.container} onPress={viewStation}>
+    <Text style={[BaseStyle.secondaryHeader, styles.cityNameText]}>
+      {city}
+    </Text>
     <Image source={rightArrow} style={styles.rightArrow} />
-  </TouchableOpacity>
-)
+  </TouchableOpacity>)
 
 const styles = StyleSheet.create({
   container: {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { ScrollView } from 'react-native'
 
-import { VictoryBar, VictoryChart, VictoryLabel, VictoryAxis } from 'victory-native'
+import { VictoryBar, VictoryChart, VictoryAxis } from 'victory-native'
 
 import _ from 'lodash'
 import BaseStyle from '../../base-styles'

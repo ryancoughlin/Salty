@@ -5,13 +5,13 @@ import BaseStyle from '../base-styles'
 import SmallIcon from './small-icon'
 
 const IconHeader = ({ rightLabel, icon, text }) =>
-  <View style={styles.container}>
+  (<View style={styles.container}>
     <View style={styles.leftLabel}>
       <SmallIcon source={icon} />
       <Text style={BaseStyle.secondaryHeader}>{text}</Text>
     </View>
     {rightLabel}
-  </View>
+  </View>)
 
 const styles = StyleSheet.create({
   container: {

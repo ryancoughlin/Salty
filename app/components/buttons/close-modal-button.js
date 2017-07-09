@@ -4,9 +4,9 @@ import { TouchableOpacity, Image, StyleSheet } from 'react-native'
 import modalClose from '../../assets/images/modal-close.png'
 
 const CloseModalButton = ({ dismissModal }) =>
-  <TouchableOpacity onPress={dismissModal}>
+  (<TouchableOpacity onPress={dismissModal}>
     <Image source={modalClose} style={styles.closeIcon} />
-  </TouchableOpacity>
+  </TouchableOpacity>)
 
 const styles = StyleSheet.create({
   closeIcon: {

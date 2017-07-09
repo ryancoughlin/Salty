@@ -7,7 +7,6 @@ export default function findTideDirection(tides) {
 
   if (nextTide.tide === 'high') {
     return _.upperFirst('incoming')
-  } else {
-    return _.upperFirst('outgoing')
   }
+  return _.upperFirst('outgoing')
 }

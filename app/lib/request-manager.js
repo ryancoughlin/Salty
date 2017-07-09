@@ -24,7 +24,7 @@ const requestManager = {
     if (this.requestCount === 0) {
       updateNetworkActivityStatus(false)
     }
-  }
+  },
 }
 
 export const withActivityIndicator = requestManager.wrap.bind(requestManager)

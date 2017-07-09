@@ -8,7 +8,6 @@ import CloseModalButton from './buttons/close-modal-button'
 import * as actions from '../actions/station'
 import MapCallout from './map-callout'
 import mapStyle from '../lib/map-style'
-import stationMarker from '../assets/images/station-marker.png'
 
 const Map = class extends Component {
   componentDidMount() {
@@ -44,11 +43,14 @@ const Map = class extends Component {
         customMapStyle={mapStyle}
       >
         {stations.map((station, index) =>
-          <MapView.Marker key={index} coordinate={station.location}>
-            <MapView.Callout tooltip onPress={() => this.navigateToStation(station.location)}>
+          (<MapView.Marker key={index} coordinate={station.location}>
+            <MapView.Callout
+              tooltip
+              onPress={() => this.navigateToStation(station.location)}
+            >
               <MapCallout station={station} />
             </MapView.Callout>
-          </MapView.Marker>,
+          </MapView.Marker>),
         )}
       </MapView>
     )

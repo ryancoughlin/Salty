@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import { ScrollView } from 'react-native'
-import { VictoryLine, VictoryChart, VictoryScatter, VictoryAxis, VictoryArea } from 'victory-native'
+import {
+  VictoryLine,
+  VictoryChart,
+  VictoryScatter,
+  VictoryAxis,
+} from 'victory-native'
 import _ from 'lodash'
 import moment from 'moment'
 
@@ -25,14 +30,16 @@ export default class TideChart extends Component {
 
     if (index === -1) {
       return `Currently ${waterTemperature[0].temperature}°`
-    } else {
-      return `Currently ${waterTemperature[index].temperature}°`
     }
+    return `Currently ${waterTemperature[index].temperature}°`
   }
 
   render() {
     return (
-      <ChartPanel headerText="Water Temperature" bodyText={this.findCurrentWaterTemperature}>
+      <ChartPanel
+        headerText="Water Temperature"
+        bodyText={this.findCurrentWaterTemperature}
+      >
         <ScrollView style={{ flex: 1 }} horizontal>
           <VictoryChart
             height={180}
@@ -44,7 +51,10 @@ export default class TideChart extends Component {
               scale="time"
               orientation="bottom"
               offsetY={30}
-              tickValues={_.map(this.formattedTides, temperature => temperature.time)}
+              tickValues={_.map(
+                this.formattedTides,
+                temperature => temperature.time,
+              )}
               style={BaseStyle.chartAxisStyles}
             />
             <VictoryLine

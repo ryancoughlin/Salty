@@ -8,14 +8,14 @@ import TodayTideRow from './today-tide-row'
 import tideIcon from '../../assets/images/tide.png'
 
 const TodaysTides = ({ tideTable, todaysTides, toggleModal }) =>
-  <View style={styles.container}>
+  (<View style={styles.container}>
     <IconHeader
       text="Today's Tides"
       icon={tideIcon}
       rightLabel={<ViewTideListButton tideTable={tideTable} toggleModal={toggleModal} />}
     />
     {_.map(todaysTides, (tide, i) => <TodayTideRow tide={tide} key={i} />)}
-  </View>
+  </View>)
 
 const styles = StyleSheet.create({
   container: {

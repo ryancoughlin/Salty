@@ -7,7 +7,6 @@ import _ from 'lodash'
 
 import BaseStyle from '../../base-styles'
 import SwellSparkline from './swell-sparkline'
-import findNextTide from '../../utils/find-next-tide'
 
 const SwellOverview = class extends Component {
   constructor(props) {
@@ -52,7 +51,9 @@ const SwellOverview = class extends Component {
         style={styles.container}
       >
         <View>
-          <Text style={[styles.ehancedBlueText, styles.swellHeight]}>{height}'</Text>
+          <Text style={[styles.ehancedBlueText, styles.swellHeight]}>
+            {height}'
+          </Text>
           <Text style={[BaseStyle.secondaryHeader, styles.ehancedBlueText]}>
             {type}
           </Text>
@@ -84,8 +85,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.1,
     shadowRadius: 20,
-    marginBottom: BaseStyle.baseSpacing,
-    marginHorizontal: BaseStyle.baseSpacing,
     flexDirection: 'row',
   },
   swellHeight: {
