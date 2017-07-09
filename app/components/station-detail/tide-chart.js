@@ -25,25 +25,24 @@ export default class TideChart extends Component {
           height={150}
           width={1100}
           scale={{ x: 'time', y: 'linear' }}
-          padding={{ top: 30, right: 20, bottom: 40, left: 20 }}
+          padding={{ top: 30, right: 20, bottom: 48, left: 50 }}
         >
           <VictoryAxis
-            scale="time"
-            orientation="bottom"
+            scale={{ x: 'time' }}
             offsetY={30}
             tickValues={_.map(this.formattedTides, tide => tide.time)}
             style={BaseStyle.chartAxisStyles}
           />
           <VictoryLine
-            domainPadding={{ x: [3, 0] }}
             data={this.formattedTides}
             interpolation="basis"
             x="time"
             y="height"
+            scale={{ x: 'time' }}
             style={{
               data: {
                 stroke: BaseStyle.actionColor,
-                strokeWidth: 3,
+                strokeWidth: 2,
               },
             }}
           />
@@ -52,15 +51,15 @@ export default class TideChart extends Component {
             y="height"
             data={this.formattedTides}
             labels={datum => `${datum.y}'`}
-            size={6}
+            size={4}
             style={{
               labels: {
                 fill: BaseStyle.baseTextColor,
-                fontFamily: BaseStyle.numericFontFamily,
+                fontFamily: BaseStyle.numericFont,
                 fontSize: BaseStyle.smallNumericFontSize,
               },
               data: {
-                strokeWidth: 4,
+                strokeWidth: 3,
                 fill: BaseStyle.actionColor,
                 stroke: 'white',
               },

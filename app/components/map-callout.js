@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     marginBottom: 1,
   },
   stationLocation: {
-    fontFamily: BaseStyle.numericFontFamily,
+    fontFamily: BaseStyle.numericFont,
     fontSize: 10,
     color: BaseStyle.subtleColor,
   },

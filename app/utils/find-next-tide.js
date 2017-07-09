@@ -2,9 +2,9 @@ import _ from 'lodash'
 import moment from 'moment'
 
 const DATE_FORMAT = 'MM/DD/YYYY'
+const now = moment()
 
 export default function findNextTide(tides) {
-  const now = moment()
   const todayKey = now.format(DATE_FORMAT)
   const todaysTides = tides[todayKey]
 
@@ -14,15 +14,9 @@ export default function findNextTide(tides) {
   })
 
   if (nextTideIndex === -1) {
-    return findFirstTideTomorrow(tides)
+    const tomorrowKey = now.add(1, 'days').format(DATE_FORMAT)
+    return tides[tomorrowKey][0]
   }
 
   return todaysTides[nextTideIndex]
-}
-
-function findFirstTideTomorrow(tides) {
-  const now = moment()
-  const tomorrowKey = now.add(1, 'days').format(DATE_FORMAT)
-
-  return tides[tomorrowKey][0]
 }

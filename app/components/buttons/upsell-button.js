@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     marginBottom: 3,
   },
   price: {
-    fontFamily: BaseStyle.numericFontFamily,
+    fontFamily: BaseStyle.numericFont,
     fontSize: BaseStyle.smallNumericFontSize,
   },
 })

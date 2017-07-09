@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>77</string>
+	<string>101</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
@@ -32,11 +32,11 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Allow Salty to use your current location to fetch tide conditions near you.</string>
+	<string>Salty uses your location fetch marine and weather conditions.</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Input-Regular_(InputMono-Light).ttf</string>
-		<string>overpass-mono-light.otf</string>
+		<string>overpass-mono-regular.otf</string>
+		<string>overpass-mono-semibold.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

@@ -1,6 +1,6 @@
 import Colors from './styles/colors'
 
-import { numericFontFamily } from './fonts'
+import { numericFont, numericFontSemiBold } from './fonts'
 
 const BaseStyle = {
   ...Colors,
@@ -31,7 +31,7 @@ const BaseStyle = {
     tickLabels: {
       fontSize: 10,
       padding: 5,
-      fontFamily: numericFontFamily,
+      fontFamily: numericFont,
       fill: Colors.mediumGray,
     },
   },
@@ -48,9 +48,11 @@ const BaseStyle = {
     marginBottom: 20,
     marginHorizontal: 20,
     borderRadius: 10,
+    paddingBottom: 10,
   },
 
-  numericFontFamily,
+  numericFont,
+  numericFontSemiBold,
 }
 
 export default BaseStyle

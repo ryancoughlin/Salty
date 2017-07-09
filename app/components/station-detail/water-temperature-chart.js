@@ -12,9 +12,9 @@ import BaseStyle from '../../base-styles'
 
 export default class TideChart extends Component {
   get formattedTides() {
-    return _.map(this.props.data, temperature => ({
-      ...temperature,
-      time: new Date(temperature.time),
+    return _.map(this.props.data, data => ({
+      temperature: Math.round(data.temperature),
+      time: new Date(data.time),
     }))
   }
 
@@ -22,13 +22,13 @@ export default class TideChart extends Component {
     return (
       <ScrollView style={{ flex: 1 }} horizontal>
         <VictoryChart
-          height={180}
+          height={110}
           width={1100}
           scale={{ x: 'time', y: 'linear' }}
-          padding={{ top: 30, right: 20, bottom: 40, left: 20 }}
+          padding={{ top: 30, right: 20, bottom: 48, left: 50 }}
         >
           <VictoryAxis
-            scale="time"
+            scale={{ x: 'time' }}
             orientation="bottom"
             offsetY={30}
             tickValues={_.map(
@@ -46,7 +46,7 @@ export default class TideChart extends Component {
             style={{
               data: {
                 stroke: BaseStyle.actionColor,
-                strokeWidth: 3,
+                strokeWidth: 2,
               },
             }}
           />
@@ -54,16 +54,16 @@ export default class TideChart extends Component {
             x="time"
             y="temperature"
             data={this.formattedTides}
-            labels={datum => `${datum.y}°`}
-            size={6}
+            labels={datum => `${Math.round(datum.y * 10) / 10}°`}
+            size={4}
             style={{
               labels: {
                 fill: BaseStyle.baseTextColor,
-                fontFamily: BaseStyle.numericFontFamily,
+                fontFamily: BaseStyle.numericFont,
                 fontSize: BaseStyle.smallNumericFontSize,
               },
               data: {
-                strokeWidth: 4,
+                strokeWidth: 3,
                 fill: BaseStyle.actionColor,
                 stroke: 'white',
               },

@@ -32,7 +32,7 @@ const App = class extends Component {
   }
 
   findCurrentLocation() {
-    fetchLocation().then((location) => {
+    fetchLocation().then(location => {
       this.props.findCityName(location)
       this.props.fetchWeather(location)
       this.props.fetchTides(location)
@@ -42,9 +42,7 @@ const App = class extends Component {
     })
   }
 
-  handleAppStateChange = (appState) => {
-    this.setState({ previousAppState: appState })
-
+  handleAppStateChange = appState => {
     if (appState === 'unknown') {
       return
     }
@@ -63,7 +61,7 @@ const App = class extends Component {
       return <ActivityOverlay />
     }
 
-    if (!isPurchased) {
+    if (false) {
       return <Upsell />
     }
 

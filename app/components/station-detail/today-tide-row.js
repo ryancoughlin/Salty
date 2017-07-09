@@ -44,15 +44,15 @@ const styles = StyleSheet.create({
   futureTideRow: {
     marginLeft: 61,
     flexDirection: 'row',
-    marginBottom: 5,
+    marginBottom: 3,
   },
   futureTideType: {
     width: 40,
-    fontWeight: '600',
+    fontWeight: '500',
     fontSize: 14,
   },
   futureTideInfo: {
-    fontFamily: BaseStyle.numericFontFamily,
+    fontFamily: BaseStyle.numericFont,
     fontSize: BaseStyle.smallNumericFontSize,
   },
   pastTide: {

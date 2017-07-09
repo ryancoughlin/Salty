@@ -14,11 +14,11 @@ const TideTable = class extends Component {
 
     const dataSource = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
-      sectionHeaderHasChanged: (r1, r2) => r1 !== r2
+      sectionHeaderHasChanged: (r1, r2) => r1 !== r2,
     })
 
     this.state = {
-      dataSource: dataSource.cloneWithRowsAndSections(this.props.current.tides)
+      dataSource: dataSource.cloneWithRowsAndSections(this.props.current.tides),
     }
   }
 
@@ -42,11 +42,11 @@ const TideTable = class extends Component {
 }
 
 const mapStateToProps = ({ stations }) => ({
-  current: stations.current
+  current: stations.current,
 })
 
 const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators(actions, dispatch)
+  ...bindActionCreators(actions, dispatch),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TideTable)

@@ -6,8 +6,7 @@ import moment from 'moment'
 import _ from 'lodash'
 
 import BaseStyle from '../../base-styles'
-import SwellSparkline from './swell-sparkline'
-import ActivityOverlay from '../activity-overlay'
+import SwellChart from './swell-chart'
 
 const SwellOverview = class extends Component {
   constructor(props) {
@@ -26,7 +25,7 @@ const SwellOverview = class extends Component {
 
   findCurrentSwell() {
     const now = moment()
-    const currentSwellIndex = _.findIndex(this.props.current.swell, (swell) => {
+    const currentSwellIndex = _.findIndex(this.props.current.swell, swell => {
       const time = moment(swell.time).local()
       return now.diff(time) <= 0
     })
@@ -35,13 +34,14 @@ const SwellOverview = class extends Component {
 
     this.setState({
       type: currentSwell.type,
+      compassDirection: currentSwell.compassDirection,
       direction: currentSwell.direction,
       height: currentSwell.height,
       period: currentSwell.period,
     })
   }
   render() {
-    const { type, period, direction, height } = this.state
+    const { type, period, compassDirection, height } = this.state
 
     return (
       <LinearGradient
@@ -51,22 +51,18 @@ const SwellOverview = class extends Component {
         colors={['#52BBFF', '#8ADFFF']}
         style={styles.container}
       >
-        {this.state.type ?
-          <View style={styles.swellOverview}>
-            <View>
-              <Text style={[styles.ehancedBlueText, styles.swellHeight]}>
-                {height}&apos;
-              </Text>
-              <Text style={[BaseStyle.secondaryHeader, styles.ehancedBlueText]}>
-                {type}
-              </Text>
-              <Text style={[styles.swellPeriod, styles.ehancedBlueText]}>
-                Swell period at {period}s from {direction}
-              </Text>
-            </View>
-            <SwellSparkline swell={this.props.current.swell} />
-          </View>
-        : <ActivityOverlay color={'#124E76'} /> }
+        <View style={styles.swellOverview}>
+          <Text style={[styles.ehancedBlueText, styles.swellHeight]}>
+            {height}&apos;
+          </Text>
+          <Text style={[BaseStyle.secondaryHeader, styles.ehancedBlueText]}>
+            {type}
+          </Text>
+          <Text style={[styles.swellPeriod, styles.ehancedBlueText]}>
+            Swell period at {period}s from {compassDirection}
+          </Text>
+        </View>
+        <SwellChart swell={this.props.current.swell} />
       </LinearGradient>
     )
   }
@@ -74,7 +70,6 @@ const SwellOverview = class extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    paddingLeft: 40,
     paddingRight: BaseStyle.smallSpacing,
     paddingTop: 14,
     paddingBottom: BaseStyle.smallSpacing,
@@ -91,13 +86,12 @@ const styles = StyleSheet.create({
     shadowRadius: 20,
   },
   swellOverview: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    paddingLeft: 40,
   },
   swellHeight: {
     fontSize: 28,
     fontWeight: '500',
-    marginBottom: 3,
+    marginBottom: 7,
   },
   swellPeriod: {
     marginTop: 3,

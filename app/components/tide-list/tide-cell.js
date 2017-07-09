@@ -26,7 +26,7 @@ export default class extends Component {
           </Text>
         </View>
         <Text style={styles.digitText}>
-          {tide.height}'
+          {tide.height}&apos;
         </Text>
       </View>
     )
@@ -60,6 +60,6 @@ const styles = StyleSheet.create({
   digitText: {
     color: BaseStyle.baseTextColor,
     fontSize: BaseStyle.smallNumericFontSize,
-    fontFamily: BaseStyle.numericFontFamily,
+    fontFamily: BaseStyle.numericFont,
   },
 })

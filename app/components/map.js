@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux'
 import * as actions from '../actions/station'
 import MapCallout from './map-callout'
 import mapStyle from '../lib/map-style'
+import mapMarker from '../assets/images/station-marker.png'
 
 const Map = class extends Component {
   componentDidMount() {
@@ -20,6 +21,8 @@ const Map = class extends Component {
     this.props.fetchTides(location)
     this.props.fetchTideChart(location)
     this.props.findCityName(location)
+    this.props.fetchSwellInfo(location)
+    this.props.fetchWaterTemperature(location)
     this.props.dismissModal()
   }
 
@@ -43,7 +46,7 @@ const Map = class extends Component {
         customMapStyle={mapStyle}
       >
         {stations.map(station =>
-          (<MapView.Marker key={station.id} coordinate={station.location}>
+          (<MapView.Marker image={mapMarker} key={station.id} coordinate={station.location}>
             <MapView.Callout
               tooltip
               onPress={() => this.navigateToStation(station.location)}
