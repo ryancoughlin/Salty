@@ -1,28 +1,32 @@
 import { Alert } from 'react-native'
 import Config from 'react-native-config'
 
+import { withActivityIndicator } from './request-manager'
+
 const BASE_URL = Config.BASE_URL
 const DEFAULT_HEADERS = {
   'Content-Type': 'application/json',
-  Accept: 'application/json',
+  Accept: 'application/json'
 }
 
-export default function(path) {
+const request = function(path) {
   const params = {
     headers: {
-      ...DEFAULT_HEADERS,
-    },
+      ...DEFAULT_HEADERS
+    }
   }
 
   const response = fetch(`${BASE_URL}${path}`, params)
 
   response.catch(() => {
-    Alert.alert('Cannot complete request', 'We were uable fetch tide information.', [
-      { text: 'OK' },
-    ])
+    Alert.alert(
+      'Cannot complete request',
+      'We were uable fetch tide information.',
+      [{ text: 'OK' }]
+    )
   })
 
-  return response.then((res) => {
+  return response.then(res => {
     if (res.ok) {
       return res.json()
     } else {
@@ -30,3 +34,5 @@ export default function(path) {
     }
   })
 }
+
+export default withActivityIndicator(request)
