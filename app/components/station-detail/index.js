@@ -22,40 +22,57 @@ const StationDetail = class extends Component {
 
     this.state = {
       tideTableVisible: false,
-      mapVisible: false,
+      mapVisible: false
     }
   }
 
   render() {
     const { tideTableVisible, mapVisible } = this.state
     const { saveLocation, deleteLocation, location } = this.props
-    const { city, todaysTides, tables, chart, weather, waterTemperature } = this.props.current
+    const {
+      city,
+      todaysTides,
+      tides,
+      chart,
+      weather,
+      waterTemperature
+    } = this.props.current
 
     return (
       <ScrollView style={styles.container}>
         <TidePhrase
           style={styles.tidePhrase}
           city={city}
-          tides={tables}
+          tides={tides}
           toggleModal={() => this.setState({ mapVisible: !mapVisible })}
         />
         <WeatherRow weather={weather.currentWind} icon="wind" />
         <WeatherRow weather={weather.currentWeather} icon={weather.icon} />
         <TodaysTides
-          tideTable={tables}
+          tideTable={tides}
           todaysTides={todaysTides}
-          toggleModal={() => this.setState({ tideTableVisible: !tideTableVisible })}
+          toggleModal={() =>
+            this.setState({ tideTableVisible: !tideTableVisible })}
         />
-        <DetailPanel wind={weather.wind} tideChart={chart} waterTemperature={waterTemperature} />
+        <DetailPanel
+          wind={weather.wind}
+          tideChart={chart}
+          waterTemperature={waterTemperature}
+        />
         <SavedLocations />
 
         {this.props.isSaved
           ? <RemoveLocationButton city={city} deleteLocation={deleteLocation} />
-          : <SaveLocationButton saveLocation={saveLocation} location={location} city={city} />}
+          : <SaveLocationButton
+              saveLocation={saveLocation}
+              location={location}
+              city={city}
+            />}
 
         <SaltyModal
           visible={tideTableVisible}
-          dismissModal={() => this.setState({ tideTableVisible: !tideTableVisible })}
+          dismissModal={() =>
+            this.setState({ tideTableVisible: !tideTableVisible })}
         >
           <TideTable />
         </SaltyModal>
@@ -74,19 +91,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    marginTop: BaseStyle.baseSpacing,
-  },
+    marginTop: BaseStyle.baseSpacing
+  }
 })
 
 const mapStateToProps = ({ stations }) => ({
   current: stations.current,
   saved: stations.saved,
   location: stations.location,
-  isSaved: !!stations.saved[stations.current.city],
+  isSaved: !!stations.saved[stations.current.city]
 })
 
 const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators(actions, dispatch),
+  ...bindActionCreators(actions, dispatch)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(StationDetail)
