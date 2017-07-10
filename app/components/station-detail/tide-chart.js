@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import { ScrollView } from 'react-native'
-import { VictoryLine, VictoryChart, VictoryScatter, VictoryAxis } from 'victory-native'
+import {
+  VictoryLine,
+  VictoryChart,
+  VictoryScatter,
+  VictoryAxis
+} from 'victory-native'
 import _ from 'lodash'
 
 import BaseStyle from '../../base-styles'
@@ -10,7 +15,7 @@ export default class TideChart extends Component {
   get formattedTides() {
     return _.map(this.props.tides, tide => ({
       ...tide,
-      time: new Date(tide.time),
+      time: new Date(tide.time)
     }))
   }
 
@@ -40,8 +45,8 @@ export default class TideChart extends Component {
               style={{
                 data: {
                   stroke: BaseStyle.actionColor,
-                  strokeWidth: 3,
-                },
+                  strokeWidth: 3
+                }
               }}
             />
             <VictoryScatter
@@ -54,13 +59,13 @@ export default class TideChart extends Component {
                 labels: {
                   fill: BaseStyle.baseTextColor,
                   fontFamily: BaseStyle.numericFontFamily,
-                  fontSize: 12,
+                  fontSize: 12
                 },
                 data: {
                   strokeWidth: 4,
                   fill: BaseStyle.actionColor,
-                  stroke: 'white',
-                },
+                  stroke: 'white'
+                }
               }}
             />
           </VictoryChart>

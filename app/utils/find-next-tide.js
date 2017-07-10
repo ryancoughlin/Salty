@@ -8,7 +8,7 @@ export default function findNextTide(tides) {
   const todayKey = now.format(DATE_FORMAT)
   const todaysTides = tides[todayKey]
 
-  const nextTideIndex = _.findIndex(todaysTides, (tide) => {
+  const nextTideIndex = _.findIndex(todaysTides, tide => {
     const tideTime = moment.utc(tide.time).local()
     return now.diff(tideTime) <= 0
   })

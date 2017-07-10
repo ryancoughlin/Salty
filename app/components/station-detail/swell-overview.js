@@ -15,7 +15,7 @@ const SwellOverview = class extends Component {
     this.state = {
       type: '',
       direction: '',
-      period: '',
+      period: ''
     }
   }
 
@@ -25,7 +25,7 @@ const SwellOverview = class extends Component {
 
   findCurrentSwell() {
     const now = moment()
-    const currentSwellIndex = _.findIndex(this.props.current.swell, (swell) => {
+    const currentSwellIndex = _.findIndex(this.props.current.swell, swell => {
       const time = moment(swell.time).local()
       return now.diff(time) <= 0
     })
@@ -36,7 +36,7 @@ const SwellOverview = class extends Component {
       type: currentSwell.type,
       direction: currentSwell.direction,
       height: currentSwell.height,
-      period: currentSwell.period,
+      period: currentSwell.period
     })
   }
   render() {
@@ -81,28 +81,28 @@ const styles = StyleSheet.create({
     shadowColor: BaseStyle.darkBackgroundColor,
     shadowOffset: {
       width: 0,
-      height: 0,
+      height: 0
     },
     shadowOpacity: 0.1,
     shadowRadius: 20,
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   swellHeight: {
     fontSize: 28,
     fontWeight: '500',
-    marginBottom: 3,
+    marginBottom: 3
   },
   swellPeriod: {
-    marginTop: 3,
+    marginTop: 3
   },
   ehancedBlueText: {
     color: '#124E76',
-    backgroundColor: 'transparent',
-  },
+    backgroundColor: 'transparent'
+  }
 })
 
 const mapStateToProps = ({ stations }) => ({
-  current: stations.current,
+  current: stations.current
 })
 
 export default connect(mapStateToProps, null)(SwellOverview)

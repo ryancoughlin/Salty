@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, TouchableOpacity, Dimensions } from 'react-native'
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  Dimensions
+} from 'react-native'
 
 import BaseStyle from '../../base-styles'
 import TideDirectionArrow from '../tide-list/tide-direction-arrow'
@@ -11,7 +17,7 @@ export default class TidePhrase extends Component {
     super(props)
 
     this.state = {
-      tideDirection: findTideDirection(props.tides),
+      tideDirection: findTideDirection(props.tides)
     }
   }
 
@@ -21,7 +27,11 @@ export default class TidePhrase extends Component {
 
     return (
       <View style={styles.container}>
-        <TideDirectionArrow direction={tideDirection} style={styles.arrow} largeTideArrow />
+        <TideDirectionArrow
+          direction={tideDirection}
+          style={styles.arrow}
+          largeTideArrow
+        />
         <View style={styles.tidePhrase}>
           <View style={styles.phraseRow}>
             <Text style={[BaseStyle.tidePhrase, styles.tideDirectionText]}>
@@ -30,9 +40,7 @@ export default class TidePhrase extends Component {
             <Text style={BaseStyle.tidePhrase}>Tide</Text>
           </View>
           <View style={styles.phraseRow}>
-            <Text style={BaseStyle.tidePhrase}>
-              in
-            </Text>
+            <Text style={BaseStyle.tidePhrase}>in</Text>
             <TouchableOpacity onPress={toggleModal}>
               <Text
                 numberOfLines={1}
@@ -53,21 +61,21 @@ const { width } = Dimensions.get('window')
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    marginVertical: BaseStyle.largeSpacing,
+    marginVertical: BaseStyle.largeSpacing
   },
   arrow: {
-    marginTop: 10,
+    marginTop: 10
   },
   phraseRow: {
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   tideDirectionText: {
-    color: BaseStyle.baseTextColor,
+    color: BaseStyle.baseTextColor
   },
   cityText: {
     width: width - 100,
     marginBottom: BaseStyle.tinySpacing,
     textDecorationLine: 'underline',
-    textDecorationColor: BaseStyle.subtleColor,
-  },
+    textDecorationColor: BaseStyle.subtleColor
+  }
 })

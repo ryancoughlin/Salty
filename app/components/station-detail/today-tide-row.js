@@ -28,9 +28,12 @@ export default class NextTideRow extends Component {
 
     return (
       <View style={styles.futureTideRow}>
-        <Text style={[styles.futureTideType, this.pastTideStyle]}>{_.upperFirst(tide.type)}</Text>
+        <Text style={[styles.futureTideType, this.pastTideStyle]}>
+          {_.upperFirst(tide.type)}
+        </Text>
         <Text style={[styles.futureTideInfo, this.pastTideStyle]}>
-          {this.formatTideTime(tide.time)} / {this.formatTideHeight(tide.height)}
+          {this.formatTideTime(tide.time)} /{' '}
+          {this.formatTideHeight(tide.height)}
         </Text>
       </View>
     )
@@ -41,18 +44,18 @@ const styles = StyleSheet.create({
   futureTideRow: {
     marginLeft: 61,
     flexDirection: 'row',
-    marginBottom: 5,
+    marginBottom: 5
   },
   futureTideType: {
     width: 40,
     fontWeight: '600',
-    fontSize: 14,
+    fontSize: 14
   },
   futureTideInfo: {
     fontFamily: BaseStyle.numericFontFamily,
-    fontSize: 14,
+    fontSize: 14
   },
   pastTide: {
-    textDecorationLine: 'line-through',
-  },
+    textDecorationLine: 'line-through'
+  }
 })

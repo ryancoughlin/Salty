@@ -11,7 +11,7 @@ export default class WindChart extends Component {
   get formattedWind() {
     return _.map(this.props.wind, wind => ({
       ...wind,
-      time: new Date(wind.time),
+      time: new Date(wind.time)
     }))
   }
 
@@ -36,13 +36,13 @@ export default class WindChart extends Component {
                   width: 2,
                   strokeLinejoin: 'round',
                   strokeWidth: 4,
-                  stroke: BaseStyle.actionColor,
+                  stroke: BaseStyle.actionColor
                 },
                 labels: {
                   fontSize: 12,
                   fontFamily: BaseStyle.numericFontFamily,
-                  fill: BaseStyle.baseTextColor,
-                },
+                  fill: BaseStyle.baseTextColor
+                }
               }}
             />
             <VictoryAxis

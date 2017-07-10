@@ -18,10 +18,16 @@ export default class extends Component {
       <View style={styles.container}>
         <View style={styles.leftContainer}>
           <TideDirectionArrow direction={tide.type} style={styles.tideArrow} />
-          <Text style={styles.tideType}>{_.upperFirst(tide.type)}</Text>
-          <Text style={styles.digitText}>{this.prettyTideTime}</Text>
+          <Text style={styles.tideType}>
+            {_.upperFirst(tide.type)}
+          </Text>
+          <Text style={styles.digitText}>
+            {this.prettyTideTime}
+          </Text>
         </View>
-        <Text style={styles.digitText}>{tide.height}'</Text>
+        <Text style={styles.digitText}>
+          {tide.height}'
+        </Text>
       </View>
     )
   }
@@ -35,26 +41,26 @@ const styles = StyleSheet.create({
     height: 36,
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingRight: BaseStyle.baseSpacing,
+    paddingRight: BaseStyle.baseSpacing
   },
   leftContainer: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   tideArrow: {
     width: 16,
-    height: 16,
+    height: 16
   },
   tideType: {
     color: BaseStyle.baseTextColor,
     fontWeight: '500',
     fontSize: 14,
-    width: 40,
+    width: 40
   },
   digitText: {
     color: BaseStyle.baseTextColor,
     fontSize: 14,
-    fontFamily: BaseStyle.numericFontFamily,
-  },
+    fontFamily: BaseStyle.numericFontFamily
+  }
 })
