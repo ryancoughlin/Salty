@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { AppState, ActivityIndicator, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import _ from 'lodash'
 
 import * as actions from '../actions/station'
 import NoNearbyStations from './no-nearby-stations'
@@ -14,7 +15,7 @@ const App = class extends Component {
 
     this.handleAppStateChange = this.handleAppStateChange.bind(this)
     this.state = {
-      previousAppState: 'active',
+      previousAppState: 'active'
     }
   }
 
@@ -29,7 +30,7 @@ const App = class extends Component {
   }
 
   findCurrentLocation() {
-    fetchLocation().then((location) => {
+    fetchLocation().then(location => {
       this.props.findCityName(location)
       this.props.fetchWeather(location)
       this.props.fetchTides(location)
@@ -39,7 +40,7 @@ const App = class extends Component {
     })
   }
 
-  handleAppStateChange = (appState) => {
+  handleAppStateChange = appState => {
     this.setState({ previousAppState: appState })
 
     if (appState === 'unknown') {
@@ -52,17 +53,17 @@ const App = class extends Component {
   }
 
   render() {
-    const { loading } = this.props
+    const { current } = this.props
 
     if (!this.props.stationsNearby) {
       return <NoNearbyStations />
     }
 
-    if (loading) {
+    if (_.isEmpty(current)) {
       return <ActivityIndicator style={styles.loadingIndicator} size="large" />
     }
 
-    return <StationDetail navigation={this.props.navigation} />
+    return <StationDetail />
   }
 }
 
@@ -71,17 +72,17 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: 'white',
-    justifyContent: 'center',
-  },
+    justifyContent: 'center'
+  }
 })
 
 const mapStateToProps = ({ stations }) => ({
   stationsNearby: stations.stationsNearby,
-  loading: stations.loading,
+  current: stations.current
 })
 
 const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators(actions, dispatch),
+  ...bindActionCreators(actions, dispatch)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
