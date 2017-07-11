@@ -38,42 +38,38 @@ const Map = class extends Component {
           latitude: location.latitude,
           longitude: location.longitude,
           latitudeDelta: 0.2,
-          longitudeDelta: 0.2,
+          longitudeDelta: 0.2
         }}
         customMapStyle={mapStyle}
       >
         {stations.map((station, index) =>
-          (<MapView.Marker key={index} coordinate={station.location}>
+          <MapView.Marker key={index} coordinate={station.location}>
             <MapView.Callout
               tooltip
               onPress={() => this.navigateToStation(station.location)}
             >
               <MapCallout station={station} />
             </MapView.Callout>
-          </MapView.Marker>),
+          </MapView.Marker>
         )}
       </MapView>
     )
   }
 }
 
-Map.navigationOptions = ({ navigation }) => ({
-  headerLeft: <CloseModalButton back={navigation.goBack} />,
-})
-
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-  },
+    flex: 1
+  }
 })
 
 const mapStateToProps = ({ stations }) => ({
   stations: stations.stations,
-  location: stations.location,
+  location: stations.location
 })
 
 const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators(actions, dispatch),
+  ...bindActionCreators(actions, dispatch)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Map)
