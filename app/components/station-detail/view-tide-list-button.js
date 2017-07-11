@@ -4,15 +4,16 @@ import { Text, StyleSheet, TouchableOpacity } from 'react-native'
 import BaseStyle from '../../base-styles'
 
 const ViewTideListButton = ({ toggleModal }) =>
-  (<TouchableOpacity onPress={toggleModal} style={styles.container}>
+  <TouchableOpacity onPress={toggleModal} style={styles.container}>
     <Text style={styles.viewTidesText}>View All</Text>
-  </TouchableOpacity>)
+  </TouchableOpacity>
 
 const styles = StyleSheet.create({
   viewTidesText: {
-    fontSize: 14,
-    color: BaseStyle.baseTextColor,
-  },
+    fontSize: 16,
+    fontWeight: '500',
+    color: BaseStyle.actionColor
+  }
 })
 
 export default ViewTideListButton
