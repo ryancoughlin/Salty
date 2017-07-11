@@ -14,17 +14,17 @@ export default class SwellSparkline extends Component {
     return (
       <VictoryLine
         height={30}
-        width={86}
+        width={100}
         padding={0}
         domainPadding={4}
         data={this.formatSwell}
-        interpolation="monotoneX"
+        interpolation="basis"
         x="time"
         y="height"
         style={{
           data: {
             stroke: '#2D7EB4',
-            strokeWidth: 2.25
+            strokeWidth: 2
           }
         }}
       />
