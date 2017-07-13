@@ -22,7 +22,7 @@ const StationDetail = class extends Component {
 
     this.state = {
       tideTableVisible: false,
-      mapVisible: false
+      mapVisible: false,
     }
   }
 
@@ -35,7 +35,7 @@ const StationDetail = class extends Component {
       tides,
       chart,
       weather,
-      waterTemperature
+      waterTemperature,
     } = this.props.current
 
     return (
@@ -64,10 +64,10 @@ const StationDetail = class extends Component {
         {this.props.isSaved
           ? <RemoveLocationButton city={city} deleteLocation={deleteLocation} />
           : <SaveLocationButton
-              saveLocation={saveLocation}
-              location={location}
-              city={city}
-            />}
+            saveLocation={saveLocation}
+            location={location}
+            city={city}
+          />}
 
         <SaltyModal
           visible={tideTableVisible}
@@ -91,19 +91,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    marginTop: BaseStyle.baseSpacing
-  }
+    marginTop: BaseStyle.baseSpacing,
+  },
 })
 
 const mapStateToProps = ({ stations }) => ({
   current: stations.current,
   saved: stations.saved,
   location: stations.location,
-  isSaved: !!stations.saved[stations.current.city]
+  isSaved: !!stations.saved[stations.current.city],
 })
 
 const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators(actions, dispatch)
+  ...bindActionCreators(actions, dispatch),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(StationDetail)

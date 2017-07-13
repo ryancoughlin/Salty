@@ -4,7 +4,7 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
 } from 'react-native'
 
 import BaseStyle from '../../base-styles'
@@ -17,7 +17,7 @@ export default class TidePhrase extends Component {
     super(props)
 
     this.state = {
-      tideDirection: findTideDirection(props.tides)
+      tideDirection: findTideDirection(props.tides),
     }
   }
 
@@ -61,21 +61,21 @@ const { width } = Dimensions.get('window')
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    marginVertical: BaseStyle.largeSpacing
+    marginVertical: BaseStyle.largeSpacing,
   },
   arrow: {
-    marginTop: 10
+    marginTop: 10,
   },
   phraseRow: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   tideDirectionText: {
-    color: BaseStyle.baseTextColor
+    color: BaseStyle.baseTextColor,
   },
   cityText: {
     width: width - 100,
     marginBottom: BaseStyle.tinySpacing,
     textDecorationLine: 'underline',
-    textDecorationColor: BaseStyle.subtleColor
-  }
+    textDecorationColor: BaseStyle.subtleColor,
+  },
 })

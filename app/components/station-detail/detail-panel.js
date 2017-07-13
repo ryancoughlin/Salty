@@ -7,11 +7,11 @@ import WaterTemperatureChart from './water-temperature-chart'
 import SwellOverview from './swell-overview'
 
 const DetailPanel = ({ wind, tideChart, waterTemperature }) =>
-  <View>
+  (<View>
     <SwellOverview tides={tideChart} />
     <WindChart wind={wind} />
     <TideChart tides={tideChart} />
     <WaterTemperatureChart waterTemperature={waterTemperature} />
-  </View>
+  </View>)
 
 export default DetailPanel

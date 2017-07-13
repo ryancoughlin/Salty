@@ -16,7 +16,7 @@ const App = class extends Component {
 
     this.handleAppStateChange = this.handleAppStateChange.bind(this)
     this.state = {
-      previousAppState: 'active'
+      previousAppState: 'active',
     }
   }
 
@@ -31,7 +31,7 @@ const App = class extends Component {
   }
 
   findCurrentLocation() {
-    fetchLocation().then(location => {
+    fetchLocation().then((location) => {
       this.props.findCityName(location)
       this.props.fetchWeather(location)
       this.props.fetchTides(location)
@@ -41,7 +41,7 @@ const App = class extends Component {
     })
   }
 
-  handleAppStateChange = appState => {
+  handleAppStateChange = (appState) => {
     this.setState({ previousAppState: appState })
 
     if (appState === 'unknown') {
@@ -70,11 +70,11 @@ const App = class extends Component {
 
 const mapStateToProps = ({ stations }) => ({
   stationsNearby: stations.stationsNearby,
-  current: stations.current
+  current: stations.current,
 })
 
 const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators(actions, dispatch)
+  ...bindActionCreators(actions, dispatch),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
