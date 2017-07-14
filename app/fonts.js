@@ -1,1 +1,1 @@
-export const numericFontFamily = 'Input-Regular'
+export const numericFontFamily = 'OverpassMono-Light'

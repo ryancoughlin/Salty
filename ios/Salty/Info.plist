@@ -34,6 +34,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Input-Regular_(InputMono-Light).ttf</string>
+		<string>overpass-mono-light.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

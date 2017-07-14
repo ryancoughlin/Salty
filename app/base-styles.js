@@ -14,6 +14,7 @@ const BaseStyle = {
     color: Colors.baseTextColor,
     fontWeight: 'bold',
   },
+  smallNumericFontSize: 14,
   baseFontSize: 18,
   tinySpacing: 4,
   smallSpacing: 10,

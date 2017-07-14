@@ -41,26 +41,25 @@ const styles = StyleSheet.create({
     height: 36,
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingRight: BaseStyle.baseSpacing
+    paddingRight: BaseStyle.baseSpacing,
   },
   leftContainer: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center'
   },
   tideArrow: {
-    width: 16,
-    height: 16
+    width: 14,
+    height: 14,
   },
   tideType: {
     color: BaseStyle.baseTextColor,
     fontWeight: '500',
     fontSize: 14,
-    width: 40
+    width: 40,
   },
   digitText: {
     color: BaseStyle.baseTextColor,
-    fontSize: 14,
-    fontFamily: BaseStyle.numericFontFamily
-  }
+    fontSize: BaseStyle.smallNumericFontSize,
+    fontFamily: BaseStyle.numericFontFamily,
+  },
 })

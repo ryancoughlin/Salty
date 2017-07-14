@@ -44,18 +44,18 @@ const styles = StyleSheet.create({
   futureTideRow: {
     marginLeft: 61,
     flexDirection: 'row',
-    marginBottom: 5
+    marginBottom: 5,
   },
   futureTideType: {
     width: 40,
     fontWeight: '600',
-    fontSize: 14
+    fontSize: 14,
   },
   futureTideInfo: {
     fontFamily: BaseStyle.numericFontFamily,
-    fontSize: 14
+    fontSize: BaseStyle.smallNumericFontSize,
   },
   pastTide: {
-    textDecorationLine: 'line-through'
-  }
+    textDecorationLine: 'line-through',
+  },
 })

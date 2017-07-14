@@ -60,7 +60,7 @@ export default class TideChart extends Component {
               labels: {
                 fill: BaseStyle.baseTextColor,
                 fontFamily: BaseStyle.numericFontFamily,
-                fontSize: 12,
+                fontSize: BaseStyle.smallNumericFontSize,
               },
               data: {
                 strokeWidth: 4,

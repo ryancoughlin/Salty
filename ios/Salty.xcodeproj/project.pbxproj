@@ -37,6 +37,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* SaltyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SaltyTests.m */; };
 		3A98091AC76D4DCF8C693EAA /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9891AFFCFD6044559CD0EF31 /* libAirMaps.a */; };
 		56C6D1C34F5F47AC9BF28A3F /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF90A1F791F34E4AB93B6249 /* libRNSVG.a */; };
+		5D3E10311F18686900AC8BDD /* overpass-mono-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5D3E10301F18686900AC8BDD /* overpass-mono-light.otf */; };
 		5D5F140A1F11699600742E87 /* AIRGMSMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F13E51F11699600742E87 /* AIRGMSMarker.m */; };
 		5D5F140B1F11699600742E87 /* AIRGMSPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F13E71F11699600742E87 /* AIRGMSPolygon.m */; };
 		5D5F140C1F11699600742E87 /* AIRGMSPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F13E91F11699600742E87 /* AIRGMSPolyline.m */; };
@@ -348,6 +349,7 @@
 		408716B4449540A4BAF4B1F5 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		57A7C41993D3445786C8A511 /* libReactNativeConfig.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeConfig.a; sourceTree = "<group>"; };
 		5962A479FC234211AE2975A8 /* libRNGeocoder.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGeocoder.a; sourceTree = "<group>"; };
+		5D3E10301F18686900AC8BDD /* overpass-mono-light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "overpass-mono-light.otf"; sourceTree = "<group>"; };
 		5D5F13E41F11699600742E87 /* AIRGMSMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRGMSMarker.h; sourceTree = "<group>"; };
 		5D5F13E51F11699600742E87 /* AIRGMSMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIRGMSMarker.m; sourceTree = "<group>"; };
 		5D5F13E61F11699600742E87 /* AIRGMSPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRGMSPolygon.h; sourceTree = "<group>"; };
@@ -679,6 +681,7 @@
 		5D7BE3181E74E563004250C7 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				5D3E10301F18686900AC8BDD /* overpass-mono-light.otf */,
 				5D7BE3191E74E563004250C7 /* Input-Regular_(InputMono-Light).ttf */,
 			);
 			path = Fonts;
@@ -1226,6 +1229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D3E10311F18686900AC8BDD /* overpass-mono-light.otf in Resources */,
 				5D7BE31A1E74E563004250C7 /* Input-Regular_(InputMono-Light).ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				5D7BE2AC1E74E056004250C7 /* Kennebunkport.gpx in Resources */,

@@ -57,7 +57,7 @@ export default class RemainingTideTime extends Component {
 const styles = StyleSheet.create({
   futureTideInfo: {
     fontFamily: BaseStyle.numericFontFamily,
-    fontSize: 12,
+    fontSize: BaseStyle.smallNumericFontSize,
     marginLeft: 2,
   },
 })

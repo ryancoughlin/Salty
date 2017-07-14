@@ -32,12 +32,9 @@ export default class WindChart extends Component {
               data: {
                 fill: BaseStyle.actionColor,
                 width: 2,
-                strokeLinejoin: 'round',
-                strokeWidth: 4,
-                stroke: BaseStyle.actionColor,
               },
               labels: {
-                fontSize: 12,
+                fontSize: BaseStyle.smallNumericFontSize,
                 fontFamily: BaseStyle.numericFontFamily,
                 fill: BaseStyle.baseTextColor,
               },
