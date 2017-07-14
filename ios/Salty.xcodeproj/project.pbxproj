@@ -812,6 +812,7 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				F9E966542FB06A353F38184D /* [CP] Embed Pods Frameworks */,
 				815075A28C243869AD4C7695 /* [CP] Copy Pods Resources */,
+				5DF4CF0A1F191B1F00D56E1B /* Increment build numbers */,
 			);
 			buildRules = (
 			);
@@ -1297,6 +1298,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/packager/react-native-xcode.sh";
+		};
+		5DF4CF0A1F191B1F00D56E1B /* Increment build numbers */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Increment build numbers";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
 		};
 		815075A28C243869AD4C7695 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
