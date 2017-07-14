@@ -56,12 +56,12 @@ const App = class extends Component {
   render() {
     const { current } = this.props
 
-    if (!this.props.stationsNearby) {
-      return <NoNearbyStations />
+    if (_.isEmpty(current.weather)) {
+      return <ActivityOverlay />
     }
 
-    if (_.isEmpty(current) && _.isEmpty(current.weather)) {
-      return <ActivityOverlay />
+    if (!this.props.stationsNearby) {
+      return <NoNearbyStations />
     }
 
     return <StationDetail />

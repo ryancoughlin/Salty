@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
+import { connect } from 'react-redux'
 import _ from 'lodash'
 import moment from 'moment'
 
@@ -8,28 +9,39 @@ import WaterTemperatureChart from './water-temperature-chart'
 import ActivityOverlay from '../activity-overlay'
 import BaseStyle from '../../base-styles'
 
-export default class WaterTemperatureCard extends Component {
+const WaterTemperatureCard = class extends Component {
   get findCurrentWaterTemperature() {
-    const { data } = this.props
-    const index = _.findIndex(data, (temperature) => {
-      const time = moment.utc(temperature.time).local()
-      return moment().diff(time) <= 0
-    })
+    if (!_.isEmpty(this.props.current.waterTemperature)) {
+      const { waterTemperature } = this.props.current
+      const index = _.findIndex(waterTemperature, (temperature) => {
+        const time = moment.utc(temperature.time).local()
+        return moment().diff(time) <= 0
+      })
 
-    if (index === -1) {
-      return `Currently ${data[0].temperature}°`
+      if (waterTemperature[index] !== undefined) {
+        return `Currently ${waterTemperature[index].temperature}°`
+      } else {
+        return 'Loading data...'
+      }
     }
-    return `Currently ${data[index].temperature}°`
   }
 
   render() {
-    const { data } = this.props
+    const { waterTemperature } = this.props.current
 
     return (
       <View style={BaseStyle.whiteCard}>
         <PanelHeader headerText="Water Temperature" bodyText={this.findCurrentWaterTemperature} />
-        {!_.isEmpty(data) ? <WaterTemperatureChart data={data} /> : <ActivityOverlay /> }
+        {!_.isEmpty(waterTemperature) ? <WaterTemperatureChart data={waterTemperature} />
+         : <ActivityOverlay /> }
       </View>
     )
   }
 }
+
+
+const mapStateToProps = ({ stations }) => ({
+  current: stations.current,
+})
+
+export default connect(mapStateToProps)(WaterTemperatureCard)
