@@ -34,6 +34,20 @@ const BaseStyle = {
       fill: Colors.mediumGray,
     },
   },
+  whiteCard: {
+    flex: 1,
+    backgroundColor: 'white',
+    shadowColor: Colors.darkBackgroundColor,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 16,
+    marginBottom: 20,
+    marginHorizontal: 20,
+    borderRadius: 10,
+  },
 
   numericFontFamily,
 }

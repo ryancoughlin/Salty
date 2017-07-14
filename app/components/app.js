@@ -60,7 +60,7 @@ const App = class extends Component {
       return <NoNearbyStations />
     }
 
-    if (_.isEmpty(current)) {
+    if (_.isEmpty(current) && _.isEmpty(current.weather)) {
       return <ActivityOverlay />
     }
 

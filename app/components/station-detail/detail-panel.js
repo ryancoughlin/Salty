@@ -1,17 +1,18 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import TideChart from './tide-chart'
-import WindChart from './wind-chart'
-import WaterTemperatureChart from './water-temperature-chart'
+import WaterLevelCard from './water-level-card'
+import WindCard from './wind-card'
+import WaterTemperatureCard from './water-temperature-card'
+
 import SwellOverview from './swell-overview'
 
 const DetailPanel = ({ wind, tideChart, waterTemperature }) =>
   (<View>
     <SwellOverview tides={tideChart} />
-    <WindChart wind={wind} />
-    <TideChart tides={tideChart} />
-    <WaterTemperatureChart waterTemperature={waterTemperature} />
+    <WindCard data={wind} />
+    <WaterLevelCard data={tideChart} />
+    <WaterTemperatureCard data={waterTemperature} />
   </View>)
 
 export default DetailPanel
