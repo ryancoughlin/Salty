@@ -16,7 +16,7 @@ import {
   FETCH_ALL_STATIONS,
   NOT_NEAR_STATION,
   NEAR_STATION,
-  IS_PURCHASED
+  IS_PURCHASED,
 } from '../types'
 
 export function fetchTides(location) {
@@ -24,7 +24,7 @@ export function fetchTides(location) {
     dispatch({ type: START_LOADING_TIDES })
 
     const result = request(
-      `/tides?latitude=${location.latitude}&longitude=${location.longitude}`
+      `/tides?latitude=${location.latitude}&longitude=${location.longitude}`,
     )
     result
       .then(json => {
@@ -32,11 +32,11 @@ export function fetchTides(location) {
           dispatch({ type: NEAR_STATION })
           dispatch({
             type: FETCH_TIDES,
-            tides: json
+            tides: json,
           })
         } else {
           dispatch({
-            type: NOT_NEAR_STATION
+            type: NOT_NEAR_STATION,
           })
         }
       })
@@ -50,12 +50,12 @@ export function fetchTideChart(location) {
   return dispatch => {
     const { latitude, longitude } = location
     const result = request(
-      `/tide-chart?latitude=${latitude}&longitude=${longitude}`
+      `/tide-chart?latitude=${latitude}&longitude=${longitude}`,
     )
     result.then(json => {
       dispatch({
         type: FETCH_TIDE_CHART,
-        tideChart: json
+        tideChart: json,
       })
     })
   }
@@ -65,12 +65,12 @@ export function fetchWaterTemperature(location) {
   return dispatch => {
     const { latitude, longitude } = location
     const result = request(
-      `/water-temperature?latitude=${latitude}&longitude=${longitude}`
+      `/water-temperature?latitude=${latitude}&longitude=${longitude}`,
     )
     result.then(json => {
       dispatch({
         type: FETCH_WATER_TEMPERATURE,
-        waterTemperature: json
+        waterTemperature: json,
       })
     })
   }
@@ -83,7 +83,7 @@ export function fetchSwellInfo(location) {
     result.then(json => {
       dispatch({
         type: FETCH_SWELL_INFO,
-        swell: json
+        swell: json,
       })
     })
   }
@@ -93,12 +93,12 @@ export function fetchWeather(location) {
   return dispatch => {
     const { latitude, longitude } = location
     const result = request(
-      `/weather?latitude=${latitude}&longitude=${longitude}`
+      `/weather?latitude=${latitude}&longitude=${longitude}`,
     )
     result.then(json => {
       dispatch({
         type: FETCH_WEATHER,
-        weather: json
+        weather: json,
       })
     })
   }
@@ -110,7 +110,7 @@ export function findCityName(location) {
       dispatch({
         type: FIND_CITY_NAME,
         location,
-        city
+        city,
       })
     })
   }
@@ -121,7 +121,7 @@ export function fetchAllStations() {
     request('/stations').then(stations => {
       dispatch({
         type: FETCH_ALL_STATIONS,
-        stations
+        stations,
       })
     })
   }

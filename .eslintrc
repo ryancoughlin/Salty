@@ -27,6 +27,7 @@
     camelcase: 'off',
     'class-methods-use-this': 'off',
     'no-underscore-dangle': 'off',
-    'no-return-assign': 'off'
+    'no-return-assign': 'off',
+    'arrow-parens': ['error', 'as-needed']
   }
 }

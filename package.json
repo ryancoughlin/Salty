@@ -16,6 +16,7 @@
     "react-native-in-app-utils": "^5.5.0",
     "react-native-linear-gradient": "^2.0.0",
     "react-native-maps": "^0.15.2",
+    "react-native-sentry": "^0.14.5",
     "react-native-snackbar": "^0.3.8",
     "react-native-splash-screen": "^2.0.0",
     "react-native-svg": "5.2.0",

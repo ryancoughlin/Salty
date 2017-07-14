@@ -1,5 +1,6 @@
 import { Alert } from 'react-native'
 import Config from 'react-native-config'
+import { Sentry } from 'react-native-sentry'
 
 import { withActivityIndicator } from './request-manager'
 
@@ -18,7 +19,12 @@ const request = function(path) {
 
   const response = fetch(`${BASE_URL}${path}`, params)
 
-  response.catch(() => {
+  response.catch(error => {
+    Sentry.captureMessage('Error making request')
+    Sentry.setExtraContext({
+      error,
+      path,
+    })
     Alert.alert(
       'Cannot complete request',
       'We were uable fetch tide information.',
@@ -26,7 +32,7 @@ const request = function(path) {
     )
   })
 
-  return response.then((res) => {
+  return response.then(res => {
     if (res.ok) {
       return res.json()
     }

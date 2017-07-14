@@ -1,12 +1,21 @@
 import { AsyncStorage } from 'react-native'
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import { persistStore, autoRehydrate } from 'redux-persist'
-import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk'
 import AppReducer from './reducers'
 
-const logger = createLogger()
-const store = createStore(AppReducer, autoRehydrate(), applyMiddleware(logger, thunk))
+const middlewares = [thunk]
+
+if (process.env.NODE_ENV === 'development') {
+  const { createLogger } = require('redux-logger')
+  const logger = createLogger()
+  middlewares.push(logger)
+}
+
+const store = createStore(
+  AppReducer,
+  compose(applyMiddleware(...middlewares), autoRehydrate()),
+)
 
 export function rehydrateStore(rehydrateCallback) {
   persistStore(
