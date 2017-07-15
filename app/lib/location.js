@@ -2,9 +2,9 @@ import { Alert } from 'react-native'
 import Geocoder from 'react-native-geocoder'
 
 export function fetchLocation() {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     navigator.geolocation.getCurrentPosition(
-      (position) => {
+      position => {
         resolve(position.coords)
       },
       () => {
@@ -19,12 +19,17 @@ export function fetchLocation() {
 }
 
 export function geoCodeLocation(location) {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     const { latitude, longitude } = location
 
     Geocoder.geocodePosition({ lat: latitude, lng: longitude })
-      .then((userLocation) => {
-        resolve(userLocation[0].locality)
+      .then(userLocation => {
+        const locality = userLocation[0].locality
+        if (locality) {
+          resolve(locality)
+        } else {
+          resolve(userLocation[0].subAdminArea)
+        }
       })
       .catch(() => {
         Alert.alert(

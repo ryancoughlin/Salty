@@ -71,7 +71,7 @@ const StationDetail = class extends Component {
           visible={mapVisible}
           dismissModal={() => this.setState({ mapVisible: !mapVisible })}
         >
-          <Map />
+          <Map dismissModal={() => this.setState({ mapVisible: !mapVisible })} />
         </SaltyModal>
       </ScrollView>
     )
