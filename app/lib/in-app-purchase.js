@@ -34,10 +34,6 @@ export function buyProduct(product) {
       }
 
       if (response && response.productIdentifier) {
-        Sentry.setUserContext({
-          product: response.productIdentifier,
-          purchased: true,
-        })
         resolve(response)
       }
     })
