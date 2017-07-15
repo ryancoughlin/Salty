@@ -98,6 +98,7 @@ const Upsell = class extends Component {
           <View>
             <Text style={BaseStyle.secondaryHeader}>Unlock Salty</Text>
             <Text style={styles.supportingText}>
+
               Swell and wind forecast, tides, save your favorite spots and more.
               Includes 7-day free trial.
             </Text>
@@ -105,7 +106,7 @@ const Upsell = class extends Component {
               <Animated.View style={{ opacity: this.state.upsellButtonOpacity }}>
                 <UpsellButton
                   title="Yearly Subscription"
-                  text="$19.99 a year"
+                  text="$9.99 a year"
                   backgroundColor={styles.primaryButton}
                   textColor={styles.primaryButtonText}
                   onPress={() => this.purchase(yearlySubscription)}
@@ -113,7 +114,7 @@ const Upsell = class extends Component {
                 />
                 <UpsellButton
                   title="Monthly Subscription"
-                  text="$1.99 a month"
+                  text="$0.99 a month"
                   onPress={() => this.purchase(monthlySubscription)}
                   accessory={upsellSecondaryArrow}
                 />
