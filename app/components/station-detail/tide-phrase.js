@@ -9,8 +9,8 @@ import {
 import { connect } from 'react-redux'
 
 import BaseStyle from '../../base-styles'
-import TideDirectionArrow from '../tide-list/tide-direction-arrow'
 import RemainingTideTime from './remaining-tide-time'
+import TidePhraseDirectionArrow from './tide-phrase-direction-arrow'
 import TideDirectionPhrase from './tide-direction-phrase'
 
 const TidePhrase = class extends Component {
@@ -24,7 +24,7 @@ const TidePhrase = class extends Component {
 
     return (
       <View style={styles.container}>
-        <TideDirectionArrow tides={tides} style={styles.arrow} largeTideArrow />
+        <TidePhraseDirectionArrow tides={tides} style={styles.arrow} />
         <View style={styles.tidePhrase}>
           <View style={styles.phraseRow}>
             <TideDirectionPhrase

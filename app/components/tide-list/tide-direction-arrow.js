@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import SmallIcon from '../small-icon'
 import downArrow from '../../assets/images/low-tide-arrow.png'
 import upArrow from '../../assets/images/high-tide-arrow.png'
-import findNextTide from '../../utils/find-next-tide'
 
 export default class extends Component {
   get tideDirectionArrow() {
