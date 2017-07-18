@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, TouchableOpacity, Animated } from 'react-native
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Snackbar from 'react-native-snackbar'
+import { Sentry } from 'react-native-sentry'
 
 import * as actions from '../actions/station'
 import BaseStyle from '../base-styles'
@@ -42,6 +43,7 @@ const Upsell = class extends Component {
   }
 
   purchase(product) {
+    Sentry.captureMessage('Start a purchase', { tags: { purchaseType: product } })
     buyProduct(product)
       .then(() => {
         Snackbar.show({
