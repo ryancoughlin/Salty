@@ -13,7 +13,7 @@ const TodaysTides = ({ todaysTides, toggleModal }) =>
       icon={tideIcon}
       rightLabel={<ViewTideListButton toggleModal={toggleModal} />}
     />
-    {todaysTides.map(tide => <TodayTideRow tide={tide} key={tide.height} />)}
+    {todaysTides.map(tide => <TodayTideRow tide={tide} key={tide.time} />)}
   </View>)
 
 const styles = StyleSheet.create({
