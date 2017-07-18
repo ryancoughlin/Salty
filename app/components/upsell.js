@@ -68,7 +68,7 @@ const Upsell = class extends Component {
         Snackbar.show({
           backgroundColor: BaseStyle.darkBackgroundColor,
           title: 'Purchases have been restored',
-          duration: 1600,
+          duration: 2000,
         })
         this.props.purchaseSuccessful()
       })
@@ -135,11 +135,7 @@ const Upsell = class extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
+    flex: 1,
   },
   upsell: {
     flex: 1,

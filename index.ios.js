@@ -19,15 +19,19 @@ class Salty extends Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     SplashScreen.hide()
-    rehydrateStore(() => this.setState({ shouldDisplay: true }))
+    rehydrateStore(() => {
+      this.setState({ shouldDisplay: true })
+    })
   }
 
   render() {
+    const { shouldDisplay } = this.state
+
     return (
       <Provider store={store}>
-        <App />
+        <App shouldDisplay={shouldDisplay} />
       </Provider>
     )
   }
