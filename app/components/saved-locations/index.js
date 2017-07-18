@@ -9,7 +9,7 @@ import SavedLocationItem from './saved-location-item'
 import PanelHeader from './../station-detail/panel-header'
 import BaseStyle from '../../base-styles'
 
-const SavedLocations = ({ saved, findCityName, fetchWeather, fetchTides, fetchTideChart }) => (
+const SavedLocations = ({ saved, findCityName, fetchWeather, fetchTides, fetchTideChart, fetchSwellInfo, fetchWaterTemperature }) => (
   <View style={styles.container}>
     <PanelHeader headerText="Other Locations" bodyText="Save your favorites" />
     <View style={styles.savedLocations}>
@@ -22,6 +22,8 @@ const SavedLocations = ({ saved, findCityName, fetchWeather, fetchTides, fetchTi
             fetchWeather(station.location)
             fetchTides(station.location)
             fetchTideChart(station.location)
+            fetchSwellInfo(station.location)
+            fetchWaterTemperature(station.location)
           }}
         />
       ))}
