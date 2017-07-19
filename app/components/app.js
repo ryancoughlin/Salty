@@ -61,7 +61,7 @@ const App = class extends Component {
       return <ActivityOverlay />
     }
 
-    if (false) {
+    if (!isPurchased) {
       return <Upsell />
     }
 

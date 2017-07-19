@@ -33,7 +33,8 @@ const Upsell = class extends Component {
     loadProducts().then(() => {
       this.setState({ productsLoaded: true })
       this.fadeInUpsellButtons()
-    }).catch(() => {
+    }).catch(error => {
+      alert(JSON.stringify(error))
       Snackbar.show({
         backgroundColor: BaseStyle.warningColor,
         title: 'We weren&apos;t able to fetch products from Apple',
@@ -53,7 +54,7 @@ const Upsell = class extends Component {
         })
         this.props.purchaseSuccessful()
       })
-      .catch(() => {
+      .catch(error => {
         Snackbar.show({
           backgroundColor: BaseStyle.warningColor,
           title: "Purchase didn't complete, please try again",
