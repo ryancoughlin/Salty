@@ -34,7 +34,10 @@ const Upsell = class extends Component {
       this.setState({ productsLoaded: true })
       this.fadeInUpsellButtons()
     }).catch(error => {
-      alert(JSON.stringify(error))
+      Sentry.captureMessage('Failed to fetch products from Apple')
+      Sentry.setExtraContext({
+        error,
+      })
       Snackbar.show({
         backgroundColor: BaseStyle.warningColor,
         title: 'We weren&apos;t able to fetch products from Apple',
