@@ -31,16 +31,17 @@ const TidePhrase = class extends Component {
               tides={tides}
               style={[BaseStyle.tidePhrase, styles.tideDirectionText]}
             />
-            <Text style={BaseStyle.tidePhrase}>Tide</Text>
+            <Text style={BaseStyle.tidePhrase} allowFontScaling={false}>Tide</Text>
           </View>
           <View style={styles.phraseRow}>
-            <Text style={BaseStyle.tidePhrase}>in</Text>
+            <Text style={BaseStyle.tidePhrase} allowFontScaling={false}>in</Text>
             {isPurchased
               ? <TouchableOpacity onPress={this.props.toggleModal}>
                 <Text
                   numberOfLines={1}
                   ellipsizeMode="tail"
                   style={[BaseStyle.tidePhrase, styles.cityText]}
+                  allowFontScaling={false}
                 >
                   {city}
                 </Text>
@@ -49,6 +50,7 @@ const TidePhrase = class extends Component {
                 numberOfLines={1}
                 ellipsizeMode="tail"
                 style={BaseStyle.tidePhrase}
+                allowFontScaling={false}
               >
                 {city}
               </Text>}
