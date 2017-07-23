@@ -12,7 +12,11 @@ class Salty extends Component {
   constructor(props) {
     super(props)
 
-    Sentry.config(Config.SENTRY_DSN).install()
+    if (process.env.NODE_ENV === 'production') {
+      Sentry.config(Config.SENTRY_PRODUCTION_DSN).install()
+    } else {
+      Sentry.config(Config.SENTRY_DEVELOPMENT_DSN).install()
+    }
 
     this.state = {
       shouldDisplay: false,
