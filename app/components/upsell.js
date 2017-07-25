@@ -16,6 +16,8 @@ import {
 } from '../lib/in-app-purchase'
 import UpsellButton from './buttons/upsell-button'
 import TidePhrase from './station-detail/tide-phrase'
+import SaltyModal from './modal'
+import TermsOfUse from './terms-of-use'
 import upsellPrimaryArrow from '../assets/images/upsell-white-arrow.png'
 import upsellSecondaryArrow from '../assets/images/upsell-dark-arrow.png'
 
@@ -26,6 +28,7 @@ const Upsell = class extends Component {
     this.state = {
       upsellButtonOpacity: new Animated.Value(0),
       productsLoaded: false,
+      termsVisible: false,
     }
   }
 
@@ -50,17 +53,12 @@ const Upsell = class extends Component {
     Sentry.captureMessage('Start a purchase', { tags: { purchaseType: product } })
     buyProduct(product)
       .then(() => {
-        Snackbar.show({
-          backgroundColor: BaseStyle.darkBackgroundColor,
-          title: 'Purchase succesful, stay salty',
-          duration: 2000,
-        })
         this.props.purchaseSuccessful()
       })
-      .catch(error => {
+      .catch(() => {
         Snackbar.show({
           backgroundColor: BaseStyle.warningColor,
-          title: "Purchase didn't complete, please try again",
+          title: 'Purchase canceled',
           duration: 2000,
         })
       })
@@ -76,7 +74,8 @@ const Upsell = class extends Component {
         })
         this.props.purchaseSuccessful()
       })
-      .catch(() => {
+      .catch(error => {
+        console.log(error)
         Snackbar.show({
           backgroundColor: BaseStyle.warningColor,
           title: 'Not able to restore purchases at this time',
@@ -96,6 +95,8 @@ const Upsell = class extends Component {
     if (!this.props.current) {
       return null
     }
+
+    const { termsVisible } = this.state
 
     return (
       <View style={styles.container}>
@@ -127,12 +128,25 @@ const Upsell = class extends Component {
               </Animated.View>
           }
           </View>
-          <TouchableOpacity onPress={this.restore}>
-            <Text style={styles.restoreActionUnderline}>
-              ...or restore in-app purchases.
+          <View>
+            <TouchableOpacity onPress={this.restore}>
+              <Text style={styles.restoreActionUnderline}>
+              Restore in-app purchases
             </Text>
-          </TouchableOpacity>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.setState({ termsVisible: !termsVisible })}>
+              <Text style={styles.restoreActionUnderline}>
+              Read terms of use
+            </Text>
+            </TouchableOpacity>
+          </View>
         </View>
+        <SaltyModal
+          visible={termsVisible}
+          dismissModal={() => this.setState({ termsVisible: !termsVisible })}
+        >
+          <TermsOfUse dismissModal={() => this.setState({ termsVisible: !termsVisible })} />
+        </SaltyModal>
       </View>
     )
   }
@@ -161,6 +175,7 @@ const styles = StyleSheet.create({
   },
   restoreActionUnderline: {
     fontWeight: '500',
+    marginBottom: 10,
   },
 })
 
