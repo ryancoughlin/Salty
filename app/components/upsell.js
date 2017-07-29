@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, TouchableOpacity, Animated } from 'react-native'
+import { StyleSheet, ScrollView, View, Text, TouchableOpacity, Animated } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Snackbar from 'react-native-snackbar'
@@ -18,6 +18,7 @@ import UpsellButton from './buttons/upsell-button'
 import TidePhrase from './station-detail/tide-phrase'
 import SaltyModal from './modal'
 import TermsOfUse from './terms-of-use'
+import PrivacyPolicy from './privacy-policy'
 import upsellPrimaryArrow from '../assets/images/upsell-white-arrow.png'
 import upsellSecondaryArrow from '../assets/images/upsell-dark-arrow.png'
 
@@ -29,6 +30,7 @@ const Upsell = class extends Component {
       upsellButtonOpacity: new Animated.Value(0),
       productsLoaded: false,
       termsVisible: false,
+      privacyPolicyVisible: false,
     }
   }
 
@@ -96,18 +98,17 @@ const Upsell = class extends Component {
       return null
     }
 
-    const { termsVisible } = this.state
+    const { termsVisible, privacyPolicyVisible } = this.state
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <TidePhrase />
         <View style={styles.upsell}>
           <View>
             <Text style={BaseStyle.secondaryHeader}>Unlock Salty</Text>
             <Text style={styles.supportingText}>
-
-              Swell and wind forecast, tides, save your favorite spots and more.
-              Includes 7-day free trial.
+              Dive into tide overviews, access swell and wind foreacst, save favorite spots and more.
+              Each subscription includes 7-day free trial.
             </Text>
             { this.state.productsLoaded &&
               <Animated.View style={{ opacity: this.state.upsellButtonOpacity }}>
@@ -136,7 +137,12 @@ const Upsell = class extends Component {
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.setState({ termsVisible: !termsVisible })}>
               <Text style={styles.restoreActionUnderline}>
-              Read terms of use
+              Terms of Use
+            </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.setState({ privacyPolicyVisible: !privacyPolicyVisible })}>
+              <Text style={styles.restoreActionUnderline}>
+              Privacy Policy
             </Text>
             </TouchableOpacity>
           </View>
@@ -147,7 +153,13 @@ const Upsell = class extends Component {
         >
           <TermsOfUse dismissModal={() => this.setState({ termsVisible: !termsVisible })} />
         </SaltyModal>
-      </View>
+        <SaltyModal
+          visible={privacyPolicyVisible}
+          dismissModal={() => this.setState({ privacyPolicyVisible: !privacyPolicyVisible })}
+        >
+          <PrivacyPolicy dismissModal={() => this.setState({ privacyPolicyVisible: !privacyPolicyVisible })} />
+        </SaltyModal>
+      </ScrollView>
     )
   }
 }

@@ -3,9 +3,9 @@ import { StyleSheet, WebView } from 'react-native'
 
 import BaseStyle from '../base-styles'
 
-const TermsOfUse = () => (
+const PrivacyPolicy = () => (
   <WebView
-    source={{ uri: 'https://gist.githubusercontent.com/ryancoughlin/9496a6abf89cb8e58633018bd2078348/raw/4df6805fc7d8b8c3daabfe4198247ab7c885ee81/Salty%2520-%2520Terms%2520of%2520Use' }}
+    source={{ uri: 'https://gist.githubusercontent.com/ryancoughlin/7edc6b96cd1dd21a08b28f8e05cf3ce3/raw/8b77a858beaed7326b8948a333d35ed5c0326153/Salty%2520for%2520iOS%2520Privacy%2520Policy.md' }}
     style={styles.container}
   />
     )
@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default TermsOfUse
+export default PrivacyPolicy
