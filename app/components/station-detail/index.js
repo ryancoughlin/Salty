@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, ScrollView, View } from 'react-native'
+import { StyleSheet, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
