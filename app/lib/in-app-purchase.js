@@ -26,9 +26,10 @@ export function buyProduct(product) {
   return new Promise((resolve, reject) => {
     InAppUtils.purchaseProduct(product, (error, response) => {
       if (error) {
-        Sentry.captureMessage('Failed to purchase a product')
+        Sentry.captureMessage('Failed to purchase')
         Sentry.setExtraContext({
           error,
+          product,
         })
         reject(error)
       }

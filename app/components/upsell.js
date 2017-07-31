@@ -16,6 +16,7 @@ import {
 } from '../lib/in-app-purchase'
 import UpsellButton from './buttons/upsell-button'
 import TidePhrase from './station-detail/tide-phrase'
+import PurchasingLoader from './purchasing-loader'
 import SaltyModal from './modal'
 import TermsOfUse from './terms-of-use'
 import PrivacyPolicy from './privacy-policy'
@@ -31,6 +32,7 @@ const Upsell = class extends Component {
       productsLoaded: false,
       termsVisible: false,
       privacyPolicyVisible: false,
+      isPurchasing: false,
     }
   }
 
@@ -53,6 +55,7 @@ const Upsell = class extends Component {
 
   purchase(product) {
     Sentry.captureMessage('Start a purchase', { tags: { purchaseType: product } })
+    this.setState({ isPurchasing: true })
     buyProduct(product)
       .then(() => {
         this.props.purchaseSuccessful()
@@ -63,6 +66,8 @@ const Upsell = class extends Component {
           title: 'Purchase canceled',
           duration: 2000,
         })
+      }).finally(() => {
+        this.setState({ isPurchasing: false })
       })
   }
 
@@ -101,7 +106,7 @@ const Upsell = class extends Component {
     const { termsVisible, privacyPolicyVisible } = this.state
 
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
         <TidePhrase />
         <View style={styles.upsell}>
           <View>
@@ -159,6 +164,7 @@ const Upsell = class extends Component {
         >
           <PrivacyPolicy dismissModal={() => this.setState({ privacyPolicyVisible: !privacyPolicyVisible })} />
         </SaltyModal>
+        {this.state.isPurchasing && <PurchasingLoader isPurchasing />}
       </ScrollView>
     )
   }
@@ -187,7 +193,7 @@ const styles = StyleSheet.create({
   },
   restoreActionUnderline: {
     fontWeight: '500',
-    marginBottom: 10,
+    marginBottom: BaseStyle.smallSpacing,
   },
 })
 
