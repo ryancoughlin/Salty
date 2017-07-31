@@ -16,5 +16,5 @@ export default {
   warningColor: pastelOrange,
   chartLabelColor: marinerBlue,
   mediumGray: shuttleGray,
-  transparent
+  overlayColor: 'rgba(0, 27, 68, 0.2)',
 }
