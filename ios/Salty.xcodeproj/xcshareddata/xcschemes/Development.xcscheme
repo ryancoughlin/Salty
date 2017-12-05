@@ -120,7 +120,7 @@
       <AdditionalOptions>
       </AdditionalOptions>
       <LocationScenarioReference
-         identifier = "../Salty/gpx/Kennebunkport.gpx"
+         identifier = "../../Salty/gpx/Kennebunkport.gpx"
          referenceType = "0">
       </LocationScenarioReference>
    </LaunchAction>

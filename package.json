@@ -13,7 +13,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "ios": "react-native run-ios --simulator='iPhone 8 Plus'"
+    "ios": "react-native run-ios --scheme='Development' --simulator='iPhone 8 Plus'"
   },
   "dependencies": {
     "@sentry/wizard": "^0.6.1",
@@ -30,27 +30,27 @@
     "react-native-snackbar": "^0.4.4",
     "react-native-splash-screen": "^3.0.6",
     "react-native-svg": "^6.0.0",
-    "react-redux": "^5.0.5",
-    "redux": "^3.7.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-persist": "^4.5.0",
     "redux-thunk": "^2.2.0",
     "victory-core": "^20.3.0",
-    "victory-native": "^0.16.1"
+    "victory-native": "^0.16.0"
   },
   "jest": {
     "preset": "react-native"
   },
   "devDependencies": {
+    "babel-jest": "21.2.0",
+		"babel-preset-react-native": "4.0.0",
+		"jest": "21.2.1",
+		"react-test-renderer": "16.0.0",
     "babel-eslint": "^7.2.3",
-    "babel-jest": "20.0.3",
-    "babel-preset-react-native": "2.1.0",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "15.0.2",
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
-    "eslint-plugin-react": "7.1.0",
-    "jest": "20.0.3",
-    "react-test-renderer": "16.0.0-alpha.12"
+    "eslint-plugin-react": "7.1.0"
   }
 }
