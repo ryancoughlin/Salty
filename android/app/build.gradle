@@ -70,6 +70,7 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/react-native-sentry/sentry.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -130,10 +131,11 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-splash-screen')
+    compile project(':react-native-sentry')
     compile project(':react-native-snackbar')
     compile project(':react-native-linear-gradient')
     compile project(':react-native-svg')
-    compile project(':react-native-splash-screen')
     compile project(':react-native-maps')
     compile project(':react-native-geocoder')
     compile project(':react-native-config')

@@ -12,7 +12,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "ios": "react-native run-ios --simulator='iPhone 8 Plus'"
   },
   "dependencies": {
     "@sentry/wizard": "^0.6.1",
@@ -27,7 +28,7 @@
     "react-native-maps": "^0.18.3",
     "react-native-sentry": "^0.31.0",
     "react-native-snackbar": "^0.4.4",
-    "react-native-splash-screen": "^2.0.0",
+    "react-native-splash-screen": "^3.0.6",
     "react-native-svg": "^6.0.0",
     "react-redux": "^5.0.5",
     "redux": "^3.7.0",

@@ -1,4 +1,0 @@
-source 'https://github.com/CocoaPods/Specs.git'
-target 'Salty' do
-  pod 'GoogleMaps'
-end
