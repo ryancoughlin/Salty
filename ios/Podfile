@@ -3,4 +3,6 @@ target 'Salty' do
   pod 'GoogleMaps'
 
 
+  pod 'SentryReactNative', :path => '../node_modules/react-native-sentry'
+
 end
