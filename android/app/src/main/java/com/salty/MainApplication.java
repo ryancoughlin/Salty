@@ -3,15 +3,15 @@ package com.salty;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import org.devio.rn.splashscreen.SplashScreenReactPackage;
-import io.sentry.RNSentryPackage;
-import com.azendoo.reactnativesnackbar.SnackbarPackage;
-import com.BV.LinearGradient.LinearGradientPackage;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.horcrux.svg.SvgPackage;
-import com.cboy.rn.splashscreen.SplashScreenReactPackage;
+import com.azendoo.reactnativesnackbar.SnackbarPackage;
 import com.airbnb.android.react.maps.MapsPackage;
 import com.devfd.RNGeocoder.RNGeocoderPackage;
-import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+import io.sentry.RNSentryPackage;
+import com.BV.LinearGradient.LinearGradientPackage;
+import com.cboy.rn.splashscreen.SplashScreenReactPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -32,14 +32,14 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new SplashScreenReactPackage(),
-            new RNSentryPackage(MainApplication.this),
-            new SnackbarPackage(),
-            new LinearGradientPackage(),
+            new ReactNativeConfigPackage(),
             new SvgPackage(),
+            new SnackbarPackage(),
             new MapsPackage(),
             new RNGeocoderPackage(),
-            new ReactNativeConfigPackage()
+            new SplashScreenReactPackage(),
+            new RNSentryPackage(MainApplication.this),
+            new LinearGradientPackage()
       );
     }
 
