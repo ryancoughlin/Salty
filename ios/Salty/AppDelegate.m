@@ -12,9 +12,9 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 #if __has_include(<React/RNSentry.h>)
-#import <React/RNSentry.h> // This is used for versions of react >= 0.40
+//#import <React/RNSentry.h> // This is used for versions of react >= 0.40
 #else
-#import "RNSentry.h" // This is used for versions of react < 0.40
+// #import "RNSentry.h" // This is used for versions of react < 0.40
 #endif
 #import "SplashScreen.h"
 @import GoogleMaps;
@@ -26,14 +26,14 @@
   [GMSServices provideAPIKey:@"AIzaSyAMPvZ44z5aeT_VdIZYJguMfdNB7XDr-2c"];
   NSURL *jsCodeLocation;
 
-  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
+  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"Salty"
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
 
-  [RNSentry installWithRootView:rootView];
+//  [RNSentry installWithRootView:rootView];
 
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
 

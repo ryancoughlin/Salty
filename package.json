@@ -15,26 +15,27 @@
     "test": "jest"
   },
   "dependencies": {
+    "@sentry/wizard": "^0.6.1",
     "lodash": "4.17.4",
     "moment": "2.18.1",
-    "react": "16.0.0-alpha.12",
-    "react-native": "0.45.1",
-    "react-native-config": "^0.1.2",
+    "react": "16.0.0",
+    "react-native": "0.50.4",
+    "react-native-config": "^0.10.0",
     "react-native-geocoder": "^0.4.6",
-    "react-native-in-app-utils": "^5.5.0",
+    "react-native-in-app-utils": "^6.0.0",
     "react-native-linear-gradient": "^2.0.0",
-    "react-native-maps": "^0.15.2",
-    "react-native-sentry": "^0.14.5",
-    "react-native-snackbar": "^0.3.8",
+    "react-native-maps": "^0.18.3",
+    "react-native-sentry": "^0.31.0",
+    "react-native-snackbar": "^0.4.4",
     "react-native-splash-screen": "^2.0.0",
-    "react-native-svg": "~5.2.0",
+    "react-native-svg": "^6.0.0",
     "react-redux": "^5.0.5",
     "redux": "^3.7.0",
     "redux-logger": "^3.0.6",
     "redux-persist": "^4.5.0",
     "redux-thunk": "^2.2.0",
-    "victory-core": "^16.3.0",
-    "victory-native": "^0.13.0"
+    "victory-core": "^20.3.0",
+    "victory-native": "^0.16.1"
   },
   "jest": {
     "preset": "react-native"

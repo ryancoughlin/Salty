@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { AppRegistry } from 'react-native'
 import { Provider } from 'react-redux'
 import SplashScreen from 'react-native-splash-screen'
-import { Sentry } from 'react-native-sentry'
+// import { Sentry } from 'react-native-sentry'
 import Config from 'react-native-config'
 
 import store, { rehydrateStore } from './app/store'
@@ -13,9 +13,9 @@ class Salty extends Component {
     super(props)
 
     if (process.env.NODE_ENV === 'production') {
-      Sentry.config(Config.SENTRY_PRODUCTION_DSN).install()
+      // Sentry.config(Config.SENTRY_PRODUCTION_DSN).install()
     } else {
-      Sentry.config(Config.SENTRY_DEVELOPMENT_DSN).install()
+      // Sentry.config(Config.SENTRY_DEVELOPMENT_DSN).install()
     }
 
     this.state = {
