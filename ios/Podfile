@@ -1,8 +1,4 @@
 source 'https://github.com/CocoaPods/Specs.git'
 target 'Salty' do
   pod 'GoogleMaps'
-
-
-  pod 'SentryReactNative', :path => '../node_modules/react-native-sentry'
-
 end

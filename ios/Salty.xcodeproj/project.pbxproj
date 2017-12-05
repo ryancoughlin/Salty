@@ -13,6 +13,7 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* SaltyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SaltyTests.m */; };
+		07BAA536B85D49F98C17093C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2913CEA1EEFD4A70A53B4724 /* libz.tbd */; };
 		0E01586708D74D92B53ED77F /* libInAppUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CBCCE6285094BEAA2B82697 /* libInAppUtils.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
@@ -326,13 +327,6 @@
 			remoteGlobalIDString = 3DBE0D0D1F3B181C0099AA32;
 			remoteInfo = "fishhook-tvOS";
 		};
-		5DB40E081FD6446000EA2CB2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 408716B4449540A4BAF4B1F5 /* BVLinearGradient.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 64AA15081EF7F30100718508;
-			remoteInfo = "BVLinearGradient-tvOS";
-		};
 		5DB40E2F1FD6446000EA2CB2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
@@ -441,6 +435,7 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		1D2289E1F99147CE88F309F2 /* RNGeocoder.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGeocoder.xcodeproj; path = "../node_modules/react-native-geocoder/ios/RNGeocoder.xcodeproj"; sourceTree = "<group>"; };
 		2355DE7FB5FF817F7431AE28 /* Pods-Salty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salty.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Salty/Pods-Salty.debug.xcconfig"; sourceTree = "<group>"; };
+		2913CEA1EEFD4A70A53B4724 /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		2D02E47B1E0B4A5D006451C7 /* Salty-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Salty-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* Salty-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Salty-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CBCCE6285094BEAA2B82697 /* libInAppUtils.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libInAppUtils.a; sourceTree = "<group>"; };
@@ -547,6 +542,7 @@
 				0E01586708D74D92B53ED77F /* libInAppUtils.a in Frameworks */,
 				43F65C72FDD944A885769E37 /* libRNSnackbar.a in Frameworks */,
 				15D889540DACC5ACD077ECCF /* libPods-Salty.a in Frameworks */,
+				07BAA536B85D49F98C17093C /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -712,7 +708,6 @@
 			isa = PBXGroup;
 			children = (
 				5D686E761F0B3A1F00F319C5 /* libBVLinearGradient.a */,
-				5DB40E091FD6446000EA2CB2 /* libBVLinearGradient.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -871,6 +866,7 @@
 			isa = PBXGroup;
 			children = (
 				E51C98960D850B288433A3E4 /* libPods-Salty.a */,
+				2913CEA1EEFD4A70A53B4724 /* libz.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -978,11 +974,9 @@
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
-				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				F9E966542FB06A353F38184D /* [CP] Embed Pods Frameworks */,
 				815075A28C243869AD4C7695 /* [CP] Copy Pods Resources */,
 				5DF4CF0A1F191B1F00D56E1B /* Increment build numbers */,
-				BCA5C7676A16430D8F58972F /* Upload Debug Symbols to Sentry */,
 			);
 			buildRules = (
 			);
@@ -1406,13 +1400,6 @@
 			remoteRef = 5D82877D1FD6379A00C83104 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		5DB40E091FD6446000EA2CB2 /* libBVLinearGradient.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libBVLinearGradient.a;
-			remoteRef = 5DB40E081FD6446000EA2CB2 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		5DB40E301FD6446000EA2CB2 /* libthird-party.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1538,20 +1525,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Bundle React Native code and images";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export SENTRY_PROPERTIES=sentry.properties\n. ~/.nvm/nvm.sh\nexport SENTRY_PROPERTIES=sentry.properties\nexport NODE_BINARY=node\n../node_modules/sentry-cli-binary/bin/sentry-cli react-native xcode ../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
 		148121E7E86CC5700F770B55 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1609,20 +1582,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Salty/Pods-Salty-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		BCA5C7676A16430D8F58972F /* Upload Debug Symbols to Sentry */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Upload Debug Symbols to Sentry";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "if which sentry-cli >/dev/null; then\nexport SENTRY_ORG=ryan-coughlin\nexport SENTRY_PROJECT=salty\nexport SENTRY_AUTH_TOKEN=0c75df4849104307b3f3da0f6119997c65f072f283af45328e84870b80b1b451\nERROR=$(sentry-cli upload-dsym 2>&1 >/dev/null)\nif [ ! $? -eq 0 ]; then\necho \"warning: sentry-cli - $ERROR\"\nfi\nelse\necho \"warning: sentry-cli not installed, download from https://github.com/getsentry/sentry-cli/releases\"\nfi";
 		};
 		F9E966542FB06A353F38184D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
