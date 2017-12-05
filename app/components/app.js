@@ -55,14 +55,10 @@ const App = class extends Component {
   }
 
   render() {
-    const { current, isPurchased, stationsNearby, shouldDisplay } = this.props
+    const { current, stationsNearby, shouldDisplay } = this.props
 
     if (!shouldDisplay || _.isEmpty(current.weather)) {
       return <ActivityOverlay />
-    }
-
-    if (!isPurchased) {
-      return <Upsell />
     }
 
     if (!stationsNearby) {
@@ -76,7 +72,6 @@ const App = class extends Component {
 const mapStateToProps = ({ stations }) => ({
   stationsNearby: stations.stationsNearby,
   current: stations.current,
-  isPurchased: stations.isPurchased,
 })
 
 const mapDispatchToProps = dispatch => ({
