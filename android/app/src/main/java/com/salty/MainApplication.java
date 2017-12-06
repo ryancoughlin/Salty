@@ -3,9 +3,9 @@ package com.salty;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.horcrux.svg.SvgPackage;
 import com.devfd.RNGeocoder.RNGeocoderPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
-import com.horcrux.svg.SvgPackage;
 import com.azendoo.reactnativesnackbar.SnackbarPackage;
 import com.airbnb.android.react.maps.MapsPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
@@ -32,9 +32,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new SvgPackage(),
             new RNGeocoderPackage(),
             new ReactNativeConfigPackage(),
-            new SvgPackage(),
             new SnackbarPackage(),
             new MapsPackage(),
             new SplashScreenReactPackage(),
