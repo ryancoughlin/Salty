@@ -8,6 +8,8 @@ import _ from 'lodash'
 import BaseStyle from '../../base-styles'
 import SwellChart from './swell-chart'
 
+const API_DATE_FORMAT = 'MM/DD/YYYY'
+
 const SwellOverview = class extends Component {
   constructor(props) {
     super(props)
@@ -23,14 +25,20 @@ const SwellOverview = class extends Component {
     this.findCurrentSwell()
   }
 
+  swellsToday(swells) {
+    const todaysKey = moment().format(API_DATE_FORMAT)
+    return swells[todaysKey]
+  }
+
   findCurrentSwell() {
     const now = moment()
-    const currentSwellIndex = _.findIndex(this.props.current.swell, swell => {
-      const time = moment(swell.time).local()
+    const todaysSwells = this.swellsToday(this.props.current.swell)
+    const currentSwellIndex = _.findIndex(todaysSwells, swell => {
+      const time = moment.utc(swell.time).local()
       return now.diff(time) <= 0
     })
 
-    const currentSwell = this.props.current.swell[currentSwellIndex]
+    const currentSwell = todaysSwells[currentSwellIndex]
 
     this.setState({
       type: currentSwell.type,
