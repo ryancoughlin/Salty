@@ -8,7 +8,6 @@ import * as actions from '../actions/station'
 import NoNearbyStations from './no-nearby-stations'
 import ActivityOverlay from './activity-overlay'
 import StationDetail from './station-detail'
-import Upsell from './upsell'
 import { fetchLocation } from '../lib/location'
 
 const App = class extends Component {
