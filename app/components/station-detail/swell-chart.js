@@ -13,10 +13,11 @@ import BarWindDirection from './bar-wind-direction'
 
 export default class SwellChart extends Component {
   get formattedWind() {
-    return _.map(this.props.swell, swell => ({
+    return _.flatMap(this.props.swell, day => _.map(day, swell => ({
       ...swell,
       time: new Date(swell.time),
-    }))
+    }),
+    ))
   }
 
   render() {
