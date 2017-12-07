@@ -13,9 +13,9 @@ class Salty extends Component {
     super(props)
 
     if (process.env.NODE_ENV === 'production') {
-      Sentry.config(Config.SENTRY_DEVELOPMENT_DSN).install()
+      Sentry.config(Config.SENTRY_PRODUCTION_DSN).install()
     } else {
-      Sentry.config("https://a33922bc08284c85bd4b10f689778e85:afaa5f7aae1a4f2db85f4809d2ca8adf@sentry.io/191740").install()
+      Sentry.config(Config.SENTRY_DEVELOPMENT_DSN).install()
     }
 
     this.state = {
