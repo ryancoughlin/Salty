@@ -3,12 +3,12 @@ package com.salty;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.airbnb.android.react.maps.MapsPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.horcrux.svg.SvgPackage;
 import com.devfd.RNGeocoder.RNGeocoderPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.azendoo.reactnativesnackbar.SnackbarPackage;
-import com.airbnb.android.react.maps.MapsPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import io.sentry.RNSentryPackage;
 import com.cboy.rn.splashscreen.SplashScreenReactPackage;
@@ -32,12 +32,12 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new MapsPackage(),
             new LinearGradientPackage(),
             new SvgPackage(),
             new RNGeocoderPackage(),
             new ReactNativeConfigPackage(),
             new SnackbarPackage(),
-            new MapsPackage(),
             new SplashScreenReactPackage(),
             new RNSentryPackage(MainApplication.this)
       );

@@ -42,6 +42,7 @@
 		5D3E10311F18686900AC8BDD /* overpass-mono-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5D3E10301F18686900AC8BDD /* overpass-mono-light.otf */; };
 		5D7BE2AC1E74E056004250C7 /* Kennebunkport.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5D7BE2AB1E74E056004250C7 /* Kennebunkport.gpx */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		7B1847DE55C644F7A64B12B4 /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5EAB38B880E41FCA2E496CC /* libAirMaps.a */; };
 		7B4F6855061842FDA2D75E25 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28006A0F50934DF2B08095D4 /* libBVLinearGradient.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
@@ -296,13 +297,6 @@
 			remoteGlobalIDString = 64AA15081EF7F30100718508;
 			remoteInfo = "BVLinearGradient-tvOS";
 		};
-		5DA0E5031FD6EF27001396D6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D212B59FF29F465298475BBF /* AirMaps.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 11FA5C511C4A1296003AC2EE;
-			remoteInfo = AirMaps;
-		};
 		5DA0E5071FD6EF27001396D6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FDEB5352C3D04FEB8CAAB507 /* InAppUtils.xcodeproj */;
@@ -365,6 +359,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 9936F32F1F5F2E5B0010BF04;
 			remoteInfo = "privatedata-tvOS";
+		};
+		5DFE87C21FD9A95D008D94F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D7D5238374274C92B483207F /* AirMaps.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 11FA5C511C4A1296003AC2EE;
+			remoteInfo = AirMaps;
 		};
 		5E9157321DD0AC6500FF2AA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -445,7 +446,8 @@
 		BDFB8B13CED34B7EB0CEF6DA /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		C657273964C94CFCAE51E051 /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; };
 		C6BCBD850E9E4B4095F6A7FC /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		D212B59FF29F465298475BBF /* AirMaps.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AirMaps.xcodeproj; path = "../node_modules/react-native-maps/lib/ios/AirMaps.xcodeproj"; sourceTree = "<group>"; };
+		D7D5238374274C92B483207F /* AirMaps.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AirMaps.xcodeproj; path = "../node_modules/react-native-maps/lib/ios/AirMaps.xcodeproj"; sourceTree = "<group>"; };
+		E5EAB38B880E41FCA2E496CC /* libAirMaps.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAirMaps.a; sourceTree = "<group>"; };
 		F3A36434EC9A456493B2857C /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		FDEB5352C3D04FEB8CAAB507 /* InAppUtils.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = InAppUtils.xcodeproj; path = "../node_modules/react-native-in-app-utils/InAppUtils.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -483,6 +485,7 @@
 				B19FB0E208C8408D9C910156 /* libRNGeocoder.a in Frameworks */,
 				E96119D8D8514C1AB597D235 /* libRNSVG.a in Frameworks */,
 				7B4F6855061842FDA2D75E25 /* libBVLinearGradient.a in Frameworks */,
+				7B1847DE55C644F7A64B12B4 /* libAirMaps.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,6 +638,7 @@
 				2F7D80EA89414CA6AEAB1985 /* libRNSVG.a */,
 				C657273964C94CFCAE51E051 /* libRNSVG-tvOS.a */,
 				28006A0F50934DF2B08095D4 /* libBVLinearGradient.a */,
+				E5EAB38B880E41FCA2E496CC /* libAirMaps.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -701,14 +705,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5DA0E4FC1FD6EF27001396D6 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				5DA0E5041FD6EF27001396D6 /* libAirMaps.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		5DA0E4FE1FD6EF27001396D6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -738,6 +734,14 @@
 			isa = PBXGroup;
 			children = (
 				5DA1FFA91FD6DC5E00511531 /* libSplashScreen.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5DFE87BF1FD9A95D008D94F9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5DFE87C31FD9A95D008D94F9 /* libAirMaps.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -786,12 +790,12 @@
 				542F0671DA06495189F40AFB /* RNSentry.xcodeproj */,
 				BDFB8B13CED34B7EB0CEF6DA /* SplashScreen.xcodeproj */,
 				FDEB5352C3D04FEB8CAAB507 /* InAppUtils.xcodeproj */,
-				D212B59FF29F465298475BBF /* AirMaps.xcodeproj */,
 				34FCEC6EBC884459BAD0A180 /* RNSnackbar.xcodeproj */,
 				5CD445CE1CDB4E9B9CB66E83 /* ReactNativeConfig.xcodeproj */,
 				66BA127C6A8A4EE493AA36EA /* RNGeocoder.xcodeproj */,
 				9D5716EAFF704AEEB48F94CE /* RNSVG.xcodeproj */,
 				F3A36434EC9A456493B2857C /* BVLinearGradient.xcodeproj */,
+				D7D5238374274C92B483207F /* AirMaps.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -957,8 +961,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 5DA0E4FC1FD6EF27001396D6 /* Products */;
-					ProjectRef = D212B59FF29F465298475BBF /* AirMaps.xcodeproj */;
+					ProductGroup = 5DFE87BF1FD9A95D008D94F9 /* Products */;
+					ProjectRef = D7D5238374274C92B483207F /* AirMaps.xcodeproj */;
 				},
 				{
 					ProductGroup = 5D8F063F1FD88E3E00BDB568 /* Products */;
@@ -1283,13 +1287,6 @@
 			remoteRef = 5D8F06451FD88E3E00BDB568 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		5DA0E5041FD6EF27001396D6 /* libAirMaps.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libAirMaps.a;
-			remoteRef = 5DA0E5031FD6EF27001396D6 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		5DA0E5081FD6EF27001396D6 /* libInAppUtils.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1351,6 +1348,13 @@
 			fileType = archive.ar;
 			path = "libprivatedata-tvOS.a";
 			remoteRef = 5DB40E351FD6446000EA2CB2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5DFE87C31FD9A95D008D94F9 /* libAirMaps.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAirMaps.a;
+			remoteRef = 5DFE87C21FD9A95D008D94F9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {
@@ -1565,12 +1569,12 @@
 					"$(SRCROOT)/../node_modules/react-native-sentry/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-in-app-utils/InAppUtils",
-					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-snackbar/ios",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-geocoder/ios/RNGeocoder",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 				);
 				INFOPLIST_FILE = SaltyTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1600,12 +1604,12 @@
 					"$(SRCROOT)/../node_modules/react-native-sentry/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-in-app-utils/InAppUtils",
-					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-snackbar/ios",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-geocoder/ios/RNGeocoder",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 				);
 				INFOPLIST_FILE = SaltyTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1643,12 +1647,12 @@
 					"$(SRCROOT)/../node_modules/react-native-sentry/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-in-app-utils/InAppUtils",
-					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-snackbar/ios",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-geocoder/ios/RNGeocoder",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 				);
 				INFOPLIST_FILE = Salty/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1683,12 +1687,12 @@
 					"$(SRCROOT)/../node_modules/react-native-sentry/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-in-app-utils/InAppUtils",
-					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-snackbar/ios",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-geocoder/ios/RNGeocoder",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 				);
 				INFOPLIST_FILE = Salty/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1723,12 +1727,12 @@
 					"$(SRCROOT)/../node_modules/react-native-sentry/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-in-app-utils/InAppUtils",
-					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-snackbar/ios",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-geocoder/ios/RNGeocoder",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 				);
 				INFOPLIST_FILE = "Salty-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1767,12 +1771,12 @@
 					"$(SRCROOT)/../node_modules/react-native-sentry/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-in-app-utils/InAppUtils",
-					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-snackbar/ios",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-geocoder/ios/RNGeocoder",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
 				);
 				INFOPLIST_FILE = "Salty-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
