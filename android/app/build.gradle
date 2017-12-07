@@ -131,12 +131,12 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-maps')
     compile project(':react-native-linear-gradient')
     compile project(':react-native-svg')
     compile project(':react-native-geocoder')
     compile project(':react-native-config')
     compile project(':react-native-snackbar')
-    compile project(':react-native-maps')
     compile project(':react-native-splash-screen')
     compile project(':react-native-sentry')
     compile fileTree(dir: "libs", include: ["*.jar"])
