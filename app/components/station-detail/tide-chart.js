@@ -25,7 +25,9 @@ export default class TideChart extends Component {
           height={150}
           width={1100}
           scale={{ x: 'time', y: 'linear' }}
-          padding={{ top: 30, right: 20, bottom: 48, left: 50 }}
+          padding={{
+ top: 30, right: 20, bottom: 48, left: 50,
+}}
         >
           <VictoryAxis
             scale={{ x: 'time' }}

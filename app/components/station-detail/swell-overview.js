@@ -50,7 +50,9 @@ const SwellOverview = class extends Component {
     })
   }
   render() {
-    const { type, period, compassDirection, height } = this.state
+    const {
+      type, period, compassDirection, height,
+    } = this.state
 
     return (
       <LinearGradient

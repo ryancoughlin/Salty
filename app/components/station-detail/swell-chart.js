@@ -16,8 +16,7 @@ export default class SwellChart extends Component {
     return _.flatMap(this.props.swell, day => _.map(day, swell => ({
       ...swell,
       time: new Date(swell.time),
-    }),
-    ))
+    })))
   }
 
   render() {
@@ -26,10 +25,12 @@ export default class SwellChart extends Component {
         <VictoryChart
           height={130}
           width={1700}
-          padding={{ top: 30, right: 20, bottom: 48, left: 50 }}
+          padding={{
+ top: 30, right: 20, bottom: 48, left: 50,
+}}
         >
           <VictoryBar
-            dataComponent={<BarWindDirection color={'#164F75'} />}
+            dataComponent={<BarWindDirection color="#164F75" />}
             y="height"
             x="time"
             data={this.formattedWind}

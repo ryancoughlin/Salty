@@ -25,7 +25,9 @@ export default class WindChart extends Component {
           height={130}
           width={2000}
           scale={{ x: 'time' }}
-          padding={{ top: 30, right: 20, bottom: 48, left: 50 }}
+          padding={{
+ top: 30, right: 20, bottom: 48, left: 50,
+}}
         >
           <VictoryBar
             y="windSpeed"

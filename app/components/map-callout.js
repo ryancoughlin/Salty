@@ -15,7 +15,7 @@ export default class MapCallout extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.textContainer}>
-          <Text style={styles.stationName} numberOfLines={1} ellipsizeMode={'tail'}>
+          <Text style={styles.stationName} numberOfLines={1} ellipsizeMode="tail">
             {station.name}
           </Text>
           <Text style={styles.stationLocation}>{this.formatStationCoordiantes}</Text>

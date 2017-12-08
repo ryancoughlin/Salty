@@ -25,7 +25,9 @@ export default class TideChart extends Component {
           height={110}
           width={1100}
           scale={{ x: 'time', y: 'linear' }}
-          padding={{ top: 30, right: 20, bottom: 48, left: 50 }}
+          padding={{
+ top: 30, right: 20, bottom: 48, left: 50,
+}}
         >
           <VictoryAxis
             scale={{ x: 'time' }}
@@ -38,7 +40,7 @@ export default class TideChart extends Component {
             style={BaseStyle.chartAxisStyles}
           />
           <VictoryLine
-            interpolation={'monotoneX'}
+            interpolation="monotoneX"
             domainPadding={{ x: [3, 0] }}
             data={this.formattedTides}
             x="time"

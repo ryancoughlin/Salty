@@ -13,7 +13,7 @@ const WaterTemperatureCard = class extends Component {
   get findCurrentWaterTemperature() {
     if (!_.isEmpty(this.props.current.waterTemperature)) {
       const { waterTemperature } = this.props.current
-      const index = _.findIndex(waterTemperature, (temperature) => {
+      const index = _.findIndex(waterTemperature, temperature => {
         const time = moment.utc(temperature.time).local()
         return moment().diff(time) <= 0
       })

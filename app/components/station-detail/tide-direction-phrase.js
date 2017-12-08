@@ -4,7 +4,7 @@ import _ from 'lodash'
 
 import findNextTide from '../../utils/find-next-tide'
 
-const tideDirection = (tides) => {
+const tideDirection = tides => {
   const nextTide = findNextTide(tides)
 
   if (nextTide.type === 'high') {

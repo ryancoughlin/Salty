@@ -16,10 +16,12 @@ const Upsell = class extends Component {
   }
 
   componentWillReceiveProps(props) {
-    Animated.timing(this.state.overlayOpacity,
+    Animated.timing(
+      this.state.overlayOpacity,
       {
         toValue: props.isPurchasing ? 1 : 0,
-      }).start()
+      },
+    ).start()
   }
 
   fadeInOverlay() {

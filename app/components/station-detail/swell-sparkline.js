@@ -6,7 +6,7 @@ export default class SwellSparkline extends Component {
   get formatSwell() {
     return _.map(this.props.swell, swell => ({
       height: swell.height,
-      time: new Date(swell.time)
+      time: new Date(swell.time),
     }))
   }
 
@@ -24,8 +24,8 @@ export default class SwellSparkline extends Component {
         style={{
           data: {
             stroke: '#2D7EB4',
-            strokeWidth: 2
-          }
+            strokeWidth: 2,
+          },
         }}
       />
     )

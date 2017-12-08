@@ -138,17 +138,17 @@ const Upsell = class extends Component {
             <TouchableOpacity onPress={this.restore}>
               <Text style={styles.restoreActionUnderline}>
               Restore in-app purchases
-            </Text>
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.setState({ termsVisible: !termsVisible })}>
               <Text style={styles.restoreActionUnderline}>
               Terms of Use
-            </Text>
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.setState({ privacyPolicyVisible: !privacyPolicyVisible })}>
               <Text style={styles.restoreActionUnderline}>
               Privacy Policy
-            </Text>
+              </Text>
             </TouchableOpacity>
           </View>
         </View>

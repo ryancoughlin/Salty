@@ -23,9 +23,7 @@ export function fetchTides(location) {
   return dispatch => {
     dispatch({ type: START_LOADING_TIDES })
 
-    const result = request(
-      `/tides?latitude=${location.latitude}&longitude=${location.longitude}`,
-    )
+    const result = request(`/tides?latitude=${location.latitude}&longitude=${location.longitude}`)
     result
       .then(json => {
         if (!_.isEmpty(json)) {
@@ -49,9 +47,7 @@ export function fetchTides(location) {
 export function fetchTideChart(location) {
   return dispatch => {
     const { latitude, longitude } = location
-    const result = request(
-      `/tide-chart?latitude=${latitude}&longitude=${longitude}`,
-    )
+    const result = request(`/tide-chart?latitude=${latitude}&longitude=${longitude}`)
     result.then(json => {
       dispatch({
         type: FETCH_TIDE_CHART,
@@ -64,9 +60,7 @@ export function fetchTideChart(location) {
 export function fetchWaterTemperature(location) {
   return dispatch => {
     const { latitude, longitude } = location
-    const result = request(
-      `/water-temperature?latitude=${latitude}&longitude=${longitude}`,
-    )
+    const result = request(`/water-temperature?latitude=${latitude}&longitude=${longitude}`)
     result.then(json => {
       dispatch({
         type: FETCH_WATER_TEMPERATURE,
@@ -92,9 +86,7 @@ export function fetchSwellInfo(location) {
 export function fetchWeather(location) {
   return dispatch => {
     const { latitude, longitude } = location
-    const result = request(
-      `/weather?latitude=${latitude}&longitude=${longitude}`,
-    )
+    const result = request(`/weather?latitude=${latitude}&longitude=${longitude}`)
     result.then(json => {
       dispatch({
         type: FETCH_WEATHER,
