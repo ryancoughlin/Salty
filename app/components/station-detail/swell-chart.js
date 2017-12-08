@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
 import { ScrollView } from 'react-native'
-import {
-  VictoryBar,
-  VictoryChart,
-  VictoryAxis,
-  VictoryLabel,
-} from 'victory-native'
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryLabel } from 'victory-native'
 import _ from 'lodash'
 
 import BaseStyle from '../../base-styles'
@@ -13,21 +8,27 @@ import BarWindDirection from './bar-wind-direction'
 
 export default class SwellChart extends Component {
   get formattedWind() {
-    return _.flatMap(this.props.swell, day => _.map(day, swell => ({
-      ...swell,
-      time: new Date(swell.time),
-    })))
+    return _.flatMap(this.props.swell, day =>
+      _.map(day, swell => ({
+        ...swell,
+        time: new Date(swell.time),
+      })),
+    )
   }
 
   render() {
+    console.log(this.props.swell)
     return (
       <ScrollView style={{ flex: 1 }} horizontal>
         <VictoryChart
           height={130}
           width={1700}
           padding={{
- top: 30, right: 20, bottom: 48, left: 50,
-}}
+            top: 30,
+            right: 20,
+            bottom: 48,
+            left: 50,
+          }}
         >
           <VictoryBar
             dataComponent={<BarWindDirection color="#164F75" />}
