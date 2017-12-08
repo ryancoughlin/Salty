@@ -11,8 +11,9 @@ import BaseStyle from '../../base-styles'
 const WaterLevelCard = ({ current }) => (
   <View style={BaseStyle.whiteCard}>
     <PanelHeader headerText="Water Levels" bodyText="Next 12 hours" />
-    {!_.isEmpty(current.chart) ? <TideChart data={current.chart} /> : <ActivityOverlay /> }
-  </View>)
+    {!_.isEmpty(current.chart) ? <TideChart data={current.chart} /> : <ActivityOverlay />}
+  </View>
+)
 
 const mapStateToProps = ({ stations }) => ({
   current: stations.current,

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Sentry } from 'react-native-sentry'
 
 import * as actions from '../../actions/station'
 import TidePhrase from './tide-phrase'
@@ -29,41 +30,35 @@ const StationDetail = class extends Component {
   render() {
     const { mapVisible, tideTableVisible } = this.state
     const { saveLocation, deleteLocation, location } = this.props
-    const {
-      city,
-      todaysTides,
-      weather,
-    } = this.props.current
+    const { city, todaysTides, weather } = this.props.current
+
+    Sentry.setExtraContext({
+      ...this.props.current,
+    })
 
     return (
       <ScrollView style={styles.container}>
-        <TidePhrase
-          toggleModal={() => this.setState({ mapVisible: !mapVisible })}
-        />
+        <TidePhrase toggleModal={() => this.setState({ mapVisible: !mapVisible })} />
 
         <WeatherRow weather={weather.currentWind} icon="wind" />
         <WeatherRow weather={weather.currentWeather} icon={weather.icon} />
         <TodaysTides
           todaysTides={todaysTides}
-          toggleModal={() =>
-            this.setState({ tideTableVisible: !tideTableVisible })}
+          toggleModal={() => this.setState({ tideTableVisible: !tideTableVisible })}
         />
 
         <DetailPanel />
         <SavedLocations />
 
-        {this.props.isSaved
-          ? <RemoveLocationButton city={city} deleteLocation={deleteLocation} />
-          : <SaveLocationButton
-            saveLocation={saveLocation}
-            location={location}
-            city={city}
-          />}
+        {this.props.isSaved ? (
+          <RemoveLocationButton city={city} deleteLocation={deleteLocation} />
+        ) : (
+          <SaveLocationButton saveLocation={saveLocation} location={location} city={city} />
+        )}
 
         <SaltyModal
           visible={tideTableVisible}
-          dismissModal={() =>
-            this.setState({ tideTableVisible: !tideTableVisible })}
+          dismissModal={() => this.setState({ tideTableVisible: !tideTableVisible })}
         >
           <TideTable />
         </SaltyModal>

@@ -32,13 +32,14 @@ const SwellOverview = class extends Component {
 
   findCurrentSwell() {
     const now = moment()
-    const todaysSwells = this.swellsToday(this.props.current.swell)
-    const currentSwellIndex = _.findIndex(todaysSwells, swell => {
+
+    const swells = _.flatten(_.values(this.props.current.swell))
+    const currentSwellIndex = _.findIndex(swells, swell => {
       const time = moment.utc(swell.time).local()
       return now.diff(time) <= 0
     })
 
-    const currentSwell = todaysSwells[currentSwellIndex]
+    const currentSwell = swells[currentSwellIndex]
 
     this.setState({
       type: currentSwell.type,
@@ -60,12 +61,8 @@ const SwellOverview = class extends Component {
         style={styles.container}
       >
         <View style={styles.swellOverview}>
-          <Text style={[styles.ehancedBlueText, styles.swellHeight]}>
-            {height}&apos;
-          </Text>
-          <Text style={[BaseStyle.secondaryHeader, styles.ehancedBlueText]}>
-            {type}
-          </Text>
+          <Text style={[styles.ehancedBlueText, styles.swellHeight]}>{height}&apos;</Text>
+          <Text style={[BaseStyle.secondaryHeader, styles.ehancedBlueText]}>{type}</Text>
           <Text style={[styles.swellPeriod, styles.ehancedBlueText]}>
             Swell period at {period}s from {compassDirection}
           </Text>

@@ -1,11 +1,5 @@
 import React, { Component } from 'react'
-import {
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  Dimensions,
-} from 'react-native'
+import { StyleSheet, View, Text, TouchableOpacity, Dimensions } from 'react-native'
 import { connect } from 'react-redux'
 
 import BaseStyle from '../../base-styles'
@@ -31,20 +25,24 @@ const TidePhrase = class extends Component {
               tides={tides}
               style={[BaseStyle.tidePhrase, styles.tideDirectionText]}
             />
-            <Text style={BaseStyle.tidePhrase} allowFontScaling={false}>Tide</Text>
+            <Text style={BaseStyle.tidePhrase} allowFontScaling={false}>
+              Tide
+            </Text>
           </View>
           <View style={styles.phraseRow}>
-            <Text style={BaseStyle.tidePhrase} allowFontScaling={false}>in</Text>
-              <TouchableOpacity onPress={this.props.toggleModal}>
-                <Text
-                  numberOfLines={1}
-                  ellipsizeMode="tail"
-                  style={[BaseStyle.tidePhrase, styles.cityText]}
-                  allowFontScaling={false}
-                >
-                  {city}
-                </Text>
-              </TouchableOpacity>
+            <Text style={BaseStyle.tidePhrase} allowFontScaling={false}>
+              in
+            </Text>
+            <TouchableOpacity onPress={this.props.toggleModal}>
+              <Text
+                numberOfLines={1}
+                ellipsizeMode="tail"
+                style={[BaseStyle.tidePhrase, styles.cityText]}
+                allowFontScaling={false}
+              >
+                {city}
+              </Text>
+            </TouchableOpacity>
           </View>
           <RemainingTideTime tides={tides} />
         </View>

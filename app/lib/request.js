@@ -20,20 +20,23 @@ const request = function(path) {
   const response = fetch(`${BASE_URL}${path}`, params)
 
   response.catch(error => {
-    Sentry.captureMessage('Error making request')
-    Sentry.setExtraContext({
-      error,
-      path,
-    })
-    Alert.alert(
-      'Cannot complete request',
-      'We were uable fetch tide information.',
-      [{ text: 'OK' }],
-    )
+    const status = error.response ? error.response.status : 500
+    if (status === 404) {
+      Alert.alert('Request not found', 'This network request does not exist.', [{ text: 'OK' }])
+    } else {
+      Sentry.captureMessage('Error making request')
+      Sentry.setExtraContext({
+        status,
+        path,
+      })
+
+      Alert.alert('Cannot complete request', 'We were uable fetch tide information.', [
+        { text: 'OK' },
+      ])
+    }
   })
 
   return response.then(res => {
-    console.log(res)
     if (res.ok) {
       return res.json()
     }
