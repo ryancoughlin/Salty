@@ -3,8 +3,8 @@ package com.salty;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.airbnb.android.react.maps.MapsPackage;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.horcrux.svg.SvgPackage;
 import com.devfd.RNGeocoder.RNGeocoderPackage;
@@ -32,8 +32,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new SplashScreenReactPackage(),
             new MapsPackage(),
+            new SplashScreenReactPackage(),
             new LinearGradientPackage(),
             new SvgPackage(),
             new RNGeocoderPackage(),

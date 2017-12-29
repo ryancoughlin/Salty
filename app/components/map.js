@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
+import MapView from 'react-native-map-clustering'
+import { Marker } from 'react-native-maps'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -26,6 +27,18 @@ const Map = class extends Component {
     this.props.dismissModal()
   }
 
+  animate(coordinate) {
+    const newRegion = {
+      latitude: coordinate.latitude,
+      longitude: coordinate.longitude,
+      latitudeDelta:
+        this.mapView.state.region.latitudeDelta - this.mapView.state.region.latitudeDelta / 2,
+      longitudeDelta:
+        this.mapView.state.region.longitudeDelta - this.mapView.state.region.longitudeDelta / 2,
+    }
+    this.mapView._root.animateToRegion(newRegion, 250)
+  }
+
   render() {
     const { stations, location } = this.props
 
@@ -35,7 +48,10 @@ const Map = class extends Component {
 
     return (
       <MapView
-        provider={PROVIDER_GOOGLE}
+        ref={ref => (this.mapView = ref)}
+        onClusterPress={coordinate => {
+          this.animate(coordinate)
+        }}
         style={styles.container}
         region={{
           latitude: location.latitude,
@@ -45,16 +61,9 @@ const Map = class extends Component {
         }}
         customMapStyle={mapStyle}
       >
-        {stations.map(station =>
-          (<MapView.Marker image={mapMarker} key={station.id} coordinate={station.location}>
-            <MapView.Callout
-              tooltip
-              onPress={() => this.navigateToStation(station.location)}
-            >
-              <MapCallout station={station} />
-            </MapView.Callout>
-          </MapView.Marker>),
-        )}
+        {stations.map(station => (
+          <Marker image={mapMarker} key={station.id} coordinate={station.location} />
+        ))}
       </MapView>
     )
   }

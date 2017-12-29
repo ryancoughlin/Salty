@@ -2,6 +2,16 @@
 # yarn lockfile v1
 
 
+"@mapbox/geo-viewport@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@mapbox/geo-viewport/-/geo-viewport-0.2.2.tgz#93206c044238c21a60fca7e9064c8ce63e8027b4"
+  dependencies:
+    "@mapbox/sphericalmercator" "~1.0.2"
+
+"@mapbox/sphericalmercator@~1.0.2":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@mapbox/sphericalmercator/-/sphericalmercator-1.0.5.tgz#70237b9774095ed1cfdbcea7a8fd1fc82b2691f2"
+
 "@sentry/wizard@^0.6.0", "@sentry/wizard@^0.6.1":
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/@sentry/wizard/-/wizard-0.6.1.tgz#39c32f00b2a3b361984405f8ddd3d5500b7392cf"
@@ -3114,6 +3124,10 @@ jsx-ast-utils@^1.4.0, jsx-ast-utils@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/jsx-ast-utils/-/jsx-ast-utils-1.4.1.tgz#3867213e8dd79bf1e8f2300c0cfc1efb182c0df1"
 
+kdbush@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/kdbush/-/kdbush-1.0.1.tgz#3cbd03e9dead9c0f6f66ccdb96450e5cecc640e0"
+
 kind-of@^3.0.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-3.2.2.tgz#31ea21a734bab9bbb0f32466d893aea51e4a3c64"
@@ -4045,6 +4059,10 @@ react-native-config@^0.11.1:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.11.1.tgz#b5a7d1aaa3c02da7d494f1e79565cd061902102d"
 
+react-native-dimension@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-dimension/-/react-native-dimension-1.0.6.tgz#049e40746160137f5e1dde89983b04ff8dc288d5"
+
 react-native-geocoder@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/react-native-geocoder/-/react-native-geocoder-0.5.0.tgz#ff4b9c55d5768a4784eefccb411761c82e067579"
@@ -4058,6 +4076,15 @@ react-native-linear-gradient@^2.3.0:
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.3.0.tgz#757997197e35edf52e290891a11566e462845da1"
   dependencies:
     prop-types "^15.5.10"
+
+react-native-map-clustering@^1.2.8:
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/react-native-map-clustering/-/react-native-map-clustering-1.2.8.tgz#323186609d214ea1fcf2deba3c53ddf185930268"
+  dependencies:
+    "@mapbox/geo-viewport" "^0.2.2"
+    prop-types "^15.6.0"
+    react-native-dimension "^1.0.6"
+    supercluster "^3.0.1"
 
 react-native-maps@^0.18.3:
   version "0.18.3"
@@ -4837,6 +4864,12 @@ strip-eof@^1.0.0:
 strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
+
+supercluster@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/supercluster/-/supercluster-3.0.1.tgz#e32c043659d442c150f674ebbaac5f5bdcf394e0"
+  dependencies:
+    kdbush "^1.0.1"
 
 supports-color@^2.0.0:
   version "2.0.0"

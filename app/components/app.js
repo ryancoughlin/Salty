@@ -56,7 +56,7 @@ const App = class extends Component {
   render() {
     const { current, stationsNearby, shouldDisplay } = this.props
 
-    if (!shouldDisplay || _.isEmpty(current.weather)) {
+    if (!shouldDisplay || _.isEmpty(current.weather) || _.isEmpty(current.tides)) {
       return <ActivityOverlay />
     }
 

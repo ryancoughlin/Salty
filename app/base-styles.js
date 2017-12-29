@@ -21,7 +21,7 @@ const BaseStyle = {
   baseSpacing: 20,
   largeSpacing: 44,
   tidePhrase: {
-    fontWeight: 'bold',
+    fontWeight: '800',
     color: Colors.subtleColor,
     fontSize: 34,
     marginRight: 4,
