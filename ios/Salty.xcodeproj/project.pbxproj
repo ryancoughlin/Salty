@@ -39,6 +39,9 @@
 		5D03D7C91F1BD6E100A89469 /* overpass-mono-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5D03D7C81F1BD6E100A89469 /* overpass-mono-regular.otf */; };
 		5D03D7F11F1BD6FA00A89469 /* overpass-mono-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5D03D7F01F1BD6FA00A89469 /* overpass-mono-semibold.otf */; };
 		5D2B8BF41FD6FB6E00E1A3A7 /* libRNSentry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA1FF471FD6DBFC00511531 /* libRNSentry.a */; };
+		5D37B85B1FF6C8590049E013 /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D37B82B1FF6C8590049E013 /* Mapbox.framework */; };
+		5D37B85C1FF6C8590049E013 /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5D37B82B1FF6C8590049E013 /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5D37B8641FF6C8C80049E013 /* libRCTMGL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D37B8631FF6C8A60049E013 /* libRCTMGL.a */; };
 		5D3E10311F18686900AC8BDD /* overpass-mono-light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5D3E10301F18686900AC8BDD /* overpass-mono-light.otf */; };
 		5D7BE2AC1E74E056004250C7 /* Kennebunkport.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5D7BE2AB1E74E056004250C7 /* Kennebunkport.gpx */; };
 		5DD2F3871FE99998002A5D35 /* Cudjoe Key.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5DD2F3571FE99998002A5D35 /* Cudjoe Key.gpx */; };
@@ -220,6 +223,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = EB2648DF1C7BE17A00B8F155;
 			remoteInfo = ReactNativeConfig;
+		};
+		5D37B8621FF6C8A60049E013 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D37B85E1FF6C8A60049E013 /* RCTMGL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C4D1443D1F4E16F600396F26;
+			remoteInfo = RCTMGL;
 		};
 		5D5F137E1F11678500742E87 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -405,6 +415,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5D37B85D1FF6C8590049E013 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5D37B85C1FF6C8590049E013 /* Mapbox.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
@@ -436,6 +460,8 @@
 		5CD445CE1CDB4E9B9CB66E83 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		5D03D7C81F1BD6E100A89469 /* overpass-mono-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "overpass-mono-regular.otf"; sourceTree = "<group>"; };
 		5D03D7F01F1BD6FA00A89469 /* overpass-mono-semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "overpass-mono-semibold.otf"; sourceTree = "<group>"; };
+		5D37B82B1FF6C8590049E013 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapbox.framework; path = "../node_modules/@mapbox/react-native-mapbox-gl/ios/Mapbox.framework"; sourceTree = "<group>"; };
+		5D37B85E1FF6C8A60049E013 /* RCTMGL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTMGL.xcodeproj; path = "../node_modules/@mapbox/react-native-mapbox-gl/ios/RCTMGL.xcodeproj"; sourceTree = "<group>"; };
 		5D3E10301F18686900AC8BDD /* overpass-mono-light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "overpass-mono-light.otf"; sourceTree = "<group>"; };
 		5D7BE2AB1E74E056004250C7 /* Kennebunkport.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Kennebunkport.gpx; sourceTree = "<group>"; };
 		5DD2F3571FE99998002A5D35 /* Cudjoe Key.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Cudjoe Key.gpx"; sourceTree = "<group>"; };
@@ -468,6 +494,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D37B8641FF6C8C80049E013 /* libRCTMGL.a in Frameworks */,
 				5D2B8BF41FD6FB6E00E1A3A7 /* libRNSentry.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
@@ -489,6 +516,7 @@
 				7B4F6855061842FDA2D75E25 /* libBVLinearGradient.a in Frameworks */,
 				BA1EE91928BF4F1CA2951C38 /* libSplashScreen.a in Frameworks */,
 				5B41F0AB0A4C40CA9B0A72D4 /* libAirMaps.a in Frameworks */,
+				5D37B85B1FF6C8590049E013 /* Mapbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -653,6 +681,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		5D37B85F1FF6C8A60049E013 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5D37B8631FF6C8A60049E013 /* libRCTMGL.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5D7BE2AA1E74E056004250C7 /* GPX */ = {
 			isa = PBXGroup;
 			children = (
@@ -788,6 +824,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				5D37B85E1FF6C8A60049E013 /* RCTMGL.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -825,6 +862,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				5D37B82B1FF6C8590049E013 /* Mapbox.framework */,
 				13B07FAE1A68108700A75B9A /* Salty */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* SaltyTests */,
@@ -880,6 +918,8 @@
 				5DF4CF0A1F191B1F00D56E1B /* Increment build numbers */,
 				C73E83D3DD1249F284F2BF8F /* Upload Debug Symbols to Sentry */,
 				5DF338731FD6EDA200130426 /* Bundle React Native code and images */,
+				5D37B85D1FF6C8590049E013 /* Embed Frameworks */,
+				5D37B8651FF6C9260049E013 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1008,6 +1048,10 @@
 				{
 					ProductGroup = 78C398B11ACF4ADC00677621 /* Products */;
 					ProjectRef = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
+				},
+				{
+					ProductGroup = 5D37B85F1FF6C8A60049E013 /* Products */;
+					ProjectRef = 5D37B85E1FF6C8A60049E013 /* RCTMGL.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302D41ABCB9D200DB3ED1 /* Products */;
@@ -1221,6 +1265,13 @@
 			fileType = archive.ar;
 			path = libReactNativeConfig.a;
 			remoteRef = 5D2B8C971FD7206B00E1A3A7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5D37B8631FF6C8A60049E013 /* libRCTMGL.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTMGL.a;
+			remoteRef = 5D37B8621FF6C8A60049E013 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		5D5F137F1F11678500742E87 /* libthird-party.a */ = {
@@ -1461,6 +1512,19 @@
 			shellPath = /bin/sh;
 			shellScript = "export SENTRY_PROPERTIES=sentry.properties\nexport NODE_BINARY=node\n../node_modules/sentry-cli-binary/bin/sentry-cli react-native xcode ../node_modules/react-native/packager/react-native-xcode.sh";
 		};
+		5D37B8651FF6C9260049E013 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework/strip-frameworks.sh\"\n";
+		};
 		5DF338731FD6EDA200130426 /* Bundle React Native code and images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1652,6 +1716,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/../node_modules/@mapbox/react-native-mapbox-gl/ios",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1692,6 +1757,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/../node_modules/@mapbox/react-native-mapbox-gl/ios",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

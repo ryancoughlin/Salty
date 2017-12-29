@@ -1,20 +1,33 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
-import MapView from 'react-native-map-clustering'
-import { Marker } from 'react-native-maps'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import * as actions from '../actions/station'
 import MapCallout from './map-callout'
-import mapStyle from '../lib/map-style'
 import mapMarker from '../assets/images/station-marker.png'
 
+import GeoJSON from 'geojson'
+import BaseStyle from '../base-styles'
+
+import color from 'tinycolor2'
+
+import Mapbox from '@mapbox/react-native-mapbox-gl'
+
+Mapbox.setAccessToken('pk.eyJ1Ijoic25vd2Nhc3QiLCJhIjoiRThTZEJUVSJ9.iBDNGv5t_HMMwho_8GRcOQ')
+
 const Map = class extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = { stations: {} }
+  }
+
   componentDidMount() {
     if (!this.props.stations) {
       this.props.fetchAllStations()
     }
+    this.buildGeoJSON()
   }
 
   navigateToStation(location) {
@@ -27,16 +40,14 @@ const Map = class extends Component {
     this.props.dismissModal()
   }
 
-  animate(coordinate) {
-    const newRegion = {
-      latitude: coordinate.latitude,
-      longitude: coordinate.longitude,
-      latitudeDelta:
-        this.mapView.state.region.latitudeDelta - this.mapView.state.region.latitudeDelta / 2,
-      longitudeDelta:
-        this.mapView.state.region.longitudeDelta - this.mapView.state.region.longitudeDelta / 2,
-    }
-    this.mapView._root.animateToRegion(newRegion, 250)
+  buildGeoJSON() {
+    const geoJSON = GeoJSON.parse(this.props.stations, {
+      Point: ['location.latitude', 'location.longitude'],
+      include: ['name', 'id'],
+    })
+    this.setState({ stations: geoJSON })
+
+    console.log(geoJSON)
   }
 
   render() {
@@ -47,28 +58,89 @@ const Map = class extends Component {
     }
 
     return (
-      <MapView
-        ref={ref => (this.mapView = ref)}
-        onClusterPress={coordinate => {
-          this.animate(coordinate)
-        }}
+      <Mapbox.MapView
+        styleURL="mapbox://styles/snowcast/cj48x1j1s24zf2so58er7t4kx"
+        zoomLevel={10}
+        centerCoordinate={[location.longitude, location.latitude]}
         style={styles.container}
-        region={{
-          latitude: location.latitude,
-          longitude: location.longitude,
-          latitudeDelta: 0.2,
-          longitudeDelta: 0.2,
-        }}
-        customMapStyle={mapStyle}
+        showUserLocation
       >
-        {stations.map(station => (
-          <Marker image={mapMarker} key={station.id} coordinate={station.location} />
-        ))}
-      </MapView>
+        <Mapbox.ShapeSource id="stations" shape={this.state.stations} cluster>
+          <Mapbox.SymbolLayer
+            id="symbolLocationSymbols"
+            minZoomLevel={1}
+            style={mapStyles.clusterCount}
+          />
+          <Mapbox.SymbolLayer id="pointCount" style={mapStyles.clusterCount} />
+
+          <Mapbox.CircleLayer
+            id="clusteredPoints"
+            belowLayerID="pointCount"
+            filter={['has', 'point_count']}
+            style={mapStyles.clusteredPoints}
+          />
+
+          <Mapbox.SymbolLayer
+            id="singlePoint"
+            filter={['!has', 'point_count']}
+            style={mapStyles.singlePoint}
+          />
+        </Mapbox.ShapeSource>
+      </Mapbox.MapView>
     )
   }
 }
+const mapStyles = Mapbox.StyleSheet.create({
+  singlePoint: {
+    iconImage: mapMarker,
+    iconAllowOverlap: true,
+    iconSize: 0.4,
+  },
 
+  clusteredPoints: {
+    circleColor: Mapbox.StyleSheet.source(
+      [
+        [10, BaseStyle.actionColor],
+        [
+          30,
+          color(BaseStyle.actionColor)
+            .darken(20)
+            .toString(),
+        ],
+        [
+          40,
+          color(BaseStyle.actionColor)
+            .darken(40)
+            .toString(),
+        ],
+        [
+          50,
+          color(BaseStyle.actionColor)
+            .darken(60)
+            .toString(),
+        ],
+      ],
+      'point_count',
+      Mapbox.InterpolationMode.Exponential,
+    ),
+
+    circleRadius: Mapbox.StyleSheet.source(
+      [[0, 24], [100, 34], [750, 44]],
+      'point_count',
+      Mapbox.InterpolationMode.Exponential,
+    ),
+
+    circleOpacity: 0.9,
+    circleStrokeWidth: 3,
+    circleStrokeColor: 'white',
+  },
+
+  clusterCount: {
+    textField: '{point_count}',
+    textSize: 14,
+    textColor: 'white',
+  },
+})
 const styles = StyleSheet.create({
   container: {
     flex: 1,
