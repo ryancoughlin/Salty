@@ -23,7 +23,7 @@ const StationDetail = class extends Component {
 
     this.state = {
       tideTableVisible: false,
-      mapVisible: false,
+      mapVisible: false
     }
   }
 
@@ -32,19 +32,24 @@ const StationDetail = class extends Component {
     const { saveLocation, deleteLocation, location } = this.props
     const { city, todaysTides, weather } = this.props.current
 
+    console.log(this.props.current)
     Sentry.setExtraContext({
-      ...this.props.current,
+      ...this.props.current
     })
 
     return (
       <ScrollView style={styles.container}>
-        <TidePhrase toggleModal={() => this.setState({ mapVisible: !mapVisible })} />
+        <TidePhrase
+          toggleModal={() => this.setState({ mapVisible: !mapVisible })}
+        />
 
         <WeatherRow weather={weather.currentWind} icon="wind" />
         <WeatherRow weather={weather.currentWeather} icon={weather.icon} />
         <TodaysTides
           todaysTides={todaysTides}
-          toggleModal={() => this.setState({ tideTableVisible: !tideTableVisible })}
+          toggleModal={() =>
+            this.setState({ tideTableVisible: !tideTableVisible })
+          }
         />
 
         <DetailPanel />
@@ -53,12 +58,18 @@ const StationDetail = class extends Component {
         {this.props.isSaved ? (
           <RemoveLocationButton city={city} deleteLocation={deleteLocation} />
         ) : (
-          <SaveLocationButton saveLocation={saveLocation} location={location} city={city} />
+          <SaveLocationButton
+            saveLocation={saveLocation}
+            location={location}
+            city={city}
+          />
         )}
 
         <SaltyModal
           visible={tideTableVisible}
-          dismissModal={() => this.setState({ tideTableVisible: !tideTableVisible })}
+          dismissModal={() =>
+            this.setState({ tideTableVisible: !tideTableVisible })
+          }
         >
           <TideTable />
         </SaltyModal>
@@ -66,7 +77,9 @@ const StationDetail = class extends Component {
           visible={mapVisible}
           dismissModal={() => this.setState({ mapVisible: !mapVisible })}
         >
-          <Map dismissModal={() => this.setState({ mapVisible: !mapVisible })} />
+          <Map
+            dismissModal={() => this.setState({ mapVisible: !mapVisible })}
+          />
         </SaltyModal>
       </ScrollView>
     )
@@ -77,19 +90,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    marginTop: BaseStyle.baseSpacing,
-  },
+    marginTop: BaseStyle.baseSpacing
+  }
 })
 
 const mapStateToProps = ({ stations }) => ({
   current: stations.current,
   saved: stations.saved,
   location: stations.location,
-  isSaved: !!stations.saved[stations.current.city],
+  isSaved: !!stations.saved[stations.current.city]
 })
 
 const mapDispatchToProps = dispatch => ({
-  ...bindActionCreators(actions, dispatch),
+  ...bindActionCreators(actions, dispatch)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(StationDetail)

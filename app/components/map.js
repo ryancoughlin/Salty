@@ -59,7 +59,7 @@ const Map = class extends Component {
 
     return (
       <Mapbox.MapView
-        styleURL="mapbox://styles/snowcast/cj48x1j1s24zf2so58er7t4kx"
+        styleURL="mapbox://styles/snowcast/cjbtlwe7dapyb2spcpo1risft"
         zoomLevel={10}
         centerCoordinate={[location.longitude, location.latitude]}
         style={styles.container}

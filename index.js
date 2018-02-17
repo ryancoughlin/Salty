@@ -19,7 +19,7 @@ class Salty extends Component {
     }
 
     this.state = {
-      shouldDisplay: false,
+      shouldDisplay: false
     }
   }
 
